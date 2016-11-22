@@ -6,7 +6,7 @@ $(document).ready(function(){
         function(response){
                 for (var i = 0; i < response.length; i++){
                   console.log(response[i]);
-                  $('#trips').append("<h3><a href=" + url + "/" + response[i].id + ">" + response[i].name + "</a></h3>");
+                  $('#trips').append("<div class='record'><a href=" + url + "/" + response[i].id + ">" + response[i].name + "</a></div>");
                 }
         });
     });
@@ -19,11 +19,13 @@ $(document).ready(function(){
     console.log(tripUrl);
 
     $.get(tripUrl, function(trip){
-      $('#name').text(trip.name);
-      $('#continent').text(trip.continent);
-      $('#weeks').text(trip.weeks);
-      $('#cost').text(trip.cost);
-      $('#about').text(trip.about);
+      $('#name').text("Trip Name: " + trip.name);
+      $('#id').text("ID: " + trip.id);
+      $('#continent').text("Continent: " + trip.continent);
+      $('#weeks').text("Weeks: " + trip.weeks);
+      $('#cost').text("Cost: $" + trip.cost);
+      $('#about').text("About: " + trip.about);
+      $('#category').text("Category: " + trip.category);
     }).always(function(){
       $("#message").text("Something happened");
     }).fail(function(){

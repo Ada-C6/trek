@@ -1,0 +1,22 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+#main {
+  text-align: center;
+}
+
+.record {
+  border: 2px solid black;
+  padding: 2%;
+}
+
+#load {
+  width: 120px;
+  height: 40px;
+  font-size: 1em;
+}
+
+#load:hover {
+  background-color: aliceblue;
+}
