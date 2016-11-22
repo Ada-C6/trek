@@ -5,6 +5,31 @@ $(document).ready(function(){
 var tripsurl = 'https://trektravel.herokuapp.com/trips';
 
 
+var successTripDetails = function(trip) {
+  console.log('success!');
+  console.log(trip);
+  var section = $('.trip-details');
+  var name = $('<h1>Trip Name: ' + trip.name + '</h1>');
+  var continent = $('<h3>Continent: ' + trip.continent + '</h3>');
+  var about = $('<h3>About</h3><p>' + trip.about+ '</p>');
+  var cost = $('<h3>Total Cost: $' + trip.cost+ '</h3>');
+  var duration = $('<h3>Duration: ' + trip.weeks + '</h3>');
+
+
+  section.empty();//clears older clicks
+  section.append(name, continent, cost, duration, about);
+};
+
+
+$('tbody').on('click', 'a', function(e) {
+    e.preventDefault();
+
+    var id = $(this).attr('id');
+    var showUrl = tripsurl + '/' + id;
+    $.get(showUrl, successTripDetails)
+      .fail(failCallback);
+  });
+
 var successCallback = function (response) {
     console.log('success!');
 
