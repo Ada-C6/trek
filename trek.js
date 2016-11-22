@@ -1,10 +1,12 @@
 $( "#load" ).click(function() {
-    $.get('https://trektravel.herokuapp.com/trips',
+    var url = "https://trektravel.herokuapp.com/trips"
+    $.get(url,
       function(response){
-              var tripsHTML = '';
+              // var tripsHTML = '';
               for (var i = 0; i < response.length; i++){
-                tripsHTML += '<h3>' + response[i].name + '</h3>'
+                console.log(response[i]);
+                $('#trips').append("<h3><a href=" + url + "/" + response[i].id + ">" + response[i].name + "</a></h3>");
               }
-              $('#trips').append(tripsHTML);
+              // $('#trips').append(tripsHTML);
       });
   });
