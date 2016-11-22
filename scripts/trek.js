@@ -39,4 +39,32 @@ $(document).ready(function() {
       .fail(failCallback);
   });
 
+
+  // SUCCESS SHOW
+  var showSuccessCallback = function (response) {
+
+    var body = $('.single-location');
+
+    var travelName = $('<li>' + response.name + '</li>');
+    var continent = $('<li>' + response.continent + '</li>');
+    var duration = $('<li>' + response.weeks + ' weeks</li>');
+    var cost = $('<li>' + response.cost + '</li>');
+    var description = $('<li>' + response.about + '</li>');
+
+    body.empty();
+    body.append(travelName, continent, duration, cost, description);
+
+    $('.single-location').show();
+  };
+
+  // clicking on a specific trek SHOWS the information about if
+  $('body').on('click', 'a', function(event) {
+    event.preventDefault();
+
+    var id = $(this).attr('id');
+    var showUrl = url + id;
+    $.get(showUrl, showSuccessCallback)
+      .fail(failCallback);
+  });
+
 });
