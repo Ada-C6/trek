@@ -7,11 +7,19 @@ $(document).ready(function() {
     var body = $('.travel-body');
     body.empty();
 
+    var headerName = $('<th>Trip Name</th>');
+    var headerContinent = $('<th>Continent</th>');
+    var headerWeeks = $('<th># Weeks</th>');
+
+    body.append(headerName, headerContinent, headerWeeks);
+
     $.each(response, function(index, trip) {
       var row = $('<tr></tr>');
       var name = $('<td><a href="#" class="trip-link" id=' + trip.id + '>' + trip.name + '</a></td>');
+      var continent = $('<td>' + trip.continent + '</td>');
+      var weeks = $('<td>' + trip.weeks + '</td>');
 
-      row.append(name);
+      row.append(name, continent, weeks);
       body.append(row);
     });
 
@@ -31,7 +39,6 @@ $(document).ready(function() {
     var section = $('.trip-details');
     var id = $('<p><strong>ID: </strong>' + trip.id + '</p>');
     var name = $('<p><strong>Name: </strong>' + trip.name + '</p>');
-    var destination = $('<p><strong>Destination: </strong>' + trip.destination + '</p>');
     var continent = $('<p><strong>Continent: </strong>' + trip.continent + '</p>');
     var about = $('<p><strong>About: </strong>' + trip.about + '</p>');
     var category = $('<p><strong>Category: </strong>' + trip.category + '</p>');
@@ -40,7 +47,7 @@ $(document).ready(function() {
 
 
     section.empty();
-    section.append(id, name, destination, continent, about, category, weeks, cost);
+    section.append(id, name, continent, about, category, weeks, cost);
 
     toggleTableView(false);
   };
