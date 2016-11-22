@@ -14,7 +14,7 @@ $(document).ready(function() {
     $.each(response, function(index, trip){
       console.log(trip);
       var row = $('<tr></tr>');
-      var name = $('<td>' + trip.name + '</td>');
+      var name = $('<td><a href="#" class="name-link" id=' + trip.id + '>' + trip.name + '</a></td>');
       var continent = $('<td>' + trip.continent + '</td>');
       var weeks = $('<td>' + trip.weeks + '</td>');
 
@@ -41,6 +41,29 @@ $(document).ready(function() {
     $.get(url, successCallback)
       .fail(failCallback)
       .always(alwaysCallBack);
+  });
+
+  var showSuccess = function(trip) {
+    var section = $('.trip-info');
+    var name = $('<strong>Name</strong><div>' + pet.name + '</div>');
+    var continent = $('<strong>Continent</strong><div>' + pet.continent + '</div>');
+    var length = $('<strong>Length</strong><div>' + pet.length + '</div>');
+    var category = $('<strong>Owner</strong><div>' + pet.category + '</div>');
+    var cost = $('<strong>Owner</strong><div>' + pet.cost + '</div>');
+
+    section.empty(); // Reset the HTML in case there is data from before
+    section.append(name, continent, length, category, cost);
+
+    // toggleTableView(false);
+  };
+
+  $('tbody').on('click', 'a', function(e) {
+    e.preventDefault();
+
+    var id = $(this).attr('id');
+    var showUrl = url + id;
+    $.get(showUrl, showSuccess);
+      // .fail(showFailure);
   });
 
 });
