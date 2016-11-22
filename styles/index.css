@@ -1,0 +1,21 @@
+* {
+  color: #2196F3;
+  font-family: 'Port Lligat Slab', serif;
+}
+
+.container {
+  margin: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 5px double;
+  font-weight: 600;
+}
+
+footer {
+  font-size: 13px;
+  text-align: center;
+  margin: 100px 20px 20px 20px;
+}
