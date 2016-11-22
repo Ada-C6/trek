@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var url = 'https://trektravel.herokuapp.com/trips/';
+  var url = 'https://trektravel.herokuapp.com/trip/';
 
   var successCallback = function (response) {
     console.log('success!');
@@ -23,8 +23,19 @@ $(document).ready(function() {
     $('button').hide();
   };
 
+  var failCallback = function(xkr){
+    console.log("failure");
+    console.log(xhr);
+  };
+
+  var alwaysCallBack = function () {
+    console.log('This always happens');
+  };
+
   $('button').click(function(){
-    $.get(url, successCallback);
+    $.get(url, successCallback)
+      .fail(failCallback)
+      .always(alwaysCallBack);
   });
 
 });
