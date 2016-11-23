@@ -68,17 +68,4 @@ $(document).ready(function(){
     })
   });
 
-$( "#load" ).click(function() {
-    var url = "https://trektravel.herokuapp.com/trips"
-    $.get(url,
-      function(response){
-        $('#trips').append("<h3> Select a trip for more information: </h3>")
-        for (var i = 0; i < response.length; i++){
-          console.log(response[i]);
-          $('#trips').append("<div class='record'><a href=" + url + "/" + response[i].id + ">" + response[i].name + "</a></div>");
-        }
-      });
-  });
-
-
 }); // ending $(document).ready
