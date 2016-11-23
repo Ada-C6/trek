@@ -1,14 +1,15 @@
 $(document).ready(function() {
 
-  var url = 'https://trektravel.herokuapp.com/trips/';
+  var url = 'https://trektravel.herokuapp.com/trips';
 
   var successCallback = function (response) {
     console.log('success!');
     console.log(response);
-    var body = $('.trips');
+    var heading = $('.trip-headers');
+    var body = $('.trip-body');
 
     var headings = $('<tr><td><strong><div>' + 'Trip Name' + '</div></strong></td><td><strong><div>' + 'Continent' + '</div></strong></td><td><strong><div>' + 'Trip Length' + '</div></strong></td></tr>');
-    body.append(headings);
+    heading.append(headings);
 
 
     $.each(response, function(index, trip){
@@ -24,7 +25,7 @@ $(document).ready(function() {
 
       body.append(row);
     });
-    // Button to load the pets disapears when the pets successfully load.
+    // Button to load the trips disapears when the trips successfully load.
     $('button').hide();
   };
 
@@ -45,14 +46,15 @@ $(document).ready(function() {
 
   var showSuccess = function(trip) {
     var section = $('.trip-info');
-    var name = $('<strong>Name</strong><div>' + pet.name + '</div>');
-    var continent = $('<strong>Continent</strong><div>' + pet.continent + '</div>');
-    var length = $('<strong>Length</strong><div>' + pet.length + '</div>');
-    var category = $('<strong>Owner</strong><div>' + pet.category + '</div>');
-    var cost = $('<strong>Owner</strong><div>' + pet.cost + '</div>');
+    var name = $('<div><strong>Name: </strong>' + trip.name + '</div>');
+    var continent = $('<div><strong>Continent: </strong>' + trip.continent + '</div>');
+    var description = $('<div><strong>Description: </strong>' + trip.about + '</div>');
+    var length = $('<div><strong>Length(in weeks): </strong>' + trip.weeks + '</div>');
+    var category = $('<div><strong>Category: </strong>' + trip.category + '</div>');
+    var cost = $('<div><strong>Cost: </strong>' + "$" + trip.cost + '</div>');
 
     section.empty(); // Reset the HTML in case there is data from before
-    section.append(name, continent, length, category, cost);
+    section.append(name, continent, description, length, category, cost);
 
     // toggleTableView(false);
   };
@@ -61,7 +63,9 @@ $(document).ready(function() {
     e.preventDefault();
 
     var id = $(this).attr('id');
-    var showUrl = url + id;
+    console.log(id);
+    var showUrl = url + "/" + id;
+    console.log(showUrl);
     $.get(showUrl, showSuccess);
       // .fail(showFailure);
   });
