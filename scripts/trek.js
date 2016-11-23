@@ -50,6 +50,8 @@ $(document).ready( function() {
     section.append(name, weeks, about, cost, continent, category, id);
     $('#add-reservation-form').css('display', 'inline');
     section.append($('#add-reservation-form'));
+
+    $('.trip-id').val(trip.id);
   };
 
   var showFailure = function(xhr) {
@@ -72,20 +74,20 @@ $(document).ready( function() {
     alert('Your reservation has been made');
   };
 
+  var postFailure = function() {
+    alert('Your reservation attempt failed');
+  };
+
   var addReservationCallback = function(event) {
-
-    var makeReservationUrl = function(response) {
-      $.each(response, function(index, trip) {
-        var urlPost = 'https://trektravel.herokuapp.com/trips/' + trip.id + '/reserve';
-      });
-    };
-
-    makeReservationURL();
+    var postID = $('.trip-id').val();
+    
+    var urlPost = 'https://trektravel.herokuapp.com/trips/' + postID + '/reserve';
 
     event.preventDefault();
     console.log('Sending reservation data');
     var reservationData = $(this).serialize();
-    $.post(urlPost, reservationData, postCallback);
+    $.post(urlPost, reservationData, postCallback)
+      .fail(postFailure);
   };
 
   $('#add-reservation-form').submit(addReservationCallback);
