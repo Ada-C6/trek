@@ -71,6 +71,7 @@ $(document).ready(function(){
 
     form.empty();
     registration.empty();
+    form.prepend('<hr>');
     form.append(header, nameField, emailField, tripID, registerButton);
     registration.append(form);
   };
