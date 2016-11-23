@@ -12,7 +12,17 @@
 
     </section>
     <section class='show-trips row'>
-      <button class="show-trips button" type="button" name="button">Show me trips</button>
+      <form id="filterContinent">
+        <label for='filter'>Show Trips for this Continent: </label>
+        <input type='text' name='continent'>
+        <button type='submit' class='continent button'>Submit</button>
+      </form>
+      <form id="filterBudget">
+        <label for='budget'>Show Trips Under $: </label>
+        <input type='text' name='budget'>
+        <button type='submit' class='budget  button'>Submit</button>
+      </form>
+      <button class="show-trips button" type="button" name="button">Show All Trips</button>
     </section>
     <section class='trip-details row'>
     </section>
@@ -28,8 +38,14 @@
         <button type='submit' class='reserve button success'>Submit</button>
       </form>
     </section>
+    <section id='reservation-confirmation'>
+      <h4>Your reservation is confirmed!</h4>
+    </section>
     <table class='trips row'>
-      <th></th>
+      <thead></thead>
+      <tbody>
+
+      </tbody>
     </table>
 
     <script
