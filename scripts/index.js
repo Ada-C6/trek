@@ -11,13 +11,14 @@ var successTripDetails = function(trip) {
   var section = $('.trip-details');
   var name = $('<h1>Trip Name: ' + trip.name + '</h1>');
   var continent = $('<h3>Continent: ' + trip.continent + '</h3>');
+  var category = $('<h3>Category: ' + trip.category + '</h3>');
   var about = $('<h3>About</h3><p>' + trip.about+ '</p>');
   var cost = $('<h3>Total Cost: $' + trip.cost+ '</h3>');
   var duration = $('<h3>Duration: ' + trip.weeks + '</h3>');
 
 
   section.empty();//clears older clicks
-  section.append(name, continent, cost, duration, about);
+  section.append(name, continent, category, cost, duration, about);
 };
 
 
