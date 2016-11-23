@@ -49,6 +49,7 @@ $(document).ready(function(){
 
   var showSuccess = function(trip) {
     var section = $('.trip-details');
+    var id = $('<strong>ID</strong><div>' + trip.id + '</div>');
     var name = $('<strong>Name</strong><div>' + trip.name + '</div>');
     var continent = $('<strong>Continent</strong><div>' + trip.continent + '<div>');
     var description = $('<strong>Description</strong><div>' + trip.about + '</div>');
@@ -57,7 +58,7 @@ $(document).ready(function(){
     var duration = $('<strong>Duration</strong><div>' + trip.weeks + ' week(s)</div>');
 
     section.empty(); //similar to the body, want to make sure we don't have any data from before
-    section.append(name, continent, description, category, cost, duration);
+    section.append(id, name, continent, description, category, cost, duration);
   };
 
   var showFailure = function(xhr) {
