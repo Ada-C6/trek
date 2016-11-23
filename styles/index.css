@@ -1,0 +1,9 @@
+#all-trips-button {
+  background-color: magenta;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.trip-details {
+  float: right;
+}
