@@ -3,6 +3,7 @@ $(document).ready(function(){
 
 
 var tripsurl = 'https://trektravel.herokuapp.com/trips';
+var reservationurl = 'https://trektravel.herokuapp.com/trips/1/reserve';
 
 
 var successTripDetails = function(trip) {
@@ -16,9 +17,18 @@ var successTripDetails = function(trip) {
   var cost = $('<h3>Total Cost: $' + trip.cost+ '</h3>');
   var duration = $('<h3>Duration: ' + trip.weeks + '</h3>');
 
+//adding reservation form dynamically to every trip
+  var form = $("<form></form>");
+  var nameLabel = $('<label for="name">Your Name</label>');
+  var resName = $('<input type="text", name="name"></input>');
+  var emailLabel = $('<label for="age">Email Address</label>');
+  var resEmail = $('<input type="text" name="email"></input>');
+  var button = $('<button type="submit" class="button"> Make My Reservation!</button>');
+
+  form.append(nameLabel, resName, emailLabel, resEmail, button);
 
   section.empty();//clears older clicks
-  section.append(name, continent, category, cost, duration, about);
+  section.append(name, continent, category, cost, duration, about, form);
 };
 
 
@@ -36,14 +46,19 @@ var successCallback = function (response) {
 
     var body = $('.trips-body');
     // body.empty();
-
+    // var HTML = '<form attributes><input><input>...</form>';
+    // $("#container").html(HTML);
     $.each(response, function(index, trip){
       console.log(trip);
+
       var row = $('<tr></tr>');
-      var name = $('<td><h3><a href="#" class="name-link" id=' + trip.id + '>' + trip.name + '</h3></a></td>');
+      var name = $('<td><h5><a href="#" class="name-link" id=' + trip.id + '>' + trip.name + '</h5></a></td>');
 
       row.append(name);
       body.append(row);
+
+
+      // body.append(form);
     });
 
     // toggleTableView(true);
@@ -58,8 +73,6 @@ var successCallback = function (response) {
     body.append(failmessage);
   };
 
-
-
 // .get for loading all trips
   $('button').click(function() {
       $.get(tripsurl, successCallback)
@@ -67,5 +80,20 @@ var successCallback = function (response) {
     });
 
 
+//Adding Post Functionality
+var postCallback = function(){
+  alert("You've make a reservation!");
+};
+
+
+var addReservation = function(event) {
+  event.preventDefault();
+  console.log("sending reservation");
+  var reservation = $(this).serialize(); //takes form data and transforms it into  query args. this refers to the form
+  $.post(reservationurl, reservation, postCallback());
+};
+
+//click handler for adding a pet
+$('form').submit(addReservation);
 
 }); //end of documentready
