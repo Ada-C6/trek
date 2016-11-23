@@ -27,24 +27,25 @@ $(document).ready(function(){
       body.append(row);
     });
 
-    $('button').hide();
+    $('#get-trips-button').hide();
   };
 
   // what do we want to happen when it fails?
   var failCallback = function(xhr) {
-    console.log('failure');
     console.log(xhr);
+    body = $('.trips-body');
+    body.html('<strong>Error has occurred</strong>');
   };
 
   // this always happens. good for cleaning things up afterward.
-  var alwaysCallback = function(){
-    console.log("this always happens");
-  };
+  // var alwaysCallback = function(){
+  //   console.log("this always happens");
+  // };
 
-  $('button').click(function(){
+  $('#get-trips-button').click(function(){
     $.get(url, successCallback)
-      .fail(failCallback)
-      .always(alwaysCallback);
+      .fail(failCallback);
+      // .always(alwaysCallback);
   });
 
   var showSuccess = function(trip) {
@@ -59,6 +60,18 @@ $(document).ready(function(){
 
     section.empty(); //similar to the body, want to make sure we don't have any data from before
     section.append(id, name, continent, description, category, cost, duration);
+
+    var registration = $('.register');
+    var header = $('<h3>Register For This Trip</h3>');
+    var form = $('<form id="register-form" trip-id='+ trip.id +'></form>');
+    var nameField = $('<label for="name">Name</label><input type="text" name="name"></input>');
+    var emailField = $('<label for="email">Email</label><input type="text" name="email"></input>');
+    var registerButton = $('<button type="submit" class="button">Register for this trip!</button>');
+
+    form.empty();
+    registration.empty();
+    form.append(header, nameField, emailField, registerButton);
+    registration.append(form);
   };
 
 
@@ -76,4 +89,23 @@ $(document).ready(function(){
     $.get(showUrl, showSuccess)
       .fail(showFailure);
     });
+
+  var postCallback = function(){
+    console.log('post success!');
+  };
+
+  var registerCallback = function(event) {
+    event.preventDefault();
+    console.log($(this));
+
+    console.log('sending registration data');
+    var reservationData = $(this).serialize();
+    console.log("registration data is " + reservationData);
+    var reservationURL = url + "/" + something + '/reserve';
+    console.log("url is " + reservationURL);
+
+    $.post(reservationURL, reservationData, postCallback);
+  };
+
+  $('#register-form').submit(registerCallback);
 });
