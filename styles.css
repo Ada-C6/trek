@@ -32,7 +32,7 @@
   display: inline-block;
   padding: 3%;
   font-family: 'Varela Round';
-  background-color: #00494f;
+  background-color: #082567;
   border: 4px solid white;
   border-radius: 20%;
   opacity: .8;
@@ -45,4 +45,37 @@
 #trips h3 a {
   color: white;
   text-decoration: none;
+}
+
+#trip-details{
+  background-color: #eafcb0;
+  opacity: .8;
+  border: 4px solid white;
+  border-radius: 20%;
+  padding: 5%;
+  padding-top: 0%;
+  margin-left: 10%;
+  width: 65%;
+  margin-right: 10%;
+  font-family: 'Varela Round';
+  display: none;
+  margin-top: 10%;
+}
+
+#trip-details h2{
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 1.5%;
+}
+
+#trip-details h3{
+  display: inline;
+  padding-left: 3%;
+}
+
+#trip-details h4 {
+  float: right;
+  margin-right: 3%;
+  margin-top: 3%;
+  font-size: 3em;
 }

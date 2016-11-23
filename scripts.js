@@ -15,17 +15,24 @@ $(document).ready(function(){
       $('#load').toggle();
     })
 
+    $('#x').on('click', function(){
+      $('#trip-details').toggle();
+      $('#trips').toggle();      
+    })
+
     $('#trips').on('click', "a", function(e){
     e.preventDefault();
     $('#trip-details').show(); //overrides the display:none in the css for profile
     var urlShow = $(this).attr('href');
 
     $.get(urlShow, function(trip){
+      $('#trips').toggle();
+
       $('#name').text(trip.name);
-      $('#continent').text(trip.continent);
-      $('#category').text(trip.category);
-      $('#weeks').text(trip.weeks);
-      $('#cost').text(trip.cost);
+      $('#continent').text("Continent: " + trip.continent);
+      $('#category').text("Category: " + trip.category);
+      $('#weeks').text(trip.weeks + " week(s)");
+      $('#cost').text("$" + trip.cost);
       $('#about').text(trip.about);
     })
     .always(function(){
