@@ -63,7 +63,7 @@ $(document).ready(function(){
 
     var registration = $('.register');
     var header = $('<h3>Register For This Trip</h3>');
-    var form = $('<form id="register-form" trip-id='+ trip.id +'></form>');
+    var form = $('<form id="register-form" name="'+ trip.id +'"></form>');
     var nameField = $('<label for="name">Name</label><input type="text" name="name"></input>');
     var emailField = $('<label for="email">Email</label><input type="text" name="email"></input>');
     var registerButton = $('<button type="submit" class="button">Register for this trip!</button>');
@@ -95,17 +95,18 @@ $(document).ready(function(){
   };
 
   var registerCallback = function(event) {
-    event.preventDefault();
+    event.preventDefault(); //we're never getting here. why not?
+
     console.log($(this));
 
     console.log('sending registration data');
     var reservationData = $(this).serialize();
     console.log("registration data is " + reservationData);
-    var reservationURL = url + "/" + something + '/reserve';
+    var reservationURL = url + "/" + getIDsomehow + '/reserve';
     console.log("url is " + reservationURL);
 
     $.post(reservationURL, reservationData, postCallback);
   };
 
-  $('#register-form').submit(registerCallback);
+  $('#register-form').on('submit', registerCallback);
 });
