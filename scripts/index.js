@@ -1,6 +1,6 @@
 $(document).ready(function() {
   var url = 'https://trektravel.herokuapp.com/trips';
-
+  $(".reservation-form").hide();
   var successCallback = function(response) {
     console.log('success!');
 
@@ -8,19 +8,15 @@ $(document).ready(function() {
     section.empty();
 
     $.each(response, function(index, trip) {
-      console.log(trip);
+      // console.log(trip);
       var listItem = $("<li></li>");
-      var innerList = $("<ul></ul>");
       var name = $("<strong><a href='#' id=" + trip.id + ">" + trip.name + "</a></strong>");
 
-      var location = $("<li>Continent: " + trip.continent + "</li>");
-      var weeks = $("<li>Number of Weeks: " + trip.weeks + "</li>");
-
-      listItem.append(name, innerList);
-      innerList.append(location, weeks);
+      listItem.append(name);
       section.append(listItem);
     });
-    $('button').hide();
+
+    $('#trips-button').hide();
   };
 
   var failCallback = function(xhr) {
@@ -42,11 +38,12 @@ $(document).ready(function() {
     var category = $("<p><strong>Category: </strong>"+ trip.category + "</p>");
     var weeks = $("<p><strong>Number of Weeks: </strong>" + trip.weeks + "</p>");
     var cost = $("<p><strong>Price:</strong> $" + (trip.cost).toFixed(2) + "</p>");
+    $(".trip-id").val(trip.id);
 
     title.append(name, continent);
     description.append(about, category, weeks, cost);
 
-    section.append(title, description);
+    section.prepend(title, description);
   };
 
   var showFailure = function(xhr) {
@@ -65,7 +62,41 @@ $(document).ready(function() {
     event.preventDefault();
     var id = $(this).attr("id");
     var showUrl = url + "/" + id;
+    $(".reservation-form").show();
     $.get(showUrl, showSuccess)
       .fail(showFailure);
   });
+
+  var reservationCallback = function(event) {
+    event.preventDefault();
+    var postID = $(".trip-id").val();
+    var reservationUrl = url + "/" + postID + "/reserve";
+    console.log('Sending data');
+    var reservationData = $(this).serialize();
+    console.log("Reservation data is " + reservationData);
+    $.post(reservationUrl, reservationData, postCallback)
+      .fail(postFailure);
+  };
+
+  var postCallback = function() {
+    $("#message").addClass("callout");
+    $("#message").addClass("success");
+    $('#message').html('<p>Reservation successful.</p>');
+    $('#add-reservation').each(function(){
+    this.reset();
+  });
+    console.log("POST successful");
+  };
+
+  var postFailure = function(xhr) {
+    console.log('failure');
+    console.log(xhr);
+    $('#message').addClass("callout");
+    $('#message').addClass("alert");
+    $('#message').html("Reservation failed.");
+  };
+
+
+  $('#add-reservation').submit(reservationCallback);
+
 });

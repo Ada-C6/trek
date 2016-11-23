@@ -10,15 +10,34 @@
   </head>
   <body>
     <h1>Trek</h1>
-    <button type="button" name="button" class="success button">Show all trips</button>
+    <button type="button" name="button" id="trips-button" class="secondary button">Show all trips</button>
     <main class="row">
       <section class="small-12 medium-4 large-4 columns show-all">
         <ul class="all-trips">
 
         </ul>
       </section>
-      <section class="small-12 medium-8 large-8 columns show-trip">
+      <section class="small-12 medium-4 large-4 columns show-trip">
+
       </section>
+
+      <section class="small-12 medium-4 large-4 columns reservation-form">
+        <p>
+          <strong>Reserve a spot on this trip:</strong>
+        </p>
+        <div id="message"></div>
+        <form id="add-reservation">
+            <label>Name</label>
+            <input type="text" id="name" name="name"></input>
+            <label>Age</label>
+            <input type="text" id="age" name="age"></input>
+            <label>Email</label>
+            <input type="text" id="email" name="email"></input>
+            <input type="hidden" class="trip-id">
+            <button type="submit" class="success button">Reserve a Spot</button>
+        </form>
+      </section>
+
     </main>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="

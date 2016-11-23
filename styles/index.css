@@ -1,5 +1,5 @@
 html {
-  margin: 2em;
+  margin: 1.25em;
 }
 
 
@@ -30,4 +30,12 @@ small {
 
 .show-trip h2 {
   text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+.hide-form {
+  display: none;
 }
