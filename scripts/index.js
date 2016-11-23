@@ -32,7 +32,7 @@ $(document).ready(function() {
   };
 
   // On button click send get request
-  $('.button').click(function() {
+  $('.trips-button').click(function() {
     $.get(url, successCallback)
       .fail(failCallback);
   });
@@ -77,7 +77,7 @@ $(document).ready(function() {
     $('.trip-details').toggle(!onIndicator);
     $('.trips-button').toggle(!onIndicator);
     $('#travel-table').toggle(onIndicator);
-    $('.#continent-table').toggle(!onIndicator);
+    $('#continent-table').toggle(!onIndicator);
   };
 
   var continentCallback = function(response) {
@@ -102,6 +102,7 @@ $(document).ready(function() {
       body.append(row);
     });
 
+    console.log('im about to toggle');
     $('.trip-details').toggle(false);
     $('.trips-button').toggle(true);
     $('#continent-table').toggle(true);
@@ -109,6 +110,7 @@ $(document).ready(function() {
   };
 
   $('.continent-button').click(function() {
+    console.log('continent button clicked this: ' + $(this)[0]);
     var queryName = $(this)[0].name;
     $.get(url + '/continent?query=' + queryName, continentCallback)
       .fail(failCallback);
