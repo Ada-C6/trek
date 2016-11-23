@@ -26,15 +26,18 @@ $(document).ready(function() {
     toggleTableView(true);
   };
 
+  // Failure response
   var failCallback = function(xhr) {
     console.log('failed - sorry!');
   };
 
+  // On button click send get request
   $('.button').click(function() {
     $.get(url, successCallback)
       .fail(failCallback);
   });
 
+  // Show response
   var showSuccess = function(trip) {
     var section = $('.trip-details');
     var id = $('<p><strong>ID: </strong>' + trip.id + '</p>');
@@ -50,8 +53,10 @@ $(document).ready(function() {
     section.append(id, name, continent, about, category, weeks, cost);
 
     toggleTableView(false);
+    $('#continent-table').hide();
   };
 
+  // Show response failure
   var showFailure = function(xhr) {
     var section = $('.trip-details');
     section.html('Error has occurred. Please try another trip.');
@@ -59,6 +64,7 @@ $(document).ready(function() {
     toggleTableView(false);
   };
 
+  // On table body click send get request
   $('tbody').on('click', '[href]', function() {
     var id = $(this).attr('id');
     var showUrl = url + '/' + id;
@@ -66,22 +72,25 @@ $(document).ready(function() {
       .fail(showFailure);
   });
 
+  // Show aspects at particular times
   var toggleTableView = function(onIndicator) {
     $('.trip-details').toggle(!onIndicator);
     $('.trips-button').toggle(!onIndicator);
     $('#travel-table').toggle(onIndicator);
-    $('#continent-table').toggle(!onIndicator);
+    $('.#continent-table').toggle(!onIndicator);
   };
 
   var continentCallback = function(response) {
     console.log(response[0]);
+    var header = $('.continent-header');
     var body = $('.continent-body');
+    header.empty();
     body.empty();
 
     var headerName = $('<th>' + response[0].continent +' Trips</th>');
     var headerWeeks = $('<th># Weeks</th>');
 
-    body.append(headerName, headerWeeks);
+    header.append(headerName, headerWeeks);
 
     $.each(response, function(index, trip) {
       // console.log(trip);
@@ -93,7 +102,10 @@ $(document).ready(function() {
       body.append(row);
     });
 
-    toggleTableView(false);
+    $('.trip-details').toggle(false);
+    $('.trips-button').toggle(true);
+    $('#continent-table').toggle(true);
+    $('#travel-table').toggle(false);
   };
 
   $('.continent-button').click(function() {
