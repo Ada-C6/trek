@@ -47,13 +47,13 @@ $(document).ready(function(){
       $('form').submit(function(e) {
           e.preventDefault();
           var addTripUrl = $(this).attr("action") + tripId + "/reserve"; // Retrieve the action from the form
-          console.log(addTripUrl);
           var formData = $(this).serialize();
-          console.log(formData);
 
           $.post(addTripUrl, formData, function(response){
             console.log(response);
           })
+          $('#reserve-form').hide();
+          $('#message').text("Your trip has been successfully booked.");
         });
 
     }).fail(function(){
