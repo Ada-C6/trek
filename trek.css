@@ -15,7 +15,7 @@ body {
   border-top: 2px solid black;
 }
 
-#load {
+.main-button {
   width: 120px;
   height: 40px;
   font-size: 1em;
@@ -50,4 +50,15 @@ body {
 header {
   background-image: url("resort.jpg");
   height: 100px;
+}
+
+#reserve-form {
+  margin-top: 2%;
+  border: 1px solid black;
+  padding: 2%;
+}
+
+#reserve-form button {
+  margin-top: 2%;
+  font-size: .75em;
 }
