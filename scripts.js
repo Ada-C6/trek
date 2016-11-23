@@ -12,6 +12,7 @@ $(document).ready(function(){
 
     $("#load").on('click',  function(){
       $.get(url, successCallback);
+      $('#load').toggle();
     })
 
     $('#trips').on('click', "a", function(e){

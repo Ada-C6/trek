@@ -1,0 +1,33 @@
+#map-picture{
+  z-index: -1;
+  opacity: .25;
+  position: fixed;
+  margin-left: -3%;
+  width: 100%;
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 4em;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  margin: 0%;
+  color: #00494f;
+  text-shadow: 2px 1px #008a93;
+  opacity: .8;
+}
+
+#load{
+  font-family: 'Varela Round';
+  background-color: #00494f;
+  color: white;
+  border: 4px solid white;
+  border-radius: 20%;
+  padding: 3%;
+  font-size: 1.5em;
+  margin-left: 40%;
+  margin-top: 12%;
+  position: fixed;
+  opacity: .8;
+}
