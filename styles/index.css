@@ -19,3 +19,7 @@ body {
   padding: 5px;
   margin: 5px;
 }
+
+form#reserve-form {
+  display: block;
+}

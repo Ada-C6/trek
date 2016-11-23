@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('#reservation').hide();
+
   var url = "https://trektravel.herokuapp.com/trips/";
 
   var showSuccess = function(trip) {
@@ -11,11 +11,13 @@ $(document).ready(function() {
     var weeksCost = $('<h3> Weeks: ' + trip.weeks + ', Cost: $' + trip.cost + '</h3>');
     var details = $('<p>' + trip.about + '</p>');
 
-    // var reserve = $('<h3>Reserve Your Spot</h3>');
+    var reserve = $('<h3>Reserve Your Spot</h3>');
 
-    $('#reservation').show();
-    $('#reserve-form').attr('class', trip.id);
-    $('.trip-details').append(name, weeksCost, id, continent, category,  details);
+    var form = $("<form id='reserve-spot'><label for='name'>Name: </label><input type='text' name='name'><label for='age'>Age: </label><input type='text' name='age'><label for='email'>Email: </label><input type='text' name='email'><button type='submit' class='reserve button success'>Submit</button></form>");
+
+    $('.trip-details').append(name, weeksCost, id, continent, category,  details, reserve, form);
+
+    console.log($('#reserve-spot'));
   };
 
   $('.trips').on('click', 'a', function(e) {
@@ -31,18 +33,22 @@ $(document).ready(function() {
   });
 
   var reserveSuccess = function() {
-    $('#reservation').html('<h4>Your reservation is confirmed!</h4>');
+    $('.trip-details').append('Your reservation is confirmed!');
+    console.log('confirmed');
   };
 
   var reserveSpotCallback = function(event) {
     event.preventDefault();
-    var reserveUrl = 'https://trektravel.herokuapp.com/trips/' + $(this)[0].className + '/reserve/';
+    var reserveUrl = 'https://trektravel.herokuapp.com/trips/1/reserve/';
     var reserveData = $(this).serialize();
-    console.log(reserveUrl);
+    console.log('sent data = ' + reserveData);
     $.post(reserveUrl, reserveData, reserveSuccess);
   };
 
-  $('#reserve-form').submit(reserveSpotCallback);
+  $('#reserve.spot').submit(function(e) {
+    e.preventDefault();
+    console.log('wha');
+  });
 
   var allSuccess = function(response) {
     $('.trip-details').empty();
