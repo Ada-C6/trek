@@ -1,5 +1,5 @@
-var createHeaders = function(responseKeys) {
-  var headers = $('.trips-header');
+var createHeaders = function(headerId, responseKeys) {
+  var headers = headerId;
   headers.empty();
 
   var headerName = $('<th>' + responseKeys[1] + '</th>');
@@ -28,10 +28,11 @@ var successCallback = function (response) {
   console.log('success!');
 
   var body = $('.trips-body');
+  var headerId = $('.trips-header');
 
   body.empty(); // Clear this out to start with to ensure we are populating fresh
 
-  createHeaders(Object.keys(response[0]));
+  createHeaders(headerId, Object.keys(response[0]));
 
   $.each(response, function(index, trip){
     var row = $('<tr></tr>');
@@ -70,30 +71,29 @@ var showFailure = function(xhr) {
   toggleTableView(false);
 };
 
-var showContinent = function(body) {
-  console.log("in showContinent");
-  // var body = $('.continent-trips');
-  //
-  // body.empty(); // Clear this out to start with to ensure we are populating fresh
-  //
-  // createHeaders(Object.keys(response[0]));
-  //
-  // $.each(response, function(index, trip){
-  //   var row = $('<tr></tr>');
-  //   var name = $('<td><a href="#" class="name-link" id=' + trip.id + ' continent=' + trip.continent + '>' + trip.name + '</a></td>');
-  //    // var name = $('<td>' + trip.name + '</td>');
-  //   var continent = $('<td>' + trip.continent + '</td>');
-  //   var weeks = $('<td>' + trip.weeks + '</td>');
-  //
-  //   console.log(name);
-  //
-  //   row.append(name, continent, weeks);
-  //   body.append(row);
-  // });
-  //
-  //
-  // section.empty(); // Reset the HTML in case there is data from before
-  // section.append(name, continent, about, category, weeks, cost);
+var showContinent = function(response) {
+  // console.log("in showContinent");
+  var body = $('.continent-trips-body');
+  var headerId = $('.continent-trips-body');
+
+  body.empty(); // Clear this out to start with to ensure we are populating fresh
+
+  createHeaders(headerId, Object.keys(response[0]));
+
+  $.each(response, function(index, trip){
+    var row = $('<tr></tr>');
+    var name = $('<td><a href="#" class="name-link" id=' + trip.id + ' continent=' + trip.continent + '>' + trip.name + '</a></td>');
+     // var name = $('<td>' + trip.name + '</td>');
+    var continent = $('<td>' + trip.continent + '</td>');
+    var weeks = $('<td>' + trip.weeks + '</td>');
+
+    console.log(name);
+
+    row.append(name, continent, weeks);
+    body.append(row);
+  });
+
+  toggleTableView(false);
 };
 
 
