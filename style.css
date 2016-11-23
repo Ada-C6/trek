@@ -1,0 +1,36 @@
+body {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+div {
+  margin: 2rem auto;
+  width: 30%;
+  display: inline-block;
+}
+
+button.show-trips {
+  width: 10rem;
+}
+
+.standout-trip {
+  display: none;
+  border: 1px black solid;
+}
+
+.standout-trip div {
+  width: 60%;
+  display: block;
+  margin: 1rem auto;
+}
+
+button.trip {
+  /*background-color: red;*/
+  width: 20rem;
+  height: 4rem;
+}
+
+#number {
+  font-weight: bold;
+}
