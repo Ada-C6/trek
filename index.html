@@ -11,44 +11,45 @@
     <header>
       <nav>
         <h3>Trek</h3>
+        <section>
+          <button id="load">Explore our Vacation Packages</button>
+        </section>
       </nav>
     </header>
 
-    <section>
-      <button id="load">See Our Fabulous Trips</button>
-    </section>
+    <div id="main-body">
+      <section id="summary">
+        <h3 id="name"></h3>
+        <p id="id"></p>
+        <p id="continent"></p>
+        <p id="weeks"></p>
+        <p id="cost"></p>
+        <p id="category"></p>
+        <p id="about"></p>
+        <div id="result"></div>
+        <form action="" method="POST">
+          <div class="register">
+              <input type="text" name="name" placeholder="name" />
+              <input type="email" name="email" placeholder="email" />
+              <input style="display:none;" id="hiddeninputid" name="hiddeninputname" value="" />
+          </div>
+          <div class="button">
+           <button type="submit" id="submit-name">Register for Trip</button>
+          </div>
+        </form>
+      </section>
 
-    <section id="summary">
-      <h3 id="name"></h3>
-      <p id="id"></p>
-      <p id="continent"></p>
-      <p id="about"></p>
-      <p id="weeks"></p>
-      <p id="cost"></p>
-      <p id="category"></p>
-      <form action="/trips/id/reservations" method="post">
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="user_name" />
-        </div>
-        <div>
-            <label for="mail">E-mail:</label>
-            <input type="email" id="mail" name="user_mail" />
-        </div>
-        <div class="button">
-         <button type="submit" id="submit-name">Send your message</button>
-        </div>
-      </form>
-    </section>
+      <ul id = "trips">
 
-    <section id = "trips"></section>
+      </ul>
 
-    <section id="message">
-    </section>
+      <section id="message">
+      </section>
 
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="scripts.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script type="text/javascript" src="scripts.js"></script>
+    </div>
   </body>
 
 </html>

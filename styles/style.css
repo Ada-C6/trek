@@ -1,4 +1,68 @@
+
+/*****************/
+/*  Overall      */
+/*****************/
+
+body {
+  background-color: #b2cecf;
+}
+
+/*****************/
+/*  Header       */
+/*****************/
+
+header {
+  margin: 2%;
+}
+
+nav h3 {
+  text-align: center;
+}
+
+/*nav button {
+  background-color: #cc5490;
+  text-align: center;
+  padding: 5%;
+  border: 5px solid white;
+  font-size: 2em;
+}*/
+
+
+/*****************/
+/*  Main Body    */
+/*****************/
+#main-body {
+  margin: 7%;
+}
+
 #summary {
-  background-color: pink;
+  background-color: #D3D3D3;
   display: none;
+}
+
+#trips li {
+  width: 29%;
+  text-align: center;
+  background-color: #D3D3D3;
+  display: inline-block;
+  margin: 2%;
+  padding: .5%;
+}
+
+#trips li a {
+  color: #cc5490;
+}
+
+#trips li a:hover {
+  color: #50d07d;
+}
+
+.button {
+  background-color: #cc5490;
+  color: #D3D3D3;
+}
+
+.button:hover {
+  background-color: #50d07d;
+  color: white;
 }

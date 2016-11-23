@@ -1,10 +1,15 @@
 $(document).ready(function() {
 
+
+//////////////////
+//* SHOW ALL   *//
+/////////////////
+
 var url = 'https://trektravel.herokuapp.com/trips';
 
-var successCallback = function (allTrips) {
+var successCallback = function(allTrips) {
   for (var i=0; i < allTrips.length; i++) {
-    $('#trips').append('<h4><a href=' + url + "/" + allTrips[i].id + ">" + allTrips[i].name + '</a></h4>');
+    $('#trips').append('<li><a href=' + url + "/" + allTrips[i].id + ">" + allTrips[i].name + '<p>' + "Continent: " + allTrips[i].continent + '</p>' + '</a></li>');
   }
 };
 
@@ -12,6 +17,11 @@ $( '#load' ).click(function(event) {
     $.get(url, successCallback);
 });
 
+
+
+//////////////////
+//* TRIP INFO  *//
+/////////////////
 
 $('#trips').on('click', 'a', function(e) {
   e.preventDefault();
@@ -29,6 +39,7 @@ $('#trips').on('click', 'a', function(e) {
     $('#cost').text('Total Cost: ' + '$' + trip.cost);
     $('#id').text('ID: ' + trip.id);
     $('#category').text('Category: ' + trip.category);
+    $('#hiddeninputid').val(trip.id);
   })
   .fail(function(trip){
      $('#message').text('This trip does not exist.');
@@ -36,9 +47,24 @@ $('#trips').on('click', 'a', function(e) {
 
 });
 
-$( '#submit-name' ).click(function(event) {
-    $.get(url, successCallback);
+//////////////////
+//* REGISTER  *//
+/////////////////
+
+
+$('form').submit(function(e) {
+  e.preventDefault();
+  url = 'https://trektravel.herokuapp.com/trips/' + $('input[id=hiddeninputid]').val() + '/reserve';
+
+
+  var callback = function() {
+    console.log('success!');
+    };
+  var formData = $(this).serialize();
+  $.post(url, formData, callback);
 });
+
+
 
 
 }); //ending document
