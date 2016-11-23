@@ -21,7 +21,7 @@ $(document).ready( function() {
     $.each(response, function(index, trip) {
       var row = $('<tr></tr>');
       var name = $('<td><a href="#" class="name-link" id=' + trip.id + '>' + trip.name + '</a></td>');
-      var weeks = $('<td>' + trip.weeks + ' week(s)</td>');
+      var weeks = $('<td>' + (trip.weeks * 7) + ' days</td>');
 
       row.append(name, weeks);
       body.append(row);
@@ -40,14 +40,14 @@ $(document).ready( function() {
     var section = $('.trip-details');
     var id = $('<strong>Trip ID</strong><div>' + trip.id + '</div>');
     var name = $('<strong><div>' + trip.name + '</div></strong>').addClass('trip-name');
+    var weeks = $('<strong><div>(' + (trip.weeks * 7) + '-day trip)</div></strong>');
     var continent = $('<strong>Continent</strong><div>' + trip.continent + '</div>');
     var about = $('<strong>Description</strong><div>' + trip.about + '</div>');
     var category = $('<strong>Category</strong><div>' + trip.category + '</div>');
-    var weeks = $('<strong>Duration</strong><div>' + trip.weeks + ' week(s)</div>');
     var cost = $('<strong>Cost</strong><div>$' + trip.cost + '</div>');
 
     section.empty();
-    section.append(name, about, continent, category, weeks, cost, id);
+    section.append(name, weeks, about, cost, continent, category, id);
   };
 
   var showFailure = function(xhr) {
