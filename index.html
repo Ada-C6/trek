@@ -12,6 +12,7 @@
 
     <button id="load">explore!</button>
 
+
     <img src="./assets/world-map.jpg" alt="World Map" id="map-picture">
 
     <div id="trip-details">
@@ -24,6 +25,26 @@
         <h3 id="cost"> </h3>
         <p id="about"> </p>
         <h3 id="reserve">✔︎ Reserve a spot</h3>
+
+        <form action="https://trektravel.herokuapp.com/trips/" method="POST" id = "reservation-form" >
+          <section>
+            <label>name</label>
+            <input type="text"  name="name"></input>
+          </section>
+
+          <section>
+            <label>age</label>
+            <input type="text"  name="age"></input>
+          </section>
+
+          <section>
+            <label>email</label>
+            <input type="text"  name="email"></input>
+          </section>
+
+          <button id="reserve-spot" type="submit">Reserve</button>
+        </form>
+
     </div>
 
     <div id="trips"></div>
