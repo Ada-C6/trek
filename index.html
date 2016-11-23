@@ -11,7 +11,7 @@
     </header>
     <div id="main">
       <h1> Choose Your Adventure! </h1>
-      <button id="load"> Show Trips </button>
+      <button id="load" class="main-button"> Show Trips </button>
     </div>
 
     <div id="details">
@@ -22,6 +22,30 @@
       <h4 id="cost"> </h4>
       <h4 id="about"> </h4>
       <h4 id="category"> </h4>
+
+      <div id="reserve-form">
+        <form action="https://trektravel.herokuapp.com/trips/" method="POST">
+
+          <section>
+            <label> Name </lable>
+            <input type="text" id="name" name="name"></input>
+          </section>
+          <section>
+            <label> Age </lable>
+            <input type="text" id="age" name="age"></input>
+          </section>
+          <section>
+            <label> Email </lable>
+            <input type="text" id="email" name="email"></input>
+          </section>
+
+          <section class="button">
+            <button type="submit" class="main-button"> Reserve Your Trip </button>
+          </section>
+
+        </form>
+    </div>
+
     </div>
 
     <div id="trips" style="overflow-y: auto; height:450px;"></div>

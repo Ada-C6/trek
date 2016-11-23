@@ -8,6 +8,9 @@
 
 $(document).ready(function(){
 
+  // Hide the reseveration form until a trip is selected
+  $('#reserve-form').hide();
+
   $( "#load" ).click(function() {
       var url = "https://trektravel.herokuapp.com/trips"
       $.get(url,
@@ -24,10 +27,14 @@ $(document).ready(function(){
     e.preventDefault();
 
     $('#details').show();
+    // Show the reservation form, in addition to the trip details
+    $('#reserve-form').show();
+
     var tripUrl = $(this).attr('href');
     console.log(tripUrl);
 
     $.get(tripUrl, function(trip){
+      var tripId = trip.id;
       $('#name').text("Trip Name: " + trip.name);
       $('#id').text("ID: " + trip.id);
       $('#continent').text("Continent: " + trip.continent);
@@ -35,11 +42,36 @@ $(document).ready(function(){
       $('#cost').text("Cost: $" + trip.cost.toFixed(2));
       $('#about').text("About: " + trip.about);
       $('#category').text("Category: " + trip.category);
-    }).always(function(){
-      $("#message").text("Something happened");
+
+      // Reservation Form:
+      $('form').submit(function(e) {
+          e.preventDefault();
+          var addTripUrl = $(this).attr("action") + tripId + "/reserve"; // Retrieve the action from the form
+          console.log(addTripUrl);
+          var formData = $(this).serialize();
+          console.log(formData);
+
+          $.post(addTripUrl, formData, function(response){
+            console.log(response);
+          })
+        });
+
     }).fail(function(){
-      alert("Failed.");
+      alert("Failed to find this trip's details. Please try again.");
     })
   });
+
+$( "#load" ).click(function() {
+    var url = "https://trektravel.herokuapp.com/trips"
+    $.get(url,
+      function(response){
+        $('#trips').append("<h3> Select a trip for more information: </h3>")
+        for (var i = 0; i < response.length; i++){
+          console.log(response[i]);
+          $('#trips').append("<div class='record'><a href=" + url + "/" + response[i].id + ">" + response[i].name + "</a></div>");
+        }
+      });
+  });
+
 
 }); // ending $(document).ready
