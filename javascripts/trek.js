@@ -14,11 +14,11 @@ $(document).ready(function() {
 
   var tripInfomation = function(trip) {
     $('#trip-name').text(trip.name);
-    $('#trip-continent').text(trip.continent);
-    $('#trip-category').text(trip.category);
+    $('#trip-continent').text("Continent: " + trip.continent);
+    $('#trip-category').text("Category: " + trip.category);
     $('#trip-about').text(trip.about);
-    $('#trip-weeks').append("Duration: " + trip.weeks);
-    $('#trip-cost').append("Cost: $" + trip.cost);
+    $('#trip-weeks').text("Duration: " + trip.weeks);
+    $('#trip-cost').text("Cost: $" + trip.cost);
   }
 
   $('#trips-list').on('click', 'a', function(e) { //e is short for 'event'
@@ -29,6 +29,12 @@ $(document).ready(function() {
       alert("Page Not Found");
     });
   });
+
+  var searchContinent = function() {
+    console.log("continent");
+  };
+
+  $('#continent-search').on('change', searchContinent());
 
 
 

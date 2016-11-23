@@ -6,3 +6,14 @@
 aside {
   display: inline-block;
 }
+
+.fixed-description {
+  position: fixed;
+  width: 50%;
+  right: 5%;
+}
+
+#trips-list h3 {
+  padding: 4% 0;
+  border-bottom: 1px solid gray;
+}

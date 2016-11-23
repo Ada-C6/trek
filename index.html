@@ -4,14 +4,36 @@
     <meta charset="utf-8">
     <title>NM Trek</title>
     <link rel="stylesheet" href="styles/main.css" media="screen" title="no title">
+    <link rel="stylesheet" href="styles/foundation.min.css" media="screen" title="no title">
   </head>
   <body>
-    <header>
+  <header>
       <h1>Trek</h1>
-    </header>
-    <button id="all-trips-button"> See All! </button>
+      <button id="all-trips-button" class="success button"> See All Trips </button>
+  </header>
 
-    <aside id="trip-info">
+  <!-- <section>
+    <!-- <form action="" method="get"> -->
+      <!-- <select id="continent-search" src="javascripts/trek.js" onchange="searchContinent()" title="search">
+        <option value="All">All</option>
+        <option value="Africa">Africa</option>
+        <option value="Antarctica">Antarctica</option>
+        <option value="Asia">Asia</option>
+        <option value="Australasia">Australasia</option>
+        <option value="Europe">Europe</option>
+        <option value="North America">North America</option>
+        <option value="South America">South America</option>
+      </select> -->
+      <!-- <input type="submit" value="Search" />
+    </form> -->
+  <!-- </section> --> 
+
+
+  <div class="row">
+    <div id="trips-list" class="columns small-12 medium-4"> </div>
+
+    <aside id="trip-info" class="columns small-12 medium-8">
+      <div class="fixed-description">
       <h2 id="message"></h2>
       <h3 id="trip-name"></h3>
       <p id="trip-continent"></p>
@@ -19,12 +41,9 @@
       <p id="trip-about"></p>
       <p id="trip-weeks"> </p>
       <p id="trip-cost"> </p>
+      </div>
     </aside>
-
-    <div id="trips-list">  </div>
-
-
-
+  </div>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="javascripts/trek.js"></script>
   </body>
