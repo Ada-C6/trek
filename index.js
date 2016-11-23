@@ -66,7 +66,7 @@ $(document).ready(function(){
     var form = $('<form id="register-form"></form>');
     var nameField = $('<label for="name">Name</label><input type="text" name="name"></input>');
     var emailField = $('<label for="email">Email</label><input type="text" name="email"></input>');
-    var tripID = $('<input type="hidden" name="tripID" value="'+ trip.id + '">');
+    var tripID = $('<input type="hidden" id="tripID" value="'+ trip.id + '">');
     var registerButton = $('<button type="submit" class="button">Register for this trip!</button>');
 
     form.empty();
@@ -109,8 +109,8 @@ $(document).ready(function(){
     console.log('sending registration data');
     var reservationData = $(this).serialize();
 
-    // this is a really dumb way to get out the trip id; there's gotta be a better way.
-    var tripID = reservationData.split('&')[2].split('=')[1];
+    var tripID = $('#tripID').val();
+    console.log(tripID);
 
     console.log("registration data is " + reservationData);
     var reservationURL = url + "/" + tripID + '/reserve';
