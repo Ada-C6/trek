@@ -29,6 +29,21 @@ var successTripDetails = function(trip) {
 
   section.empty();//clears older clicks
   section.append(name, continent, category, cost, duration, about, form);
+  //Adding Post Functionality
+  var postCallback = function(){
+    alert("You've make a reservation!");
+  };
+
+
+  var addReservation = function(event) {
+    event.preventDefault();
+    console.log("sending reservation");
+    var reservation = $(this).serialize(); //takes form data and transforms it into  query args. this refers to the form
+    $.post(reservationurl, reservation, postCallback());
+  };
+
+  //click handler for adding a pet
+    $('form').submit(addReservation);
 };
 
 
@@ -80,20 +95,6 @@ var successCallback = function (response) {
     });
 
 
-//Adding Post Functionality
-var postCallback = function(){
-  alert("You've make a reservation!");
-};
 
-
-var addReservation = function(event) {
-  event.preventDefault();
-  console.log("sending reservation");
-  var reservation = $(this).serialize(); //takes form data and transforms it into  query args. this refers to the form
-  $.post(reservationurl, reservation, postCallback());
-};
-
-//click handler for adding a pet
-$('form').submit(addReservation);
 
 }); //end of documentready
