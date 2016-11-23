@@ -32,7 +32,7 @@ $(document).ready(function(){
       $('#id').text("ID: " + trip.id);
       $('#continent').text("Continent: " + trip.continent);
       $('#weeks').text("Weeks: " + trip.weeks);
-      $('#cost').text("Cost: $" + trip.cost);
+      $('#cost').text("Cost: $" + trip.cost.toFixed(2));
       $('#about').text("About: " + trip.about);
       $('#category').text("Category: " + trip.category);
     }).always(function(){
