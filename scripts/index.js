@@ -23,7 +23,7 @@ var successTripDetails = function(trip) {
   var resName = $('<input type="text", name="name"></input>');
   var emailLabel = $('<label for="age">Email Address</label>');
   var resEmail = $('<input type="text" name="email"></input>');
-  var button = $('<button type="submit" class="button"> Make My Reservation!</button>');
+  var button = $('<button type="submit" class="button"> Make My Reservation for ' + trip.name +'!</button>');
 
   form.append(nameLabel, resName, emailLabel, resEmail, button);
 
@@ -47,7 +47,6 @@ var successTripDetails = function(trip) {
     $.post(reservationurl, reservation, postCallback());
   };
 
-  //click handler for adding a pet
     $('form').submit(addReservation);
 };
 
@@ -98,7 +97,6 @@ var successCallback = function (response) {
       $.get(tripsurl, successCallback)
         .fail(failCallback);
     });
-
 
 
 
