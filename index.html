@@ -1,0 +1,64 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Trek</title>
+
+    <!-- Compressed CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css">
+
+    <link rel="stylesheet" href="styles/index.css" />
+
+  </head>
+  <body>
+    <header>
+      <button class="continent-button button success" name = "Africa">Africa</button>
+      <button class="continent-button button success" name = "Asia">Asia</button>
+      <button class="continent-button button success" name = "Australasia">Australia</button>
+      <button class="continent-button button success" name = "Europe">Europe</button>
+      <button class="continent-button button success" name = "North America">North America</button>
+      <button class="continent-button button success" name = "South America">South America</button>
+    </header>
+    <h1>Trek!</h1>
+
+    <button type="button" class="trips-button button">See All Trips</button>
+    <section class="trip-details"></section>
+
+    <section id="continent-table">
+      <table>
+        <tr class="continent-header">
+        </tr>
+        <tbody class="continent-body">
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <form id = "reserve-trip-form">
+        <h3>Reserve your spot on this trip</h3>
+        <label for="name">Name</label>
+        <input type="text" name="name">
+        <label for="age">Age</label>
+        <input type="text" name="age">
+        <label for="email">Email Address</label>
+        <input type="text" name="email">
+        <input type="hidden" name="id" id="trip-id">
+        <button type="submit" class="button">Reserve my spot</button>
+      </form>
+    </section>
+
+    <table id="travel-table">
+      <tr class="travel-header">
+      </tr>
+
+      <tbody class="travel-body">
+      </tbody>
+    </table>
+
+    <!-- <div id="jsLectureTarget"></div> -->
+
+    <script src="https://code.jquery.com/jquery-3.1.1.js" type="text/javascript"></script>
+    <script src="scripts/index.js" type="text/javascript"></script>
+  </body>
+</html>
