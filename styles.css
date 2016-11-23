@@ -55,7 +55,7 @@
   padding: 5%;
   padding-top: 0%;
   margin-left: 10%;
-  width: 65%;
+  width: 70%;
   margin-right: 10%;
   font-family: 'Varela Round';
   display: none;
@@ -78,4 +78,10 @@
   margin-right: 3%;
   margin-top: 3%;
   font-size: 3em;
+}
+
+#reserve{
+  float: right;
+  margin-top: -2%;
+  padding-top: 1%;
 }

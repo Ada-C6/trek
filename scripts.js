@@ -15,9 +15,9 @@ $(document).ready(function(){
       $('#load').toggle();
     })
 
-    $('#x').on('click', function(){
+    $('#x-details').on('click', function(){
       $('#trip-details').toggle();
-      $('#trips').toggle();      
+      $('#trips').toggle();
     })
 
     $('#trips').on('click', "a", function(e){
@@ -29,6 +29,7 @@ $(document).ready(function(){
       $('#trips').toggle();
 
       $('#name').text(trip.name);
+      $('#id').text("id: " + trip.id);
       $('#continent').text("Continent: " + trip.continent);
       $('#category').text("Category: " + trip.category);
       $('#weeks').text(trip.weeks + " week(s)");
