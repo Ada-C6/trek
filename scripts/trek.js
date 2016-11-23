@@ -27,15 +27,19 @@ $(document).ready(function() {
     console.log(xhr);
   };
 
-
   var showSuccess = function(trip) {
     var section = $('.trip-details');
+    var id = $('<strong>ID</strong><div>' + trip.id + '<div>');
     var name = $('<strong>Name</strong><div>' + trip.name + '</div>');
+    var destination = $('<strong>Destination</strong><div>' + trip.destination + '<div>');
     var continent = $('<strong>Continent</strong><div>' + trip.continent + '</div>');
     var about = $('<strong>About</strong><div>' + trip.about + '</div>');
+    var category = $('<strong>Category</strong><div>' + trip.category + '<div>');
+    var weeks = $('<strong>Number of Weeks</strong><div>' + trip.weeks  + '<div>');
+    var cost = $('<strong>cost</strong><div>' + trip.cost + '<div>');
 
     section.empty(); // Reset the HTML in case there is data from before
-    section.append(name, continent, about);
+    section.append(id, name, destination, continent, about, category, weeks, cost);
 
     toggleTableView(false);
   };
