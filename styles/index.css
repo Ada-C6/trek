@@ -1,0 +1,33 @@
+html {
+  margin: 2em;
+}
+
+
+h1, h2 {
+  text-align: center;
+  font-family: 'Special Elite', cursive;
+}
+
+h1 {
+  border-bottom: 1px solid black;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+.add-border {
+  border: 2px solid black;
+}
+
+small {
+  margin-left: 0.2em;
+}
+
+.show-trip {
+  text-align: justify;
+}
+
+.show-trip h2 {
+  text-align: center;
+}
