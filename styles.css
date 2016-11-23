@@ -5,35 +5,46 @@ body {
 
 }
 
+.trip-list {
 
-/* ---------- Display trip pop-up ------------- */
-a.selected {
-  background-color:#1F75CC;
-  color:white;
-  z-index:100;
+  background-color: darkgray;
+  display: inline-block;
+  width: 10vw;
+  text-align: center;
+  height: auto;
+  padding: 5%;
 }
 
-.messagepop {
-  background-color:#FFFFFF;
-  border:1px solid #999999;
-  cursor:default;
-  display:none;
+a {
+   text-decoration: none;
+}
+/* ---------- Display trip pop-up ------------- */
+/*a.selected {
+  background-color: lightgreen;
+  color: white;
+  z-index: 100;
+}*/
+
+.trippop {
+  background-color: gray;
+  border: none;
+  cursor: default;
+  display: none;
   margin-top: 15px;
-  position:absolute;
-  text-align:left;
-  width:394px;
+  position: absolute;
+  left: 20vw;
+  text-align: center;
+  width: 50vw;
   z-index:50;
-  padding: 25px 25px 20px;
+  padding: 5%;
 }
 
 label {
   display: block;
-  margin-bottom: 3px;
-  padding-left: 15px;
-  text-indent: -15px;
+  margin-bottom: 5px;
 }
 
-.messagepop p, .messagepop.div {
+.trippop p, .trippop.div {
   border-bottom: 1px solid #EFEFEF;
   margin: 8px 0;
   padding-bottom: 8px;
