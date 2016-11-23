@@ -5,7 +5,7 @@ $(document).ready( function() {
   var failCallback = function(xhr) {
     console.log('failure');
     console.log(xhr);
-    $('.trek-header').append("Your action failed. Maybe the API is down?");
+    $('.trek-headers').append("Your action failed. Maybe the API is down?");
   };
 
   var alwaysCallback = function() {
@@ -21,10 +21,9 @@ $(document).ready( function() {
     $.each(response, function(index, trip) {
       var row = $('<tr></tr>');
       var name = $('<td><a href="#" class="name-link" id=' + trip.id + '>' + trip.name + '</a></td>');
-      var continent = $('<td>' + trip.continent + '</td>');
-      var weeks = $('<td>' + trip.weeks + '</td>');
+      var weeks = $('<td>' + trip.weeks + ' week(s)</td>');
 
-      row.append(name, continent, weeks);
+      row.append(name, weeks);
       body.append(row);
     });
 
@@ -40,15 +39,15 @@ $(document).ready( function() {
   var showSuccess = function(trip) {
     var section = $('.trip-details');
     var id = $('<strong>Trip ID</strong><div>' + trip.id + '</div>');
-    var name = $('<strong>Trip Name</strong><div>' + trip.name + '</div>');
+    var name = $('<strong><div>' + trip.name + '</div></strong>').addClass('trip-name');
     var continent = $('<strong>Continent</strong><div>' + trip.continent + '</div>');
     var about = $('<strong>Description</strong><div>' + trip.about + '</div>');
     var category = $('<strong>Category</strong><div>' + trip.category + '</div>');
-    var weeks = $('<strong>Duration in weeks</strong><div>' + trip.weeks + '</div>');
+    var weeks = $('<strong>Duration</strong><div>' + trip.weeks + ' week(s)</div>');
     var cost = $('<strong>Cost</strong><div>$' + trip.cost + '</div>');
 
     section.empty();
-    section.append(name, continent, about, category, weeks, cost, id);
+    section.append(name, about, continent, category, weeks, cost, id);
   };
 
   var showFailure = function(xhr) {
