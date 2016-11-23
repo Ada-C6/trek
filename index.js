@@ -61,6 +61,7 @@ $(document).ready(function(){
     section.append(id, name, continent, description, category, cost, duration);
   };
 
+
   var showFailure = function(xhr) {
     var section = $('.trip-details');
     section.html('<strong>Error has occurred</strong>');
