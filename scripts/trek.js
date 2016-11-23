@@ -2,6 +2,8 @@ $(document).ready(function() {
     // Which URL do we want to 'get'?
     var url = 'https://trektravel.herokuapp.com/trips';
 
+    $('.reservation-details').hide();
+
     var createHeaders = function(keys) {
         var row = $('.treks-headers');
 
@@ -43,7 +45,7 @@ $(document).ready(function() {
         console.log('This always happens');
     };
 
-    $('button').click(function() {
+    $('#load-trips-button').click(function() {
         $.get(url, successCallback)
         .fail(failCallback)
         .always(alwaysCallback);
@@ -51,7 +53,8 @@ $(document).ready(function() {
 
     var toggleTableView = function(onIndicator) {
         $('.trek-details').toggle(!onIndicator);
-        $('button').toggle(!onIndicator);
+        $('.reservation-details').toggle(!onIndicator);
+        $('#load-trips-button').toggle(!onIndicator);
         $('table').toggle(onIndicator);
     };
 
@@ -66,7 +69,7 @@ $(document).ready(function() {
         var about = $('<strong>About:</strong><div>' + trek.about + '</div>');
 
         section.empty(); // Reset the HTML in case there is data from before
-        section.append(name, category, weeks, continent, cost, about);
+        section.prepend(name, category, weeks, continent, cost, about);
 
         toggleTableView(false);
     };
@@ -83,8 +86,34 @@ $(document).ready(function() {
         e.preventDefault();
 
         var id = $(this).attr('id');
+        // stores this trip's id as the trip ID hidden value in our reservation form
+        $('#tripID').val(id);
         var showUrl = url + '/' + id;
         $.get(showUrl, showSuccess)
         .fail(showFailure);
     });
+
+
+    // POST !!!!
+    var postCallback = function() {
+        alert("POST succeeded!");
+    };
+
+    var reserveSpotCallback = function(event) {
+        // this keeps the form submit button from automatically refreshing the page:
+        event.preventDefault();
+
+        console.log("Sending reservation data!");
+        var reservationData = $(this).serialize();
+        console.log("reservation data is " + reservationData);
+
+        console.log($('#tripID').val());
+
+        var urlReserve = url + '/' + $('#tripID').val() + '/reserve';
+
+        $.post(urlReserve, reservationData, postCallback);
+    };
+
+    $('#reserve-trek-spot-form').submit(reserveSpotCallback);
+
 });

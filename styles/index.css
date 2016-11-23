@@ -19,3 +19,8 @@ section strong {
     text-decoration: underline;
     color: #FF475C;
 }
+
+section label {
+    font-family: 'Roboto Slab', serif, arial;
+    color: white;
+}
