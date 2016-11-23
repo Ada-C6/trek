@@ -1,5 +1,7 @@
 $(document).ready(function(){
   var url = 'https://trektravel.herokuapp.com/trips';
+  $('#reservation-form').hide();
+
 
   var successCallback = function(response) {
     console.log('success!');
@@ -38,7 +40,7 @@ $(document).ready(function(){
     console.log('This always happens');
   };
 
-  $('button').click(function () {
+  $('#load-trips-button').click(function () {
     $.get(url, successCallback)
       .fail(failCallback)
       .always(alwaysCallback);
@@ -47,21 +49,25 @@ $(document).ready(function(){
   var toggleTableView = function(onIndicator) {
     $('.trip-details').toggle(!onIndicator);
     $('button').toggle(!onIndicator);
+    $('#reservation-form').toggle(!onIndicator); // the form
     $('table').toggle(onIndicator);
   };
   //showSuccess
   var showSuccess = function(trip) {
     var section = $('.trip-details');
 
-    var name = $('<strong>Name</strong><div>' + trip.name + '</div>');
-    var continent = $('<strong>Continent</strong><div>' + trip.continent + '</div>');
-    var category = $('<strong>Category</strong><div>' + trip.category + '</div>');
-    var weeks = $('<strong>Weeks</strong><div>' + trip.weeks + '</div>');
-    var cost = $('<strong>Cost</strong><div>' + trip.cost + '</div>');
-    var description = $('<strong>Description</strong><div>' + trip.about + '</div>');
+    var id = $('<strong>ID:</strong><div>' + trip.id + '</div>');
+    var name = $('<strong>Name:</strong><div>' + trip.name + '</div>');
+    var continent = $('<strong>Continent:</strong><div>' + trip.continent + '</div>');
+    var category = $('<strong>Category:</strong><div>' + trip.category + '</div>');
+    var weeks = $('<strong>Weeks:</strong><div>' + trip.weeks + '</div>');
+    var cost = $('<strong>Cost:</strong><div>$' + trip.cost + '</div>');
+    var description = $('<strong>Description:</strong><div>' + trip.about + '</div>');
 
     section.empty();
-    section.append(name, continent, category, weeks, cost, description);
+    section.append(id, name, continent, category, weeks, cost, description);
+
+    $('.trip-id').val(trip.id);
 
     toggleTableView(false);
   };
@@ -80,5 +86,19 @@ $(document).ready(function(){
     $.get(showUrl, showSuccess)
       .fail(showFailure);
   });
+
+  var postCallback = function() {
+    alert("POST worked!");
+  };
+
+  var addReserveCallback = function(e) {
+    e.preventDefault();
+    var reserveData = $(this).serialize();
+    var id = $('.trip-id').val();
+    var urlRev = url + '/' + id + '/reserve';
+    $.post(urlRev, reserveData, postCallback);
+  };
+
+  $('#reservation-form').submit(addReserveCallback);
 
 }); // the end of document.ready
