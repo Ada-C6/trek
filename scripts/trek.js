@@ -27,7 +27,8 @@ $(document).ready(function() {
   };
 
   $('button').click(function() {
-    $.get(url, successCallback);
+    $.get(url, successCallback)
+      .fail(failCallback);
   });
 
   var toggleTableView = function(onIndicator) {
@@ -63,7 +64,8 @@ $(document).ready(function() {
 
   var id = $(this).attr('id');
   var showUrl = url + '/' + id;
-  $.get(showUrl, showSuccess);
+  $.get(showUrl, showSuccess)
+    .fail(failCallback);
   });
 
   var postCallback = function() {
