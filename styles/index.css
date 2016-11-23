@@ -1,1 +1,16 @@
 @import url('foundation.css');
+
+article div {
+  background-color: lightyellow;
+
+}
+
+article {
+  padding: 1em;
+}
+
+.trip-name {
+  font-size: 2em;
+  margin: 1em 0em;
+  color: darkblue;
+}
