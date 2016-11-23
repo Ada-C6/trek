@@ -6,7 +6,7 @@ $(document).ready(function(){
   var successCallback = function(response) {
 
       for (var i = 0; i < response.length; i++ ){
-        $('#trips').append("<h3><a href=" + url + "/" + response[i].id + ">" + response[i].name + "</a><h3>")
+        $('#trips').append("<h3><a href=" + url + "/" + response[i].id + ">" + response[i].name + "</a></h3>")
       }
     };
 
