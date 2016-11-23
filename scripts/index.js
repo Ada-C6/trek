@@ -41,7 +41,7 @@ $(document).ready(function() {
     var about = $("<p>" + trip.about + "</p>");
     var category = $("<p><strong>Category: </strong>"+ trip.category + "</p>");
     var weeks = $("<p><strong>Number of Weeks: </strong>" + trip.weeks + "</p>");
-    var cost = $("<p><strong>Price:</strong> $" + trip.cost + "</p>");
+    var cost = $("<p><strong>Price:</strong> $" + (trip.cost).toFixed(2) + "</p>");
 
     title.append(name, continent);
     description.append(about, category, weeks, cost);
