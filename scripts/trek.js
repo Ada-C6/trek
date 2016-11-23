@@ -20,7 +20,7 @@ $(document).ready(function(){
       var weeks = $('<strong>Weeks: </strong><div>' + trips.weeks + '</div>');
       var cost = $('<strong>Cost: </strong><div>' + trips.cost + '</div>');
       section.empty();
-      section.append(name, continent, about, category, weeks, cost);
+      section.append(name,  about, continent, category, weeks, cost);
       };
       $('tbody').on('click', 'a', function(e){
         var id = $(this).attr('id');

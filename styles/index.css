@@ -1,7 +1,19 @@
+@import url('foundation.css');
+
+h1 {
+  font-family: 'Indie Flower', cursive;
+  text-align: center;
+  text-shadow: 25px;
+}
+body {
+  margin: 20px 5% 0 5%;
+  width: 90%;
+
+  font-family: 'Inconsolata', monospace;
+}
 .here {
   float: right;
   display: inline-block;
-
 }
 
 .trippin {
