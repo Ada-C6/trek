@@ -57,6 +57,8 @@ $(document).ready(function() {
     toggleTableView(false);
     $('#reserve-trip-form').show();
     $('#continent-table').hide();
+
+    $('#trip-id').val(trip.id);
   };
 
   // Show response failure
@@ -122,6 +124,19 @@ $(document).ready(function() {
 
 
   // **POST**
-  // var
+  var postCallback = function() {
+    alert('Your reservation has been saved.');
+  };
+
+  $('#reserve-trip-form').submit(function(e) {
+    e.preventDefault();
+
+    console.log($(this).serialize());
+    var reservationData = $(this).serialize();
+    var reservationUrl = url + '/' + $('#trip-id').val() + '/reserve';
+
+    $.post(reservationUrl, reservationData, postCallback)
+      .fail(showFailure);
+  });
 
 });
