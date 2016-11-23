@@ -39,3 +39,16 @@ ul {
   text-align: center;
   width: 22.333%;
 }
+
+#single_vac {
+  background-color: #800080;
+  border-radius: 2rem;
+  height: 70vh;
+  width: 70vw;
+  margin: 15vh 15vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: .8;
+  display: none;
+}
