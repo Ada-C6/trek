@@ -35,7 +35,7 @@ var successCallback = function (response) {
 
   $.each(response, function(index, trip){
     var row = $('<tr></tr>');
-    var name = $('<td><a href="#" class="name-link" id=' + trip.id + '>' + trip.name + '</a></td>');
+    var name = $('<td><a href="#" class="name-link" id=' + trip.id + '>' + trip.name + '</a></td>'); //data attribute
     // var name = $('<td>' + trip.name + '</td>');
     var continent = $('<td>' + trip.continent + '</td>');
     var weeks = $('<td>' + trip.weeks + '</td>');
@@ -51,7 +51,7 @@ var successCallback = function (response) {
 var showSuccess = function(trip) {
   var section = $('.trip-details');
   var name = $('<strong>Name</strong><div>' + trip.name + '</div>');
-  var continent = $('<strong>Location</strong><div>' + trip.continent + '</div>');
+  var continent = $('<strong>Location</strong><div id="continent">' + trip.continent + '</div>');
   var about = $('<strong>Trip Description</strong><div>' + trip.about + '</div>');
   var category = $('<strong>Trip Category</strong><div>' + trip.category + '</div>');
   var weeks = $('<strong>Weeks Long</strong><div>' + trip.weeks + '</div>');
@@ -70,12 +70,37 @@ var showFailure = function(xhr) {
   toggleTableView(false);
 };
 
+var showContinent = function(body) {
+  console.log("in showContinent");
+  // var body = $('.continent-trips');
+  //
+  // body.empty(); // Clear this out to start with to ensure we are populating fresh
+  //
+  // createHeaders(Object.keys(response[0]));
+  //
+  // $.each(response, function(index, trip){
+  //   var row = $('<tr></tr>');
+  //   var name = $('<td><a href="#" class="name-link" id=' + trip.id + ' continent=' + trip.continent + '>' + trip.name + '</a></td>');
+  //    // var name = $('<td>' + trip.name + '</td>');
+  //   var continent = $('<td>' + trip.continent + '</td>');
+  //   var weeks = $('<td>' + trip.weeks + '</td>');
+  //
+  //   console.log(name);
+  //
+  //   row.append(name, continent, weeks);
+  //   body.append(row);
+  // });
+  //
+  //
+  // section.empty(); // Reset the HTML in case there is data from before
+  // section.append(name, continent, about, category, weeks, cost);
+};
 
+
+//DOCUMENT LOAD
 $(document).ready(function() {
   // Which URL do we want to 'get'?
   var url = 'https://trektravel.herokuapp.com/trips';
-  var Continenturl = 'https://trektravel.herokuapp.com/trips';
-
 
   $('.button').click(function() {
     $.get(url, successCallback)
@@ -89,6 +114,12 @@ $(document).ready(function() {
     var id = $(this).attr('id');
     var showUrl = url + '/' + id;
     $.get(showUrl, showSuccess)
-      .fail(showFailure);
+      .fail(showFailure)
+      .done(function(){
+        console.log($('#continent').text());
+        var continentName = $('#continent').text();
+        var continentUrl = 'https://trektravel.herokuapp.com/trips/' + 'continent?query=' + continentName ;
+        $.get(continentUrl, showContinent);
+      });
   });
 });
