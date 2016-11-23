@@ -63,14 +63,15 @@ $(document).ready(function(){
 
     var registration = $('.register');
     var header = $('<h3>Register For This Trip</h3>');
-    var form = $('<form id="register-form" name="'+ trip.id +'"></form>');
+    var form = $('<form id="register-form"></form>');
     var nameField = $('<label for="name">Name</label><input type="text" name="name"></input>');
     var emailField = $('<label for="email">Email</label><input type="text" name="email"></input>');
+    var tripID = $('<input type="hidden" name="tripID" value="'+ trip.id + '">');
     var registerButton = $('<button type="submit" class="button">Register for this trip!</button>');
 
     form.empty();
     registration.empty();
-    form.append(header, nameField, emailField, registerButton);
+    form.append(header, nameField, emailField, tripID, registerButton);
     registration.append(form);
   };
 
@@ -82,7 +83,7 @@ $(document).ready(function(){
 
   $('tbody').on('click','tr', function(e){
     e.preventDefault(); // this captures the event of a click on a link and prevents the default action from happening so that we can use ajax instead of an href?
-    console.log($(this));
+    console.log($(this).html());
 
     var id = $(this).attr('id');
     var showUrl = url + '/' + id;
@@ -92,21 +93,31 @@ $(document).ready(function(){
 
   var postCallback = function(){
     console.log('post success!');
+    var form = $('form');
+    form.replaceWith('<strong>Registration Successful!</strong>');
+
+    // var confirm = $('.register-confirm');
+    // confirm.html('<strong>Registration Successful!</strong>');
+
   };
 
+  // here's the callback for registering.
   var registerCallback = function(event) {
     event.preventDefault(); //we're never getting here. why not?
 
-    console.log($(this));
-
     console.log('sending registration data');
     var reservationData = $(this).serialize();
+
+    // this is a really dumb way to get out the trip id; there's gotta be a better way.
+    var tripID = reservationData.split('&')[2].split('=')[1];
+
     console.log("registration data is " + reservationData);
-    var reservationURL = url + "/" + getIDsomehow + '/reserve';
+    var reservationURL = url + "/" + tripID + '/reserve';
     console.log("url is " + reservationURL);
 
     $.post(reservationURL, reservationData, postCallback);
   };
 
-  $('#register-form').on('submit', registerCallback);
+  // click handler for submitting the registration form
+  $(document).on('submit', '#register-form', registerCallback);
 });
