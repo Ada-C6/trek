@@ -13,15 +13,13 @@ $(document).ready(function() {
     body.empty();
 
     $.each(response, function(index, travel){
-      var listItem = $('<li></li>');
-      var trekList = $('<ul></ul>');
-      var travelName = $("<li><a href=# id=" + travel.id + ">" + travel.name + '</li>');
-      var continent = $('<li>' + travel.continent + '</li>');
-      var duration = $('<li>' + travel.weeks + ' weeks</li>');
+      var row = $('<tr></tr>');
+      var travelName = $("<td><a href=# id=" + travel.id + ">" + travel.name + '</td>');
+      var continent = $('<td>' + travel.continent + '</td>');
+      var duration = $('<td>' + travel.weeks + ' weeks</td>');
 
-      trekList.append(travelName, continent, duration);
-      listItem.append(trekList);
-      body.append(listItem);
+      row.append(travelName, continent, duration);
+      body.append(row);
     });
 
     $('button').hide();
@@ -37,6 +35,8 @@ $(document).ready(function() {
   $('button').click(function() {
     $.get(url, successCallback)
       .fail(failCallback);
+
+    $('html > body').wrap('<div class="fade-all">');
   });
 
 
