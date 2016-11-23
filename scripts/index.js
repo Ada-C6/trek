@@ -3,7 +3,7 @@ $(document).ready(function(){
 
 
 var tripsurl = 'https://trektravel.herokuapp.com/trips';
-var reservationurl = 'https://trektravel.herokuapp.com/trips/1/reserve';
+// var reservationurl = 'https://trektravel.herokuapp.com/trips/1/reserve';
 
 
 var successTripDetails = function(trip) {
@@ -29,6 +29,8 @@ var successTripDetails = function(trip) {
 
   section.empty();//clears older clicks
   section.append(name, continent, category, cost, duration, about, form);
+
+
   //Adding Post Functionality
   var postCallback = function(){
     alert("You've make a reservation!");
@@ -38,7 +40,10 @@ var successTripDetails = function(trip) {
   var addReservation = function(event) {
     event.preventDefault();
     console.log("sending reservation");
-    var reservation = $(this).serialize(); //takes form data and transforms it into  query args. this refers to the form
+    var reservation = $(this).serialize();
+    // console.log(this);
+    var reservationurl = 'https://trektravel.herokuapp.com/trips/' + trip.id + '/reserve';
+     //takes form data and transforms it into  query args. this refers to the form
     $.post(reservationurl, reservation, postCallback());
   };
 
