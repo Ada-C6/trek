@@ -1,0 +1,29 @@
+h1 {
+  font-family: 'Anton', sans-serif;
+}
+
+body {
+  background-color: #A8C6A8;
+}
+
+.add-margin {
+  margin: 3%;
+}
+
+.add-margin-lf {
+  margin-left: 3%;
+}
+
+.trip-details {
+  background-color: white;
+  margin: 2%;
+}
+
+table {
+  width: 80%;
+  text-align: left;
+}
+
+/*table tr {
+  width: 15%;
+}*/
