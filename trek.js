@@ -7,8 +7,6 @@
 // Nothing below is AJAX code per se, but rather how I'm using jQuery.
 
 $(document).ready(function(){
-  $('#message').text("");
-
   // Hide the reseveration form until a trip is selected
   $('#reserve-form').hide();
 
@@ -32,6 +30,9 @@ $(document).ready(function(){
     $('form').trigger("reset");
 
     $('#details').show();
+
+    // Hiding the load button, as hitting it again would just append the results back onto the list
+    $('#load').hide();
 
     // Show the reservation form, in addition to the trip details
     $('#reserve-form').show();
