@@ -1,10 +1,3 @@
-// var toggleList = function(onIndicator) {
-//   $('.all-trips').toggle(!onIndicator);
-//   $('button').toggle(!onIndicator);
-//   $('ul').toggle(onIndicator);
-// };
-
-
 $(document).ready(function() {
   var url = 'https://trektravel.herokuapp.com/trips';
 
@@ -33,7 +26,7 @@ $(document).ready(function() {
   var failCallback = function(xhr) {
     console.log('failure');
     console.log(xhr);
-    $('.all-trips').append("<h2>No information available</h2>");
+    $('.all-trips').append("<h2>No information available (status " + xhr.status + ")</h2>");
   };
 
   var showSuccess = function(trip) {
@@ -56,6 +49,12 @@ $(document).ready(function() {
     section.append(title, description);
   };
 
+  var showFailure = function(xhr) {
+    console.log('failure');
+    console.log(xhr);
+    $('.show-trip').append("<h2>No information available (status " + xhr.status + ")</h2>");
+  };
+
   $('button').click(function() {
     $(".show-all").addClass("add-border");
     $.get(url, successCallback)
@@ -66,22 +65,7 @@ $(document).ready(function() {
     event.preventDefault();
     var id = $(this).attr("id");
     var showUrl = url + "/" + id;
-    $.get(showUrl, showSuccess);
+    $.get(showUrl, showSuccess)
+      .fail(showFailure);
   });
-
-  // var showFailure = function(xhr) {
-  //   var section = $('.pet-details');
-  //   section.html('<strong>Error has occurred</strong>');
-  //
-  //   toggleTableView(false);
-  // };
-  //
-  // $('tbody').on('click', 'a', function(e) {
-  //   e.preventDefault();
-  //
-  //   var id = $(this).attr('id');
-  //   var showUrl = url + '/' + id;
-  //   $.get(showUrl, showSuccess)
-  //     .fail(showFailure);
-  // });
 });
