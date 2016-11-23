@@ -30,7 +30,7 @@ $(document).ready(function() {
     console.log('failed - sorry!');
   };
 
-  $('button').click(function() {
+  $('.button').click(function() {
     $.get(url, successCallback)
       .fail(failCallback);
   });
@@ -68,8 +68,38 @@ $(document).ready(function() {
 
   var toggleTableView = function(onIndicator) {
     $('.trip-details').toggle(!onIndicator);
-    $('button').toggle(!onIndicator);
-    $('table').toggle(onIndicator);
+    $('.trips-button').toggle(!onIndicator);
+    $('#travel-table').toggle(onIndicator);
+    $('#continent-table').toggle(!onIndicator);
   };
+
+  var continentCallback = function(response) {
+    console.log(response[0]);
+    var body = $('.continent-body');
+    body.empty();
+
+    var headerName = $('<th>' + response[0].continent +' Trips</th>');
+    var headerWeeks = $('<th># Weeks</th>');
+
+    body.append(headerName, headerWeeks);
+
+    $.each(response, function(index, trip) {
+      // console.log(trip);
+      var row = $('<tr></tr>');
+      var name = $('<td><a href="#" class="trip-link" id=' + trip.id + '>' + trip.name + '</a></td>');
+      var weeks = $('<td>' + trip.weeks + '</td>');
+
+      row.append(name, weeks);
+      body.append(row);
+    });
+
+    toggleTableView(false);
+  };
+
+  $('.continent-button').click(function() {
+    var queryName = $(this)[0].name;
+    $.get(url + '/continent?query=' + queryName, continentCallback)
+      .fail(failCallback);
+  });
 
 });
