@@ -41,6 +41,9 @@ $(document).ready(function(){
     console.log(tripUrl);
 
     $.get(tripUrl, function(trip){
+      // Reminder: this is the syntax to use to properly display an object
+      // (otherwise, will try to convert the object to string)
+      console.log("I am a trip object", trip);
       var tripId = trip.id;
       $('#name').text("Trip Name: " + trip.name);
       $('#id').text("ID: " + trip.id);
