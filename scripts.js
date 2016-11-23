@@ -11,7 +11,11 @@ $(document).ready(function(){
     }
   };
 
-  $.get(url, successCallback);
+
+  $('#show_vac').on('click', function(e) {
+    $.get(url, successCallback);
+    $("#show_vac").hide();
+  });
 
 
 //click on a pet, show more information on that pet

@@ -2,17 +2,40 @@
   font-family: 'Helvetica', sans-serif;
 }
 
+body {
+  text-align: center;
+}
+
+button {
+  background-color: #800080;
+  border: 10px solid #4d004d;
+  border-radius: 100%;
+  color: white;
+  font-size: 3rem;
+  height: 30rem;
+  padding: 3rem;
+  width: 30rem;
+}
+
+button:hover {
+  background-color: #260026;
+}
+
 header {
   text-align: center;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  padding: 1rem;
 }
 
 ul {
   background-color: #fbf2f9;
+  border: 5px solid #800080;
   border-radius: 2rem;
   display: inline-block;
   list-style: none;
   margin: 2%;
   padding: 3%;
   text-align: center;
-  width: 23.333%;
+  width: 22.333%;
 }
