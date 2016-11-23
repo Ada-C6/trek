@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  $('#reserve-trip-form').hide();
   // 'get' URL
   var url = 'https://trektravel.herokuapp.com/trips';
 
@@ -39,6 +40,7 @@ $(document).ready(function() {
 
   // Show response
   var showSuccess = function(trip) {
+
     var section = $('.trip-details');
     var id = $('<p><strong>ID: </strong>' + trip.id + '</p>');
     var name = $('<p><strong>Name: </strong>' + trip.name + '</p>');
@@ -53,6 +55,7 @@ $(document).ready(function() {
     section.append(id, name, continent, about, category, weeks, cost);
 
     toggleTableView(false);
+    $('#reserve-trip-form').show();
     $('#continent-table').hide();
   };
 
@@ -78,10 +81,10 @@ $(document).ready(function() {
     $('.trips-button').toggle(!onIndicator);
     $('#travel-table').toggle(onIndicator);
     $('#continent-table').toggle(!onIndicator);
+    $('#reserve-trip-form').hide();
   };
 
   var continentCallback = function(response) {
-    console.log(response[0]);
     var header = $('.continent-header');
     var body = $('.continent-body');
     header.empty();
@@ -93,7 +96,6 @@ $(document).ready(function() {
     header.append(headerName, headerWeeks);
 
     $.each(response, function(index, trip) {
-      // console.log(trip);
       var row = $('<tr></tr>');
       var name = $('<td><a href="#" class="trip-link" id=' + trip.id + '>' + trip.name + '</a></td>');
       var weeks = $('<td>' + trip.weeks + '</td>');
@@ -102,11 +104,10 @@ $(document).ready(function() {
       body.append(row);
     });
 
-    console.log('im about to toggle');
-    $('.trip-details').toggle(false);
-    $('.trips-button').toggle(true);
-    $('#continent-table').toggle(true);
+    toggleTableView(true);
+    $('.trips-button').show();
     $('#travel-table').toggle(false);
+    $('#continent-table').toggle(true);
   };
 
   $('.continent-button').click(function() {
@@ -115,5 +116,12 @@ $(document).ready(function() {
     $.get(url + '/continent?query=' + queryName, continentCallback)
       .fail(failCallback);
   });
+
+
+
+
+
+  // **POST**
+  // var
 
 });
