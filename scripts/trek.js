@@ -1,8 +1,8 @@
 $(document).ready(function() {
-    // Which URL do we want to 'get'?
-    var url = 'https://trektravel.herokuapp.com/trips';
-
     $('.reservation-details').hide();
+
+    // Which URL do we want to 'get' to load all treks?
+    var url = 'https://trektravel.herokuapp.com/trips';
 
     var createHeaders = function(keys) {
         var row = $('.treks-headers');
@@ -17,13 +17,13 @@ $(document).ready(function() {
 
     // What do we want to happen when we get our response?
     var successCallback = function (response) {
-        console.log('success!');
+        // console.log('success!');
 
         var body = $('.treks-body');
         body.empty(); // Clear this out to start with to ensure we are populating fresh
 
         $.each(response, function(index, trek){
-            console.log(trek);
+            // console.log(trek);
             var row = $('<tr></tr>');
             var name = $('<td><a href="#" class="name-link" id=' + trek.id + '>' + trek.name + '</a></td>');
             var weeks = $('<td>' + trek.weeks + '</td>');
@@ -37,18 +37,16 @@ $(document).ready(function() {
     };
 
     var failCallback = function(xhr) {
-        console.log('failure');
-        console.log(xhr);
-    };
+        var section = $('.treks-body');
+        section.html("<strong>Oops, an error has occurred loading all treks... please contact this page's developer.</strong>");
+        // note: all of my error messages say to contact this page's developer, since any errors are coming internally from this code, not from any input from the user.
 
-    var alwaysCallback = function() {
-        console.log('This always happens');
+        toggleTableView(true);
     };
 
     $('#load-trips-button').click(function() {
         $.get(url, successCallback)
-        .fail(failCallback)
-        .always(alwaysCallback);
+        .fail(failCallback);
     });
 
     var toggleTableView = function(onIndicator) {
@@ -59,8 +57,15 @@ $(document).ready(function() {
     };
 
     var showSuccess = function(trek) {
+        // console.log(trek);
+
+        // if the correct base url is used and an incorrect trip id, this API provides a blank 'null' page. This conditional is handling that situation, though technically it ought to never be possible since the complete url for my AJAX get requests are coming directly from this code.
+        if (trek === null) {
+            showFailure();
+            $('.reservation-details').hide();
+        }
+
         var section = $('.trek-details');
-        console.log(trek);
         var name = $('<strong>Name:</strong><div>' + trek.name + '</div>');
         var category = $('<strong>Category:</strong><div>' + trek.category + '</div>');
         var weeks = $('<strong># of Weeks:</strong><div>' + trek.weeks + '</div>');
@@ -77,7 +82,7 @@ $(document).ready(function() {
 
     var showFailure = function(xhr) {
         var section = $('.trek-details');
-        section.html('<strong>Error has occurred</strong>');
+        section.html("<strong>Oops, an error has occurred selecting this trek... please contact this page's developer.</strong>");
 
         toggleTableView(false);
     };
@@ -96,24 +101,32 @@ $(document).ready(function() {
 
     // POST !!!!
     var postCallback = function() {
-        alert("POST succeeded!");
+        alert("You successfully made a reservation for this trek!");
+    };
+    // the specs do not specify what happens upon successful reservation post, so I'm going to stick with an alert to the user so that they know their reservation was successful.
+
+    var postFailure = function(xhr) {
+        var section = $('.reservation-details');
+        section.html("<strong>Oops, an error has occurred making a reservation for this trek... please contact this page's developer.</strong>");
+
+        // toggleTableView(false);
     };
 
     var reserveSpotCallback = function(event) {
         // this keeps the form submit button from automatically refreshing the page:
         event.preventDefault();
 
-        console.log("Sending reservation data!");
+        // console.log("Sending reservation data!");
         var reservationData = $(this).serialize();
-        console.log("reservation data is " + reservationData);
+        // console.log("reservation data is " + reservationData);
 
-        console.log($('#tripID').val());
+        // console.log($('#tripID').val());
 
         var urlReserve = url + '/' + $('#tripID').val() + '/reserve';
 
-        $.post(urlReserve, reservationData, postCallback);
+        $.post(urlReserve, reservationData, postCallback)
+        .fail(postFailure);
     };
 
     $('#reserve-trek-spot-form').submit(reserveSpotCallback);
-
 });
