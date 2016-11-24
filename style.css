@@ -2,7 +2,11 @@ body {
   width: 80%;
   margin: 0 auto;
   text-align: center;
-  font-family: helvetica;
+  font-family: 'Josefin Slab', serif;
+}
+
+button {
+  font-family: 'Josefin Slab', serif;
 }
 
 h1 {
@@ -18,8 +22,8 @@ div {
 }
 
 button.show-trips {
+  font-size: 1.5rem;
   width: 15rem;
-  font-size: 90%;
   background-color: #c4c4c4;
   border: none;
   padding: 1rem 2rem;
@@ -45,8 +49,9 @@ button#close-trip {
 }
 
 .standout-trip {
+  font-size: 1.25rem;
   display: none;
-  border: 3px rgb(215, 32, 12) solid;
+  border: 5px rgb(215, 32, 12) solid;
   padding: 1rem;
 }
 
@@ -58,7 +63,8 @@ button#close-trip {
 
 button.trip {
   font-size: 3rem;
-  padding-top: 1.75rem;
+  font-weight: bold;
+  padding-top: 2.5rem;
   background-color: white;
   width: 7rem;
   height: 7rem;
@@ -74,7 +80,19 @@ button.trip {
 
 #number {
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
+}
+
+form input[type="text"] {
+  font-size: 1.25rem;
+  font-family: 'Josefin Slab', serif;
+  height: 1.75rem;
+}
+
+button[type="submit"] {
+  padding: .5rem;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 /*-- SNOW --*/
