@@ -87,8 +87,10 @@ $(document).ready(function(){
       .fail(showFailure);
   });
 
+  // adding Reservation
   var postCallback = function() {
     alert("POST worked!");
+    toggleTableView(true);
   };
 
   var addReserveCallback = function(e) {
