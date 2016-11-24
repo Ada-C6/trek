@@ -21,6 +21,7 @@ $(document).ready(function() {
   });
 
   $(".list-trips").on("click", ".trip", function(trip) {
+    $(".confirmation").hide();
     var tripId = $(this).html();
     var tripUrl = baseUrl + "/" + tripId;
 
@@ -46,6 +47,7 @@ $(document).ready(function() {
 
       $.post(userUrl, userDetails, confirmationAlert);
       $(".standout-trip").hide();
+      $('input[type="text"]').val('');
     });
   });
 

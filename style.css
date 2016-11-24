@@ -42,6 +42,7 @@ button#close-trip {
   color: rgb(0, 156, 84);
   margin-top: 2rem;
   font-weight: bold;
+  font-size: 1.5rem;
 }
 
 .welcome-image {
