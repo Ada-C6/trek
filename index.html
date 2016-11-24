@@ -10,18 +10,21 @@
   </head>
   <body>
     <h1>Trek</h1>
-    <button type="button" name="button" id="trips-button" class="secondary button">Show all trips</button>
+    <header>
+      <button type="button" name="button" id="trips-button" class="expanded success button"><strong>Show all trips</strong></button>
+    </header>
+
     <main class="row">
       <section class="small-12 medium-4 large-4 columns show-all">
         <ul class="all-trips">
 
         </ul>
       </section>
-      <section class="small-12 medium-4 large-4 columns show-trip">
+      <section class="small-12 medium-5 large-5 columns show-trip">
 
       </section>
 
-      <section class="small-12 medium-4 large-4 columns reservation-form">
+      <section class="small-12 medium-3 large-3 columns reservation-form">
         <p>
           <strong>Reserve a spot on this trip:</strong>
         </p>
@@ -34,7 +37,7 @@
             <label>Email</label>
             <input type="text" id="email" name="email"></input>
             <input type="hidden" class="trip-id">
-            <button type="submit" class="success button">Reserve a Spot</button>
+            <button type="submit" class="expanded success button">Reserve a Spot</button>
         </form>
       </section>
 

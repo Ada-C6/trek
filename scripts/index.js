@@ -60,6 +60,7 @@ $(document).ready(function() {
 
   $('.all-trips').on('click', 'a', function(event){
     event.preventDefault();
+    $("#message").empty().removeClass();
     var id = $(this).attr("id");
     var showUrl = url + "/" + id;
     $(".reservation-form").show();
@@ -83,8 +84,8 @@ $(document).ready(function() {
     $("#message").addClass("success");
     $('#message').html('<p>Reservation successful.</p>');
     $('#add-reservation').each(function(){
-    this.reset();
-  });
+      this.reset();
+    });
     console.log("POST successful");
   };
 
@@ -93,7 +94,7 @@ $(document).ready(function() {
     console.log(xhr);
     $('#message').addClass("callout");
     $('#message').addClass("alert");
-    $('#message').html("Reservation failed.");
+    $('#message').html("<p>Reservation failed.</p>");
   };
 
 
