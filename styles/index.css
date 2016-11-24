@@ -1,0 +1,33 @@
+*, h1, h3, h5 {
+  font-family: 'Port Lligat Slab', serif;
+}
+
+h1 {
+  color: #2196F3;
+  text-align: center;
+}
+
+h3, h5 {
+  color: #2196F3;
+}
+
+.container {
+  margin: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 5px double;
+  font-weight: 600;
+}
+
+footer {
+  font-size: 13px;
+  text-align: center;
+  margin: 100px 20px 20px 20px;
+}
+
+.trips-body {
+  text-align: center;
+}

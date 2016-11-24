@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Port+Lligat+Slab" rel="stylesheet">
+  <meta charset="utf-8">
+  <title>Trek</title>
+  <link rel="stylesheet" href="styles/foundation.css">
+  <link rel="stylesheet" href="styles/index.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Trek</h1>
+    </header>
+
+    <div class="blue-button">
+      <button type="button" name="button" class="button" id="load-trips-button">View All Trips</button>
+    </div>
+
+    <section class="row">
+      <div class="small-12 medium-8 columns">
+        <section class="trip-details"></section>
+      </div>
+
+      <div class="small-12 medium-4 columns">
+        <form id="reservation-form">
+          <h5>Make your Reservation</h5>
+          <input type="hidden" name="trip-id" class="trip-id"></input>
+
+          <label for="name">Your Name</label>
+          <input type="text" name="name"></input>
+
+          <label for="email">Your Email</label>
+          <input type="text" name="email"></input>
+
+          <button type="submit" class="button">Reserve</button>
+        </form>
+      </div>
+    </section>
+
+    <section>
+      <h5 id="instruction">Click on a Trip Name to View Details </h5>
+      <table>
+        <tr class='trips-headers'></tr>
+        <tbody class='trips-body'></tbody>
+      </table>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>A Website by Kelly Tran. Copyright &copy; 2016 - Present.  All rights reserved.</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.js" type="text/javascript"></script>
+  <script src="scripts/trek.js" type="text/javascript"></script>
+</body>
+</html>
