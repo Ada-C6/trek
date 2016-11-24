@@ -1,7 +1,7 @@
 $(document).ready(function(){
   var url = 'https://trektravel.herokuapp.com/trips';
   $('#reservation-form').hide();
-
+  $('#instruction').hide();
 
   var successCallback = function(response) {
     console.log('success!');
@@ -26,7 +26,7 @@ $(document).ready(function(){
       body.append(row);
     });
 
-    $('button').hide(); // might become an on-off switch
+    $('.blue-button').hide(); // might become an on-off switch
 
     toggleTableView(true);
   };
@@ -48,24 +48,26 @@ $(document).ready(function(){
 
   var toggleTableView = function(onIndicator) {
     $('.trip-details').toggle(!onIndicator);
-    $('button').toggle(!onIndicator);
+    $('.blue-button').toggle(!onIndicator);
     $('#reservation-form').toggle(!onIndicator); // the form
+    $('#instruction').toggle(onIndicator);
     $('table').toggle(onIndicator);
   };
   //showSuccess
   var showSuccess = function(trip) {
     var section = $('.trip-details');
 
-    var id = $('<strong>ID:</strong><div>' + trip.id + '</div>');
-    var name = $('<strong>Name:</strong><div>' + trip.name + '</div>');
-    var continent = $('<strong>Continent:</strong><div>' + trip.continent + '</div>');
-    var category = $('<strong>Category:</strong><div>' + trip.category + '</div>');
-    var weeks = $('<strong>Weeks:</strong><div>' + trip.weeks + '</div>');
-    var cost = $('<strong>Cost:</strong><div>$' + trip.cost + '</div>');
-    var description = $('<strong>Description:</strong><div>' + trip.about + '</div>');
+    var name = $('<h3>' + trip.name + '</h3>');
+    var id = $('<p><strong>ID: </strong>' + trip.id + '</p>');
+
+    var continent = $('<p><strong>Continent: </strong>' + trip.continent + '</p>');
+    var category = $('<p><strong>Category: </strong>' + trip.category + '</p>');
+    var weeks = $('<p><strong>Weeks: </strong>' + trip.weeks + '</p>');
+    var cost = $('<p><strong>Cost: </strong>$' + trip.cost + '</p>');
+    var description = $('<p><strong>Description: </strong>' + trip.about + '</p>');
 
     section.empty();
-    section.append(id, name, continent, category, weeks, cost, description);
+    section.append(name, id, continent, category, weeks, cost, description);
 
     $('.trip-id').val(trip.id);
 
