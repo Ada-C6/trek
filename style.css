@@ -21,7 +21,7 @@ div {
   display: inline-block;
 }
 
-button.show-trips {
+button.index-button {
   font-size: 1.5rem;
   width: 15rem;
   background-color: #c4c4c4;
@@ -40,7 +40,7 @@ button#close-trip {
 .confirmation {
   display: none;
   color: rgb(0, 156, 84);
-  margin-top: 2rem;
+  margin: 2rem auto;
   font-weight: bold;
   font-size: 1.5rem;
 }
@@ -84,7 +84,7 @@ button.trip {
   font-size: 1.75rem;
 }
 
-form input[type="text"] {
+form input {
   font-size: 1.25rem;
   font-family: 'Josefin Slab', serif;
   height: 1.75rem;
@@ -92,8 +92,18 @@ form input[type="text"] {
 
 button[type="submit"] {
   padding: .5rem;
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: bold;
+}
+
+.new-trip {
+  display: none;
+  margin: 4rem;
+}
+
+#create-trip input {
+  display: block;
+  margin: 1rem auto;
 }
 
 /*-- SNOW --*/

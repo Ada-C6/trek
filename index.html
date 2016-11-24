@@ -14,8 +14,20 @@
     </div>
     <h1>Holiday Trips</h1>
     <section class="welcome-image"><img src="reindeer_face.png" /></section>
-    <button class="show-trips">Show All Trips</button>
+    <section class="new-trip">
+      <form action="https://trektravel.herokuapp.com/trips" method="POST" id="create-trip">
+        <input type="text" name="name" placeholder="Name" />
+        <input type="text" name="continent" placeholder="Continent" />
+        <input type="text" name="about" placeholder="About" />
+        <input type="text" name="category" placeholder="Category" />
+        <input type="number" name="weeks" placeholder="# of Weeks" />
+        <input type="number" name="cost" placeholder="Cost" />
+        <button type="submit">Submit Trip!</button>
+      </form>
+    </section>
     <section class="confirmation"></section>
+    <button class="index-button show-trips">Show All Trips</button>
+    <button class="index-button add-trip">Add A Trip</button>
     <section class="standout-trip">
       <button id="close-trip">🎄</button>
       <div id="number"></div>
@@ -25,9 +37,8 @@
       <div id="category"></div>
       <div id="weeks"></div>
       <div id="about"></div>
-      <form action="https://trektravel.herokuapp.com/trips" method="POST">
+      <form action="https://trektravel.herokuapp.com/trips" method="POST" id="join-trip">
         <input type="text" name="name" placeholder="Name" />
-        <input type="text" name="age" placeholder="Age" />
         <input type="text" name="email" placeholder="Email" />
         <button type="submit">Reserve A Spot!</button>
       </form>

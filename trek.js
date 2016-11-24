@@ -11,9 +11,28 @@ $(document).ready(function() {
     $(".confirmation").show();
   };
 
+  $(".add-trip").on('click', function(){
+    $(".new-trip").show();
+    $(".welcome-image, .confirmation").hide();
+  });
+
+  $("form[id=create-trip]").submit(function(e) {
+    e.preventDefault();
+
+    var tripDetails = $(this).serialize();
+    var newTripUrl = baseUrl;
+    $(".confirmation").text("You successfully created a new trip!");
+    console.log("created trip");
+    $.post(newTripUrl, tripDetails, confirmationAlert);
+
+    $(".new-trip").hide();
+    $(".welcome-image").show();
+    $('input').val('');
+  });
+
   $(".show-trips").on('click', function() {
     $.get(baseUrl, getTrips);
-    $(".show-trips, .welcome-image").hide();
+    $(".show-trips, .welcome-image, .new-trip, .add-trip, .confirmation").hide();
   });
 
   $("#close-trip").on('click', function() {
@@ -32,12 +51,13 @@ $(document).ready(function() {
       $("#category").text("CATEGORY: " + trip.category);
       $("#weeks").text("WEEKS: " + trip.weeks);
       $("#about").text("ABOUT: " + trip.about);
+      console.log(trip);
       $(".standout-trip").show();
     };
 
     $.get(tripUrl, getOneTrip);
 
-    $("form").submit(function(e){
+    $("form[id=join-trip]").submit(function(e){
       e.preventDefault();
 
       var userDetails = $(this).serialize();
