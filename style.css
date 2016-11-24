@@ -25,6 +25,14 @@ button.show-trips {
   padding: 1rem 2rem;
 }
 
+button#close-trip {
+  float: right;
+  font-weight: bold;
+  font-size: 2rem;
+  background-color: white;
+  border: none;
+}
+
 .confirmation {
   display: none;
   color: rgb(0, 156, 84);

@@ -16,6 +16,10 @@ $(document).ready(function() {
     $(".show-trips, .welcome-image").hide();
   });
 
+  $("#close-trip").on('click', function() {
+    $(".standout-trip").hide();
+  });
+
   $(".list-trips").on("click", ".trip", function(trip) {
     var tripId = $(this).html();
     var tripUrl = baseUrl + "/" + tripId;
