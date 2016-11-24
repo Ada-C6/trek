@@ -3,24 +3,25 @@ $(document).ready(function() {
 
   var getTrips = function (trips){
     for (var i = 0; i < trips.length; i++) {
-      // "name":"Cairo to Zanzibar","continent":"Africa","weeks":5
-      $(".all-trips").append("<div><button class='trip'>" + trips[i].id + ": "+ trips[i].name + "</button></div>");
+      $(".list-trips").append("<div><button class='trip'>" + trips[i].id + "</button></div>");
     }
+  };
+
+  var confirmationAlert = function(){
+    $(".confirmation").show();
   };
 
   $(".show-trips").on('click', function() {
     $.get(baseUrl, getTrips);
-    $(".show-trips").hide();
+    $(".show-trips, .welcome-image").hide();
   });
 
-  $(".all-trips").on("click", "button", function(trip) {
+  $(".list-trips").on("click", ".trip", function(trip) {
     var tripId = $(this).html();
     var tripUrl = baseUrl + "/" + tripId;
 
     var getOneTrip = function(trip) {
-      console.log(trip);
       $("#number").text("# " + trip.id + " | " + trip.name.toUpperCase());
-      // $("#name").text("NAME: " + trip.name);
       $("#cost").text("COST: $" + trip.cost);
       $("#continent").text("CONTINENT: " + trip.continent);
       $("#category").text("CATEGORY: " + trip.category);
@@ -30,6 +31,19 @@ $(document).ready(function() {
     };
 
     $.get(tripUrl, getOneTrip);
+
+    $("form").submit(function(e){
+      e.preventDefault();
+
+      var userDetails = $(this).serialize();
+      var userUrl = baseUrl + "/" + tripId + "/reserve";
+
+      $(".confirmation").text("You successfully reserved a spot on trip " + tripId + "!");
+
+      $.post(userUrl, userDetails, confirmationAlert);
+      $(".standout-trip").hide();
+    });
   });
+
 
 });

@@ -2,21 +2,44 @@ body {
   width: 80%;
   margin: 0 auto;
   text-align: center;
+  font-family: helvetica;
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 4rem;
+  margin: 1rem;
 }
 
 div {
   margin: 2rem auto;
-  width: 30%;
+  width: 20%;
   display: inline-block;
 }
 
 button.show-trips {
-  width: 10rem;
+  width: 15rem;
+  font-size: 90%;
+  background-color: #c4c4c4;
+  border: none;
+  padding: 1rem 2rem;
+}
+
+.confirmation {
+  display: none;
+  color: rgb(0, 156, 84);
+  margin-top: 2rem;
+  font-weight: bold;
+}
+
+.welcome-image {
+  margin: 3rem;
 }
 
 .standout-trip {
   display: none;
-  border: 1px black solid;
+  border: 3px rgb(215, 32, 12) solid;
+  padding: 1rem;
 }
 
 .standout-trip div {
@@ -26,11 +49,44 @@ button.show-trips {
 }
 
 button.trip {
-  /*background-color: red;*/
-  width: 20rem;
-  height: 4rem;
+  font-size: 3rem;
+  padding-top: 1.75rem;
+  background-color: white;
+  width: 7rem;
+  height: 7rem;
+  background-image: url(present.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+}
+
+.present-text {
+  padding-top: 1rem;
 }
 
 #number {
   font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/*-- SNOW --*/
+#snowflakeContainer {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.snowflake {
+  padding-left: 15px;
+  font-family: Cambria, Georgia, serif;
+  font-size: 14px;
+  line-height: 24px;
+  position: fixed;
+  color: #7db9d1;
+  user-select: none;
+  z-index: 1000;
+}
+
+.snowflake:hover {
+  cursor: default;
 }
