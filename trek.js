@@ -27,7 +27,7 @@ $(document).ready(function() {
 
     var getOneTrip = function(trip) {
       $("#number").text("# " + trip.id + " | " + trip.name.toUpperCase());
-      $("#cost").text("COST: $" + trip.cost);
+      $("#cost").text("COST: $" + Math.trunc(trip.cost) + " (+ fees)");
       $("#continent").text("CONTINENT: " + trip.continent);
       $("#category").text("CATEGORY: " + trip.category);
       $("#weeks").text("WEEKS: " + trip.weeks);
