@@ -28,6 +28,32 @@
       <p id="weeks"></p>
       <p id="cost"></p>
       <p id="id"></p>
+
+      <form action='https://trektravel.herokuapp.com/trips/' method="POST" id="reserve_form">
+        <h5>Make a Reservation!</h5>
+        <section>
+          <label>Name</label>
+          <input id="formname" type="text" name="name" value="" />
+        </section>
+        <section>
+          <label>Age</label>
+          <input id="formage" type="text" name="age" value=""/>
+        </section>
+        <section>
+          <label>Email</label>
+          <input id="formemail" type="text" name="email" value=""/>
+        </section>
+        <section>
+          <input id="hidden-id" type="hidden" name="id" />
+        </section>
+        <section class="button">
+          <button id="reserve" type="submit">Reserve Now!</button>
+        </section>
+      </form>
+    </div>
+
+    <div id="res_success">
+      <h2>YOU MADE A RESERVATION!</h2>
     </div>
 
 

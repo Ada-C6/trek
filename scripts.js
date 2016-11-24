@@ -42,22 +42,52 @@ $(document).ready(function(){
       $('#weeks').text("Weeks: " + vacation.weeks);
       $('#cost').text("Cost: $" + vacation.cost);
       $('#id').text("Vacation ID:" + vacation.id);
+      $('#hidden-id').attr("value", vacation.id);
 
+      // reset the form to be blank!
+      $('#formname').val("");
+      $('#formage').val("");
+      $('#formemail').val("");
       // set the open status to true
       openStatus = true;
-      console.log("inside the click function" + openStatus);
 
     }); // end get function
   }); // end of vacation on click function
 
 
   // if the open status is true, any click should close the single_vac div.
-  $('body').on('click', function(){
+  $('#vacations').on('click', function(){
     if (openStatus === true) {
       $("#single_vac").hide();
+      $("#res_success").hide();
       openStatus = false;
     } // end of the if statement
   }); // end of the body on click function
+
+
+  // Start of form submit function
+  $('form').submit(function(e) {
+    // Override the default form submit action
+    e.preventDefault();
+
+    // Get the action fromt he form
+    var url = $(this).attr("action") + $('#hidden-id').attr("value") + "/reserve";
+    console.log(url);
+
+    // Serialize the data! We didn't actually talk about this so I just stole it directly from the lesson.
+    var formData = $(this).serialize();
+
+    // Post that shit! Did we ever learn .ajax?? I don't think so?? While posting, close the original window and open another one
+    $.post(url, formData, function(response){
+      $("#single_vac").hide();
+      $("#res_success").show();
+    }); //end of post
+
+    // $('#formname').attr("value", "");
+    // $('#formage').attr("value", "");
+    // $('#formemail').attr("value", "");
+
+  }); //end of form submit
 
 }); // end of complete document.ready statement
 

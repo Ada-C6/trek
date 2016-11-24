@@ -6,7 +6,7 @@ body {
   text-align: center;
 }
 
-button {
+#show_vac {
   background-color: #800080;
   border: 10px solid #4d004d;
   border-radius: 100%;
@@ -16,6 +16,7 @@ button {
   padding: 3rem;
   width: 30rem;
 }
+
 
 button:hover {
   background-color: #260026;
@@ -40,13 +41,14 @@ ul {
   width: 22.333%;
 }
 
+#res_success,
 #single_vac {
   background-color: #800080;
   border-radius: 2rem;
   color: white;
   font-size: 1.2rem;
   padding: 5vw;
-  height: 60vh;
+  /*height: 60vh;*/
   width: 60vw;
   margin: 10vh 15vw;
   position: fixed;
@@ -54,4 +56,15 @@ ul {
   left: 0;
   opacity: .9;
   display: none;
+}
+
+
+#res_success {
+  background-color: #196200;
+  font-size: 2rem; 
+}
+
+
+form section {
+  display: inline-block;
 }
