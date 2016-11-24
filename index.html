@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>S^2 Treks</title>
+        <link rel="stylesheet" href="http://cdn.foundation5.zurb.com/foundation.css" media="screen" title="no title">
+        <link rel="stylesheet" href="./styles/index.css" media="screen" title="no title">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    </head>
+    <body>
+        <h1><strong>'S' Squared Treks!</strong></h1>
+
+        <button type="button" name="button" class="button" id="load-trips-button">see ALL treks</button>
+
+        <section class="trek-details">
+        </section>
+
+        <section class="reservation-details">
+            <form id="reserve-trek-spot-form">
+                <h1>Reserve your spot on this trek:</h1>
+                <label for="name">Name:</label>
+                <input type="text" name="name"></input>
+                <label for="email">Email:</label>
+                <input type="text" name="email"></input>
+                <input type="hidden" id="tripID" value="3">
+                <button type="submit">Reserve!</button>
+            </form>
+        </section>
+
+        <table>
+          <tr class='treks-headers'>
+          </tr>
+          <tbody class='treks-body'>
+          </tbody>
+        </table>
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.js"></script>
+        <script type="text/javascript" src="./scripts/trek.js"></script>
+
+    </body>
+</html>

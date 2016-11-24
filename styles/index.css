@@ -1,0 +1,26 @@
+body {
+    background-image: url(../images/background.jpg);
+    background-size: 100% 100%;
+    font-family: 'Roboto Slab', serif, arial;
+}
+
+h1 {
+    font-family: 'Roboto Slab', serif, arial;
+    color: #FF475C;
+    text-shadow:1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 0px 1px 0 #fff, 1px 0px 0 #fff, 0px -1px 0 #fff, -1px 0px 0 #fff;
+}
+
+section {
+    font-family: 'Roboto Slab', serif, arial;
+    color: white;
+}
+
+section strong {
+    text-decoration: underline;
+    color: #FF475C;
+}
+
+section label {
+    font-family: 'Roboto Slab', serif, arial;
+    color: white;
+}
