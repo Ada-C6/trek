@@ -1,6 +1,11 @@
 body {
   background: #4EA5D9
 }
+
+#form, #profile{
+  display:none;
+}
+
 a {
   text-decoration: none;
   border: 2px solid #fff;

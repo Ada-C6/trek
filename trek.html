@@ -6,7 +6,10 @@
 </head>
 <body>
   <button id="load"> Trek! </button>
+
+
   <div id="profile">
+		
 
   	<h3 id="name"></h3>
 		<p id="continent"></p>
@@ -14,9 +17,24 @@
 		<p id="cost"></p>
 	  <p id="category"></p>
 		<p id="about"></p>
+		<form id="form" action="https://trektravel.herokuapp.com/trips" method="POST">
 
+			<section>
+			<label>Name</label>
+			<input type="text" name="name"></input>
+		</section>
+		<section>
+			<label>Email</label>
+			<input type="text" id="email" name="email"></input>
+		</section>
+		<section class="button">
+		<button type='submit'>Reserve a Spot</button>
+		</section>
+		</form>
 		</div>
 <div id="trips"></div>
+
+</div>
 <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
 <script type="text/javascript" src="script.js"></script>
 </body>

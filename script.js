@@ -22,6 +22,7 @@ $('#trips').on('click', 'a', function(e){
   e.preventDefault();
 
   $('#profile').show();
+  $('#form').show();
   var tripUrl = $(this).attr('href');
 
   $.get(tripUrl, function(trip){
@@ -36,7 +37,20 @@ $('#trips').on('click', 'a', function(e){
   }).fail(function(){
     alert("Failed.");
   })
+
+  $('form').submit(function(e){
+    var resUrl = tripUrl + "/" + "reserve";
+    e.preventDefault();
+    var formData = $(this).serialize();
+  $.post(resUrl, formData, callback);
+  });
 });
+
+var callback = function(){
+  console.log('success!');
+}
+
+
 
 
 
