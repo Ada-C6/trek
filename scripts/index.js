@@ -1,7 +1,6 @@
 $(document).ready(function(){
 // console.log("script works!");
 
-
 var tripsurl = 'https://trektravel.herokuapp.com/trips';
 // var reservationurl = 'https://trektravel.herokuapp.com/trips/1/reserve';
 
@@ -25,13 +24,21 @@ var successTripDetails = function(trip) {
   var resEmail = $('<input type="text" name="email"></input>');
   var button = $('<button type="submit" class="button"> Make My Reservation for ' + trip.name +'!</button>');
 
-  form.append(nameLabel, resName, emailLabel, resEmail, button);
+  var trip_id = $('<input>').attr({
+      type: 'hidden',
+      id: trip.id,
+      name: 'trip id'
+    });
+
+    console.log(trip_id);
+
+  form.append(nameLabel, resName, emailLabel, resEmail, button, trip_id);
 
   section.empty();//clears older clicks
   section.append(name, continent, category, cost, duration, about, form);
 
 
-  //Adding Post Functionality
+  // Adding Post Functionality
   var postCallback = function(){
     alert("You've make a reservation!");
   };
