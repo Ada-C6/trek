@@ -1,0 +1,44 @@
+html {
+  font: normal normal 18px/1 'Times', sans-serif;
+  color: #050505;
+ }
+
+ a {
+   text-decoration: none;
+   color: #19753B;
+ }
+
+ a:hover {
+   text-decoration: underline;
+   cursor: pointer;
+
+ }
+
+ body {
+   background-color: grey;
+   padding: 0.5em;
+   padding-bottom: 0.25em;
+   /*text-align: left;*/
+ }
+
+ table {
+   table-layout: fixed;
+   width: 90%;
+   border-collapse: collapse;
+   border: 5px solid #D9D7D7;
+   text-align: left;
+   background-color: #A4A4A4;
+ }
+
+ section {
+   width: 90%;
+   border-collapse: collapse;
+   border: 2.5px solid #D9D7D7;
+   text-align: left;
+   background-color: #A4A4A4;
+ }
+
+ /*button {
+   border: 2.5px solid #D9D7D7;
+   background-color: #A4A4A4;
+ }*/
