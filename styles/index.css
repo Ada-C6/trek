@@ -23,3 +23,7 @@ body {
 form#reserve-form {
   display: block;
 }
+
+.capital {
+  text-transform: capitalize;
+}

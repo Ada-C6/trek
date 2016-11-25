@@ -31,7 +31,6 @@ $(document).ready(function() {
     $.get(showUrl, showSuccess)
       .fail(allFailure);
 
-    $('.show-trips').hide();
   });
 
   // success callback for when you sent your post/reservation request
@@ -45,7 +44,8 @@ $(document).ready(function() {
     var reserveUrl = url + $(this)[0].className + '/reserve/';
     var reserveData = $(this).serialize();
     console.log(reserveUrl);
-    $.post(reserveUrl, reserveData, reserveSuccess);
+    $.post(reserveUrl, reserveData, reserveSuccess)
+      .fail(allFailure);
   };
 
   $('#reserve-form').submit(reserveSpot);
@@ -61,7 +61,7 @@ $(document).ready(function() {
     var weeks = $('<td class="columns medium-3 large-3">Length</td>');
     header.empty();
     header.append(trip, continent, weeks);
-    console.log(response);
+    // console.log(response);
     $.each(response, function(index, trip) {
       var row = $('<tr></tr>');
       var name = $("<td class='columns medium-6 large-6'><a href='#' class='trip-link' id='" + trip.id + "'>" + trip.name + "</a></td>");
@@ -77,16 +77,19 @@ $(document).ready(function() {
   };
 
   $('button.show-trips').click(function() {
+    $('button.show-trips').hide();
     $.get(url, allSuccess)
       .fail(allFailure);
   });
 
   $('#filterContinent').submit(function(e) {
     e.preventDefault();
-    var cont = $(this).serializeArray();
-    // console.log();
-    var cUrl = url + "continent?query=" + cont[0].value;
-    $.get(cUrl, allSuccess);
+    var cont = $(this).serializeArray()[0].value;
+    // console.log(capitalize(cont));
+    var cUrl = url + "continent?query=" + capitalize(cont);
+    $('button.show-trips').show();
+    $.get(cUrl, allSuccess)
+      .fail(allFailure);
   });
 
   $('#filterBudget').submit(function(e) {
@@ -94,6 +97,12 @@ $(document).ready(function() {
     var budget = $(this).serializeArray();
     // console.log();
     var bUrl = url + "budget?query=" + budget[0].value;
-    $.get(bUrl, allSuccess);
+    $('button.show-trips').show();
+    $.get(bUrl, allSuccess)
+      .fail(allFailure);
   });
+
+  var capitalize = function(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  };
 });
