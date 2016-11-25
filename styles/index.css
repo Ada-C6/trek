@@ -1,0 +1,29 @@
+th {
+  text-align: left;
+}
+
+body {
+  margin: 10px;
+}
+
+.tag {
+  background-color: lightgreen;
+  border-radius: 3px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.category {
+  background-color: pink;
+  border-radius: 3px;
+  padding: 5px;
+  margin: 5px;
+}
+
+form#reserve-form {
+  display: block;
+}
+
+.capital {
+  text-transform: capitalize;
+}
