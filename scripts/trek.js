@@ -51,9 +51,10 @@ $(document).ready(function() {
     var cost = $('<li>' + response.cost + '</li>');
     var description = $('<li>' + response.about + '</li>');
 
-    var reservationForm = $("<li><section><form id=" + response.id + "  class='booking-form'><label for='name'>Name</label><input type='text' name='name'></input><button type='submit' class='button'>Reserve</button></form></section></li>");
+    var reservationForm = $("<li><section><form id=" + response.id + " class='booking-form'><label for='name'>Name</label><input type='text' name='name'></input><button type='submit' class='button'>Reserve</button></form></section></li>");
 
     body.empty();
+    $('#message').empty();
     body.append(travelName, continent, duration, cost, description, reservationForm);
 
     $('.single-location').show();
@@ -78,7 +79,7 @@ $(document).ready(function() {
   var formData = $(this).serialize();
 
   $.post(postUrl, formData, function(response){
-    $('#message').html('<p> Reserved! </p>');
+    $('#message').html('<p>Reserved!</p>');
 
     // What do we get in the response?
     console.log(response);
