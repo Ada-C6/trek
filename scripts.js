@@ -20,7 +20,7 @@ $(document).ready(function(){
   $('#load').on('click',function(){
     $.get(url, successCallBack);
   });
-
+  //------------------------------------------------//
 
   //click event, that will make an ajax get request for the specific trip, then show trip, by ID
 
@@ -30,11 +30,10 @@ $(document).ready(function(){
 
     $('#trip_profile').show(); // pop up window
     var tripUrl = $(this).attr('href');
+    // console.log("I work I do!");
 
     $.get(url, successCallBack);
     // console.log("I work I do!");
-
-    // response could also be changed to be pets. all subsequent calls will be changed to pet as wwell.
 
     // you can also pass a url doesn't exist and see that it doesnt work
     $.get(tripUrl, function(trip){
@@ -61,34 +60,46 @@ $(document).ready(function(){
 
     }).always(function(){
       // $("#message").text("something happened.");
-      console.log('you are done');
+      console.log('sent trip info over');
     }).fail(function(){
       alert("failed.");
     });
 
   });
+  //------------------------------------------------//
 
   var callback = function() {
-    console.log("You've been succesful friend");
-        console.log('trips id'+ theTripsId);
+    console.log("You've been succesful friend, in callback");
   };
+
+  //------------------------------------------------//
+// this was what a succeful post to reservation looked like.
+// https://trektravel.herokuapp.com/trips/1/reserve?name=Ginda DAVIS&age=3000&email=what@email.com
 
   $('form').submit('click', function(e){
     e.preventDefault();
 
-    //set the theTripsId to be the value from attribute in the form.
+
     var theTripsId = $('#theTripsId').attr('value');
-    console.log('trips id'+ theTripsId);
+    var url = "https://trektravel.herokuapp.com/trips/" + theTripsId + "/" + "reserve" + "?" + "name=" + this.name + "&age="+ this.age + "&email=" + this.email;
 
+    // var url = $(this).attr("action");
+    // retrieve the action from the form.
+    //set the theTripsId to be the value from attribute in the form.
+    // var theTripsId = $('#theTripsId').attr('value');
 
-    var url = "https://trektravel.herokuapp.com/trips/" + theTripsId + "/" +"reserve";
     var formData = $(this).serialize();
+    // console.log("theTripsId:" + theTripsId);
 
-    $.post(url, function(response){
+    $.post(url, formData, function(response){
       $('#message').html('<p>Your spot has been reserved! </p>');
-      $('#message').show();
 
-    });
+      $('#message').show();
+        console.log("response " + response);
+
+    }).fail();{
+      $('#message').html('<p>Reservation Failed</p>');
+    }
 
   });
 
