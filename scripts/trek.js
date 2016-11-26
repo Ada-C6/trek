@@ -31,8 +31,8 @@ $(document).ready(function() {
     console.log(xhr);
   };
 
-  // need to click the button to get treks
-  $('button').click(function() {
+  // need to click the show all button to get treks
+  $('.show-all-button').click(function() {
     $.get(url, successCallback)
       .fail(failCallback);
 
@@ -51,13 +51,15 @@ $(document).ready(function() {
     var cost = $('<li>' + response.cost + '</li>');
     var description = $('<li>' + response.about + '</li>');
 
+    var reservationForm = $("<li><section><form id=" + response.id + "  class='booking-form'><label for='name'>Name</label><input type='text' name='name'></input><button type='submit' class='button'>Reserve</button></form></section></li>");
+
     body.empty();
-    body.append(travelName, continent, duration, cost, description);
+    body.append(travelName, continent, duration, cost, description, reservationForm);
 
     $('.single-location').show();
   };
 
-  // clicking on a specific trek SHOWS the information about if
+  // clicking on a specific trek SHOWS the information about it
   $('body').on('click', 'a', function(event) {
     event.preventDefault();
 
@@ -66,5 +68,25 @@ $(document).ready(function() {
     $.get(showUrl, showSuccessCallback)
       .fail(failCallback);
   });
+
+  $(document).submit(function(e) {
+  // By default, the form will attempt to do it's own local POST so we want to prevent that default behavior
+  e.preventDefault();
+
+  // POST URL: trektravel.herokuapp.com/trips/TRIP_ID/reserve
+  var postUrl = url + $('.booking-form').attr('id') + '/reserve';
+  var formData = $(this).serialize();
+
+  $.post(postUrl, formData, function(response){
+    $('#message').html('<p> Reserved! </p>');
+
+    // What do we get in the response?
+    console.log(response);
+  })
+    .fail(function(){ $('#message').html('<p>Reserving the trip failed</p>');
+    });
+
+  });
+
 
 });
