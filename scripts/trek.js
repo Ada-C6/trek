@@ -79,7 +79,8 @@ $(document).ready(function() {
   var formData = $(this).serialize();
 
   $.post(postUrl, formData, function(response){
-    $('#message').html('<p>Reserved!</p>');
+    $('.single-location').empty();
+    $('#message').html('<p>Reserved - enjoy your trek!</p>');
 
     // What do we get in the response?
     console.log(response);
