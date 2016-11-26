@@ -1,0 +1,20 @@
+/*Override default Foundation button*/
+#load-trips, #reservation {
+  background-color: purple;
+  border-radius: 45px;
+  color: white;
+  padding: 10px;
+}
+
+body {
+  width: 90%;
+  margin: 0 5%;
+}
+
+.trip-name {
+  font-size: 25px;
+}
+
+#add-reservation-form {
+  display: none;
+}
