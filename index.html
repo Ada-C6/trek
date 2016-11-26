@@ -33,7 +33,7 @@
   https://trektravel.herokuapp.com/trips/1/reserve
  -->
 <!-- accepted params: name, age, email -->
-<h3>RESERVE A TRIP FRIEND</h3>
+<div class="trip_profile"><h3>RESERVE A TRIP FRIEND</h3>
     <form class="row" action="http:https://trektravel.herokuapp.com/trips/1/reserve" method="POST">
       <section class="small-2 medium-3 large-4 columns">
         <label for="name">Name:</label>
@@ -53,13 +53,14 @@
 
       <button class="button" id="createTrip" type="submit">Reserve Trip</button>
 
-    </form>
+    </form></div>
 
 
-<div>
+
   <div id="trip_profile">
+    <div id="message"></div>
 
-  <div id="message">
+    <div id="theTripsId"></div>
   </div>
 
 
@@ -78,12 +79,8 @@
         <p id="about"></p>
       </div>
     </div>
-
   </section>
 
-</div>
-
-</div>
 
 
 
@@ -102,11 +99,11 @@
 
   <script type="text/javascript" src="scripts.js"></script>
 <!-- It's easy to configure Magellan -->
-  <script src="js/foundation/foundation.js"></script>
-  <script src="js/foundation/foundation.magellan.js"></script>
+  <!-- <script src="js/foundation/foundation.js"></script>
+  <script src="js/foundation/foundation.magellan.js"></script> -->
 
   <script>
-    $(document).foundation();
+    // $(document).foundation();
   </script>
 
   </body>
