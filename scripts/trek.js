@@ -1,3 +1,5 @@
+// Why isn't the button to reserve the spot displaying?
+
 $(document).ready(function() {
 
   var url = 'https://trektravel.herokuapp.com/trips';
@@ -10,7 +12,6 @@ $(document).ready(function() {
 
     var headings = $('<tr><td><strong><div>' + 'Trip Name' + '</div></strong></td><td><strong><div>' + 'Continent' + '</div></strong></td><td><strong><div>' + 'Trip Length' + '</div></strong></td></tr>');
     heading.append(headings);
-
 
     $.each(response, function(index, trip){
       console.log(trip);
@@ -26,7 +27,7 @@ $(document).ready(function() {
       body.append(row);
     });
     // Button to load the trips disapears when the trips successfully load.
-    $('button').hide();
+    $('.load-trips').hide();
   };
 
   var failCallback = function(xkr){
@@ -38,7 +39,7 @@ $(document).ready(function() {
     console.log('This always happens');
   };
 
-  $('button').click(function(){
+  $('.load-trips').click(function(){
     $.get(url, successCallback)
       .fail(failCallback)
       .always(alwaysCallBack);
@@ -49,14 +50,12 @@ $(document).ready(function() {
     var name = $('<div><strong>Name: </strong>' + trip.name + '</div>');
     var continent = $('<div><strong>Continent: </strong>' + trip.continent + '</div>');
     var description = $('<div><strong>Description: </strong>' + trip.about + '</div>');
-    var length = $('<div><strong>Length(in weeks): </strong>' + trip.weeks + '</div>');
+    var length = $('<div><strong>Length (in weeks): </strong>' + trip.weeks + '</div>');
     var category = $('<div><strong>Category: </strong>' + trip.category + '</div>');
     var cost = $('<div><strong>Cost: </strong>' + "$" + trip.cost + '</div>');
 
     section.empty(); // Reset the HTML in case there is data from before
     section.append(name, continent, description, length, category, cost);
-
-    // toggleTableView(false);
   };
 
   $('tbody').on('click', 'a', function(e) {
@@ -66,8 +65,46 @@ $(document).ready(function() {
     console.log(id);
     var showUrl = url + "/" + id;
     console.log(showUrl);
+
+    // To ensure that the form dispears in case they open it and then open another trip. The form should disapear
+    $('#add-registration').hide();
+    // To show the registration button to reserve a spot which displays the form to reserve the spot
+    $('.reserve-spot').show();
     $.get(showUrl, showSuccess);
-      // .fail(showFailure);
   });
+
+  // POST SET UP!
+
+  // Does the section below need to be in its own function name?
+  // To display the reserve a spot button for a given trip
+  $('.reserve-spot').hide();
+
+  // To hide the form to reserve a spot
+  $('#add-registration').hide(); //Initially form wil be hidden.
+
+  // Unveils the form when the button is clicked.
+  $('.reserve-spot').click(function() {
+    $('#add-registration').show();//Form shows on button click
+    $('.reserve-spot').hide();
+  });
+
+  // Actually dealing with posting/reservation
+
+  var postCallBack = function(){
+    alert("POST succeeded!");
+  };
+
+  var addReservationCallBack = function(event){
+    event.preventDefault();
+    console.log("Sending Pet Data!");
+    id = new tripID();
+    console.log("ID: " + id);
+    var postUrl = url + "/" + id + "/reserve";
+    var reservationDetails = $(this).serialize();
+    console.log("Reservation Details: " + reservationDetails);
+    $.post(postUrl, reservationDetails, postCallBack);
+  };
+
+  $('.trip-is-reserved').click(addReservationCallBack);
 
 });

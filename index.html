@@ -10,15 +10,6 @@
   <body>
     <h1>Trek</h1>
 
-    <!-- <section>
-      <form id="add-registration">
-        <label for="name">Pet Name</label>
-        <input type="text" name="name"></input>
-        <label for="age">Pet Age</label>
-        <input type="text" name="age"></input>
-        <button type="submit">Add my Pet!</button>
-      </form>
-    </section> -->
 
     <div id="javaScriptTrek"></div>
 
@@ -26,11 +17,25 @@
     <!-- Note, changed to ajax-index.html from index.html -->
     <script src="scripts/trek.js" type="text/javascript"></script>
 
-    <button type="button" name="button">Load all Trips!</button>
+    <button type="button" name="button" class="load-trips">Load all Trips!</button>
 
     <section>
+
       <section class='trip-info'>
+
       </section>
+
+      <button type="button" name="button" class="reserve-spot">Reserve my Spot Today!</button>
+
+      <form id="add-registration">
+        <label for="name">Name</label>
+        <input type="text" name="name"></input>
+        <label for="age">Age</label>
+        <input type="text" name="age"></input>
+        <label for="email">Email</label>
+        <input type="text" name="email"></input>
+        <button type="submit" class="trip-is-reserved">Let's get Packing!</button>
+      </form>
 
       <table>
         <tr class="trip-headers">
