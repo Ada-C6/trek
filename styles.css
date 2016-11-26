@@ -2,3 +2,16 @@
   background-color: #b81499;
   display: none;
 }
+
+#trips {
+  border-color: brown;
+  border-style: solid;
+  border-radius: 30px;
+  /*displays things in columns */
+  moz-column-count: 6;
+  -moz-column-gap: 10px;
+    -webkit-column-count: 6;
+    -webkit-column-gap: 20px;
+    column-count: 6;
+    column-gap: 20px;*/
+}

@@ -55,6 +55,27 @@ $(document).ready(function(){
 
   });
 
+  var callback = function() {
+    console.log("You've been succesful friend");
+  };
+
+  $('form').submit('click', function(e){
+    e.preventDefault();
+
+    var url = $(this).attr("action");
+    var formData = $(this).serialize();
+
+    $.post(url, formData, function(response){
+      $('#message').html('<p> Reservation made</p>');
+
+      console.log("response is -->", response);
+    });
+  });
+
+
+
+
+
 
 
 }); // end of document.ready()
