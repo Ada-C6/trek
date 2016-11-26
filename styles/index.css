@@ -11,9 +11,13 @@ font-family: 'Mallanna', sans-serif;*/
   margin: 0 auto;
 }
 
-h2, h3, h4, h5, h6 {
+h3, h4, h5, h6 {
   font-family: 'Federo', sans-serif;
   color: #1051f7;
+}
+
+h1, h2 {
+  font-family: 'Trade Winds', cursive;
 }
 
 th {
