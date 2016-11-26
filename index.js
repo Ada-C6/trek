@@ -65,7 +65,7 @@ $(document).ready(function() {
     var form = $('#register-trekker-form');
     var registrationFormHeader = "<h3>Register to go on this trip!</h3>";
     var registeredName = '<label for="name">Name:</label><input type="text" name="name">';
-    var trekID = '<input type="hidden" name="trip_id" value="' + trek.id + '">';
+    var trekID = '<input type="hidden" id="tripID" name="trip_id" value="' + trek.id + '">';
     var submitButton = '<button type="submit" class="solid button">Register</button>';
     form.empty();
     form.append(registrationFormHeader, registeredName, trekID, submitButton);
@@ -117,7 +117,8 @@ var postCallback = function(){
 
 var registerTrekkerCallback = function(event) {
   event.preventDefault();
-  var trekID = $(this).serializeArray()[1].value; // index [0] is the name
+  // var trekID = $(this).serializeArray()[1].value; // index [0] is the name
+  var trekID = $('#tripID').val();
   var trekkerData = $(this).serialize();
   console.log('Sending Trekker Data:' + trekkerData);
   var registerUrl = reserveTripUrl + trekID + '/reserve';
