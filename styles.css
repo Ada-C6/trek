@@ -1,23 +1,47 @@
 /*styles.css*/
 
 body {
-  background-color: lightgray;
-
+  background-color: white;
+  font-family:  "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+}
+.trips {
+  display: inline-block;
+  text-align: center;
 }
 
 .trip-list {
-
-  background-color: darkgray;
-  display: inline-block;
-  width: 10vw;
   text-align: center;
-  height: auto;
-  padding: 5%;
+  display: inline-block;
+  float: left;
+
+}
+
+.trip-list a {
+  background-color: lime;
+  display: inline-block;
+  width: 23vw;
+  height: 20vh;
+  margin: 2.5vw;
+  /*border: 10px dashed black;*/
+  float: left;
+
+  overflow: scroll;
+  box-shadow: 0px 0px 10px rgba(155,255,0,0.99) ;
+  /*position: relative;;
+  top: 30%;*/
+  padding: 30% 2.5vw 0 2.5vw;
+}
+
+.trip-list:hover a {
+  background-color: black;
+  color: lime;
 }
 
 a {
    text-decoration: none;
+   color: black;
 }
+
 /* ---------- Display trip pop-up ------------- */
 /*a.selected {
   background-color: lightgreen;
@@ -26,17 +50,25 @@ a {
 }*/
 
 .trippop {
-  background-color: gray;
-  border: none;
+
+  background-color: rgb(73, 74, 74);
+  color: white;
   cursor: default;
+  box-shadow: 0px 0px 10px rgba(155,255,0,0.99) ;
+  /*border-style: solid;
+  border-width: 10px;*/
   display: none;
   margin-top: 15px;
-  position: absolute;
+  position: fixed;
   left: 20vw;
+  top: 2.5vh;
+  height: 75vh;
   text-align: center;
   width: 50vw;
   z-index:50;
   padding: 5%;
+  overflow: scroll;
+
 }
 
 label {
