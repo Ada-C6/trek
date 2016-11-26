@@ -46,7 +46,6 @@ $(document).ready(function() {
         about = $("<h4>About</h4><p>" + trip.about + "</p>");
 
     $("#show-trip").empty();
-    // $("#booking-form").empty();
     $("#show-trip").append(tripId, name, continent, category, weeks, cost, about);
     $("#hidden-id-field").val(trip.id)
 
@@ -80,8 +79,6 @@ $(document).ready(function() {
 
     var tripData = $(this).serialize(),
         tripId = $("#hidden-id-field").val();
-
-    console.log("trip data = " + tripData)
 
     var reservationUrl = url + "/" + tripId + "/reserve";
     $.post(reservationUrl, tripData, postCallback);
