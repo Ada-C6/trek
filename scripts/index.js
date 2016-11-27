@@ -25,11 +25,11 @@ $(document).ready(function() {
     console.log('this should be a single trip');
     console.log(trip);
     $('.trip-display').empty();
-    $('#reservation-form').toggle();
+    $('#reservation-form').show();
     var name = $('<h2>' + trip.name + '</h2>');
     var duration = $('<div><span>Duration: </span>' + trip.weeks + ' week(s)</div>');
     var cost = $('<div><span>Cost: $</span>' + trip.cost + '</div>');
-    var id = $('<div><span>ID: </span><span class="trip-id">' + trip.id + "</span></div>");
+    var id = $('<div><span>ID: </span><span id="trip-id">' + trip.id + "</span></div>");
     var continent = $('<div><span>Continent: </span>' + trip.continent + '</div>');
     var category = $('<div><span>Category: </span>' + trip.category + '</div>');
     var description = $('<div><span>Description: </span><br>' + trip.about + '</div>');
@@ -66,25 +66,18 @@ $(document).ready(function() {
   //POST
 
   var postCallback = function(){
-    alert("you did it right! yay!");
+    alert("Trip reserved! yay!");
     console.log("did this work");
   };
 
   $('#reservation-form').submit(function(event){
-    var tripId =$(".trip-id").html();
+    var tripId =$("#trip-id").html();
     var reservationUrl = url+ "/" + tripId + "/" + "reserve";
     event.preventDefault();
     var reservationData = $(this).serialize();
     $.post(reservationUrl, reservationData, postCallback);
 
   });
-
-  // var displayForm = function(){
-  //   var form = $('<form id="reservation-form" class="small-6 columns"><label for="name">Name</label><input type="text" name="name"></input><label for="email">Email</label><input type="text" name="email"></input><button type="submit" class="button">Reserve this trip!</button></form>');
-  //
-  // };
-
-
 
 
 });
