@@ -1,4 +1,4 @@
-.trip-info {
+#trip-info {
   display: none;
   background-color: whitesmoke;
 }
@@ -9,7 +9,7 @@ aside {
 
 .fixed-description {
   position: fixed;
-  width: 50%;
+  width: 55%;
   right: 5%;
 }
 
@@ -17,3 +17,7 @@ aside {
   padding: 4% 0;
   border-bottom: 1px solid gray;
 }
+
+/*form {
+  display: none;
+}*/

@@ -26,7 +26,7 @@
       </select> -->
       <!-- <input type="submit" value="Search" />
     </form> -->
-  <!-- </section> --> 
+  <!-- </section> -->
 
 
   <div class="row">
@@ -41,6 +41,24 @@
       <p id="trip-about"></p>
       <p id="trip-weeks"> </p>
       <p id="trip-cost"> </p>
+      <p id="trip-spots"> </p>
+
+      <form action='https://trektravel.herokuapp.com/trips/' method:'POST'>
+        <section>
+          <label for="spot-name">Enter Your Name</label>
+          <input type="text" name="spot-name">
+        </section>
+        <section>
+          <label for="spot-age">Age</label>
+          <input type="text" name="spot-age">
+        </section>
+        <section>
+          <label for="spot-email">Email</label>
+          <input type="text" name="spot-email">
+        </section>
+        <button type="submit" name="Reserve Spot">Submit</button>
+      </form>
+
       </div>
     </aside>
   </div>

@@ -12,29 +12,55 @@ $(document).ready(function() {
     $.get(baseUrl, successCallback);
   });
 
+  var randSpot = function() {
+    var number = Math.floor(Math.random() * 30);
+    return number;
+  }
+
   var tripInfomation = function(trip) {
+    var spotsLeft = randSpot()
     $('#trip-name').text(trip.name);
     $('#trip-continent').text("Continent: " + trip.continent);
     $('#trip-category').text("Category: " + trip.category);
     $('#trip-about').text(trip.about);
     $('#trip-weeks').text("Duration: " + trip.weeks);
     $('#trip-cost').text("Cost: $" + trip.cost);
+    $('#trip-spots').text("Spots Left: " + spotsLeft);
+    $('#trip-info').append(reserveTrip(trip.id));
   }
 
   $('#trips-list').on('click', 'a', function(e) { //e is short for 'event'
     e.preventDefault();
     $('#trip-info').show();
     var showTripUrl = $(this).attr('href');  // attr() = attributes
-    $.get(showTripUrl, tripInfomation).fail(function() {
+    var tripID = $.get(showTripUrl, tripInfomation).fail(function() {
       alert("Page Not Found");
     });
   });
 
-  var searchContinent = function() {
-    console.log("continent");
+  var reserveTrip = function(id) {
+    $('form').on('submit', function(e) {
+      e.preventDefault();
+      var url = 'https://trektravel.herokuapp.com/trips/' + id + '/reserve';
+      var formData = $(this).serialize();
+      console.log(formData);
+      var callback = function() {
+        alert("Spot Reserved for " );
+      }
+      $('form').each(function(){
+        this.reset();
+      });
+      $.post(url, formData, callback);
+    });
   };
 
-  $('#continent-search').on('change', searchContinent());
+
+
+
+
+
+
+
 
 
 
