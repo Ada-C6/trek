@@ -12,13 +12,22 @@
 
     <button id="load">explore!</button>
 
+    <!-- <button id="asia-trips">Asia</button>
+    <button id="asia-trips">North America</button>
+    <button id="asia-trips">South America</button>
+    <button id="asia-trips">Africa</button>
+    <button id="asia-trips">Antarctica</button>
+    <button id="asia-trips">Europe</button> -->
 
     <img src="./assets/world-map.jpg" alt="World Map" id="map-picture">
 
     <div id="trip-details">
         <h4 id="x-details">✗</h4>
         <h2 id ="name"> </h2>
+        <span>
+        <h3> id: </h3>
         <h3 id="id"> </h3>
+        </span>
         <h3 id="continent"> </h3>
         <h3 id="category"> </h3>
         <h3 id="weeks"> </h3>
@@ -28,22 +37,23 @@
 
         <form action="https://trektravel.herokuapp.com/trips/" method="POST" id = "reservation-form" >
           <section>
-            <label>name</label>
+            <label>name:<div class = "hidden">.</div></label>
             <input type="text"  name="name"></input>
           </section>
 
           <section>
-            <label>age</label>
+            <label>age:<div class = "hidden">....</div></label>
             <input type="text"  name="age"></input>
           </section>
 
           <section>
-            <label>email</label>
+            <label>email:<div class = "hidden">.</div></label>
             <input type="text"  name="email"></input>
           </section>
 
           <button id="reserve-spot" type="submit">Reserve</button>
         </form>
+
 
     </div>
 

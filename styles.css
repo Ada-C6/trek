@@ -66,6 +66,29 @@
   display: none;
 }
 
+#reservation-form input{
+  width: 30%;
+  font-size: 1.5em;
+}
+
+#reservation-form section{
+  padding: 1%;
+}
+
+#reservation-form div {
+  display: inline;
+}
+
+#reserve-spot{
+  font-family: 'Varela Round';
+  color: white;
+  border-radius: 20%;
+  border: 1px solid white;
+  background-color: #082567;
+  padding: 1%;
+  margin-left: 30%;
+}
+
 #trip-details h2{
   text-align: center;
   font-size: 2.5em;
@@ -88,4 +111,12 @@
   float: right;
   margin-top: -2%;
   padding-top: 1%;
+}
+
+#trip-details span h3{
+  padding: 0%;
+}
+
+.hidden {
+  opacity: 0;
 }

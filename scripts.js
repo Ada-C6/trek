@@ -1,6 +1,9 @@
 //scripts.js
 $(document).ready(function(){
 
+  var continentURL =  'https://trektravel.herokuapp.com/trips/continent?query='
+
+
   var url = 'https://trektravel.herokuapp.com/trips'
 
   var successCallback = function(response) {
@@ -26,7 +29,6 @@ $(document).ready(function(){
   })
 
 //when you click submit on the form, it makes a new reservation for that trip with the info the user inputs
-
   var callback = function(){
     console.log("Success!")
     alert("You've successfully reserved a spot!");
@@ -38,13 +40,12 @@ $(document).ready(function(){
     $('#reservation-form').toggle();
   };
 
-
+//submitting the reservation form posts a new reservation to the api
   $('#reservation-form').submit(function(e){
     e.preventDefault();
     var reserveURL = url + "/" + $('#id').text() + "/reserve"
     var formData = $(this).serialize();
     $.post(reserveURL, formData, callback);
-
   })
 
 
@@ -63,7 +64,7 @@ $(document).ready(function(){
       $('#continent').text("Continent: " + trip.continent);
       $('#category').text("Category: " + trip.category);
       $('#weeks').text(trip.weeks + " week(s)");
-      $('#cost').text("$" + trip.cost);
+      $('#cost').text("$" + trip.cost.toFixed(2));
       $('#about').text(trip.about);
 
     })
