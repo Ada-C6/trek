@@ -1,0 +1,41 @@
+button{
+  border: solid 1px black;
+  width: 10rem;
+  height: 2rem;
+}
+
+.load-wraper{
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.title{
+  text-align: center;
+}
+
+li{
+  list-style: none;
+  border: solid 1px black;
+  border-radius: 2px;
+  text-align: center;
+  /*margin: 0.25rem;*/
+  padding: 0.25rem;
+}
+
+.show-details-wrapper{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+#show-details{
+  display: none;
+  background-color: AliceBlue;
+  border: solid 1px black;
+  border-radius: 10px;
+  width: 50rem;
+  height: auto;
+  margin: 0 0.5rem;
+  padding: 5px;
+}
