@@ -47,6 +47,7 @@ $(document).ready(function() {
 
   var showSuccess = function(trip) {
     var section = $('.trip-info');
+    var id = $('<div><strong>Id: </strong>' + trip.id + '</div>');
     var name = $('<div><strong>Name: </strong>' + trip.name + '</div>');
     var continent = $('<div><strong>Continent: </strong>' + trip.continent + '</div>');
     var description = $('<div><strong>Description: </strong>' + trip.about + '</div>');
@@ -54,8 +55,10 @@ $(document).ready(function() {
     var category = $('<div><strong>Category: </strong>' + trip.category + '</div>');
     var cost = $('<div><strong>Cost: </strong>' + "$" + trip.cost + '</div>');
 
+    $(tripid).value = trip.id;
+
     section.empty(); // Reset the HTML in case there is data from before
-    section.append(name, continent, description, length, category, cost);
+    section.append(id, name, continent, description, length, category, cost);
   };
 
   $('tbody').on('click', 'a', function(e) {
@@ -66,7 +69,7 @@ $(document).ready(function() {
     var showUrl = url + "/" + id;
     console.log(showUrl);
 
-    // To ensure that the form dispears in case they open it and then open another trip. The form should disapear
+    // To ensure that the form dispears in case they open it and then click to open another trip
     $('#add-registration').hide();
     // To show the registration button to reserve a spot which displays the form to reserve the spot
     $('.reserve-spot').show();
@@ -97,14 +100,13 @@ $(document).ready(function() {
   var addReservationCallBack = function(event){
     event.preventDefault();
     console.log("Sending Pet Data!");
-    id = new tripID();
-    console.log("ID: " + id);
+    var id = this.id.value;
     var postUrl = url + "/" + id + "/reserve";
     var reservationDetails = $(this).serialize();
     console.log("Reservation Details: " + reservationDetails);
     $.post(postUrl, reservationDetails, postCallBack);
   };
 
-  $('.trip-is-reserved').click(addReservationCallBack);
+  $('#add-registration').click(addReservationCallBack);
 
 });

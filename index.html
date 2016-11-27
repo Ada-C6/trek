@@ -34,7 +34,9 @@
         <input type="text" name="age"></input>
         <label for="email">Email</label>
         <input type="text" name="email"></input>
-        <button type="submit" class="trip-is-reserved">Let's get Packing!</button>
+        <!-- Hidden field to send the id to the API to do a psot request and make the reservation -->
+        <input type="hidden" name="id" id="tripid" value=1></input>
+        <button type="submit">Let's get Packing!</button>
       </form>
 
       <table>
