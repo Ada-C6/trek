@@ -43,6 +43,7 @@ $(document).ready(function() {
     var tripUrl = url + "/" + id;
 
     $.get(tripUrl, tripCallback);
+    $("body").animate({ scrollTop: 0 }, "slow");
   });
 
   var failCallback = function(xhr) { //uses 'xhr' - 'XML header' - to denote all kinds of responses, including failures
