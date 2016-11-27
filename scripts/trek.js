@@ -1,3 +1,8 @@
+// @TODO: post!
+// @TODO: styling
+// @TODO: properly handle failures?
+// @TODO: remove console.logs!
+
 var tripListRow = function(trip) {
   var row = $('<tr></tr>');
   var id = trip.id;
@@ -10,28 +15,38 @@ var tripListRow = function(trip) {
 };
 
 var buildShowSection = function(trip) {
-  console.log("Ready to build a show section");
-  console.log("Trip: " + trip);
+  console.log('Ready to build a show section');
+  console.log('Trip: ' + trip);
   // var destination = trip.destination ;
-  var name = trip.name;
-  var id =  trip.id;
-  var continent = trip.continent;
-  var about = trip.about;
-  var category = trip.category;
-  var weeks = trip.week;
-  var cost = trip.cost;
+  var name = $('<h2>' + trip.name+ '</h2>');
+  var continent = $('<h5> Continent: ' + trip.continent + '</h5>');
+  var category = $('<h5> Category: ' + trip.category + '</h5>'); //@TODO: capitalize? (http://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript)
+  var weeks = $('<h5> Weeks: ' + trip.weeks + '</h5>');
+  var about = $('<p> About: ' + trip.about + '</p>');
+  var id = $('<h5> Trip Number: ' + trip.id + '</h5>');
+  var cost = $('<h5> Cost: $' + trip.cost + '</h5>');
 
-  $("#show-trip-section").append(/* @TODO - add elements here */);
+  $('#trip-list-section').hide();
+  $('#show-trip-section').empty();
+  $('#show-trip-section').append(name, continent, weeks, category, about, cost, id);
 };
 
 $(document).ready(function() {
   var listUrl = "https://trektravel.herokuapp.com/trips";
 
-  // List Callbacks
+  // List Callback
   var listSuccessCallback = function(response) {
     console.log("I'm the success callback");
     console.log("Response: " + response);
 
+    $('#show-list-button').hide();
+    $('#trip-list-section').show();
+
+    // Build Table Headers
+    var headerRow = $('<tr><th>Trip</th><th>Continent</th><th>Weeks</th></tr>');
+    $('#trip-list-table > thead').html(headerRow);
+
+    // Build Table Rows
     $.each(response, function(index, trip) {
       console.log(trip);
       var addRow = tripListRow(trip);
@@ -39,14 +54,16 @@ $(document).ready(function() {
     });
   };
 
-  var listFailCallback = function(xhr) {
+  // FailCallback (used for all failures)
+  var FailCallback = function(xhr) {
     console.log('failure');
     console.log(xhr);
   };
 
-  // ID Callbacks
+  // ID Callback
   var idSuccessCallback = function(response) {
     console.log("ID response: " + response);
+    $('#show-list-button').show();
     $('#show-trip-section').empty();
     $('#show-trip-section').append(buildShowSection(response));
   };
@@ -56,7 +73,7 @@ $(document).ready(function() {
   $("#show-list-button").on('click', function(event) {
     console.log("I will do the list thing!");
     $.get(listUrl, listSuccessCallback)
-      .fail(listFailCallback);
+      .fail(FailCallback);
   });
 
   $('#trip-list-table').on('click', 'a', function() {
@@ -67,8 +84,7 @@ $(document).ready(function() {
 
     var idUrl = listUrl + "/" + idForUrl;
     console.log(idUrl);
-    $.get(idUrl, idSuccessCallback);
-      // .fail(id_failCallback)
-      // .always(id_alwaysCallback);
+    $.get(idUrl, idSuccessCallback)
+      .fail(FailCallback);
   });
 });
