@@ -30,12 +30,13 @@ var buildShowSection = function(trip) {
   var id = $('<h5> Trip Number: ' + trip.id + '</h5>');
   var cost = $('<h5> Cost: $' + trip.cost + '</h5>');
 
-  var formIdField = $('<input type="hidden" name="id" value="' + trip.id + '"/>');
+  // var formIdField = $('<input type="hidden" name="id" value="' + trip.id + '"/>');
 
   $('#trip-list-section').hide();
   $('#show-trip-section').prepend(name, continent, weeks, category, about, cost, id);
   $('#reserve-trip-section').show();
-  $('#reserve-trip-form').prepend(formIdField);
+  $('#reserve-trip-form').trigger("reset");
+  $('#trip-id-field').attr("value", trip.id);
 };
 
 // @TODO - remove if unused
@@ -112,7 +113,6 @@ $(document).ready(function() {
   });
 
   $('#reserve-trip-form').submit(function(event) {
-    // @TODO - successfully pull id for URL
     console.log("in Trip Reservation event");
     event.preventDefault();
     console.log("this: " + $(this));
