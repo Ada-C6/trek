@@ -1,8 +1,8 @@
-button{
+/*button{
   border: solid 1px black;
   width: 10rem;
   height: 2rem;
-}
+}*/
 
 .load-wraper{
   display: flex;

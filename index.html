@@ -10,8 +10,9 @@
   <body>
     <header><h1 class="title">Welcome to Travel Site</h1></header>
     <div class="load-wraper">
-      <button id="load"> Fetch! </button>
+      <button class="button" id="load"> Fetch! </button>
     </div>
+
 
   <div class="show-details-wrapper">
     <div id="show-details">
@@ -22,14 +23,65 @@
       <p id="weeks"> </p>
       <p id="category"> </p>
       <p id="about"> </p>
+      <button class="button" id="reserve"> Reserve This Trip </button>
     </div>
   </div>
 
 
   <ul class="row small-up-2 medium-up-3 large-up-4" id="trips"></ul>
 
+  <div id="back-top">
+    <div class="button"> BACK TO TOP </div>
+  </div>
+  
+  <div id="message"></div>
+  <form action="https://trektravel.herokuapp.com/trips" method="post">
+    <section>
+      <label>Name</label>
+      <input type="text" id="name" name="name"></input>
+    </section>
 
+    <section class="button">
+      <button type="submit">Reserve</button>
+    </section>
+  </form>
 
+  <!-- ########## script for "back to top" button ############### -->
+
+    <!-- <script>
+    $(document).ready(function(){
+
+      // hide #back-top first
+      $("#back-top").hide();
+
+      // fade in #back-top
+      $(function () {
+        $(window).scroll(function () {
+          if ($(this).scrollTop() > 100) {
+            $('#back-top').fadeIn();
+          } else {
+            $('#back-top').fadeOut();
+          }
+        });
+
+        $("#back-top").click(function (){
+            $('html, body').animate({
+                scrollTop: $("body").offset().top
+            }, 500);
+        });
+
+        // scroll body to 0px on click
+        $('#back-top .fi-arrow-up').click(function () {
+          $('body,html').animate({
+            scrollTop: 0
+          }, 800);
+          return false;
+        });
+      });
+
+    });
+    </script> -->
+  <!-- ########### script for "back to top" button ############### -->
 
   </body>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
