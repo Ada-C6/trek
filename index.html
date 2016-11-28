@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript Trek</title>
+    <link rel="stylesheet" href="styles/foundation.css">
+    <link rel="stylesheet" href="styles/foundation.min.css">
+    <link rel="stylesheet" href="styles/index.css">
+  </head>
+  <body>
+    <h1>Trek</h1>
+
+
+    <div id="javaScriptTrek"></div>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.js" type="text/javascript"></script>
+    <!-- Note, changed to ajax-index.html from index.html -->
+    <script src="scripts/trek.js" type="text/javascript"></script>
+
+    <button type="button" name="button" class="load-trips">Load all Trips!</button>
+
+    <section>
+
+      <section class='trip-info'>
+
+      </section>
+
+      <form id="add-registration">
+        <label for="name">Name</label>
+        <input type="text" name="name"></input>
+        <label for="age">Age</label>
+        <input type="text" name="age"></input>
+        <label for="email">Email</label>
+        <input type="text" name="email"></input>
+        <!-- Hidden field to send the id to the API to do a psot request and make the reservation -->
+        <input type="hidden" name="id" id="tripid" value=""></input>
+        <button type="submit" id="submit-reservation">Let's get Packing!</button>
+      </form>
+
+      <table>
+        <tr class="trip-headers">
+        </tr>
+        <tbody class="trip-body">
+        </tbody>
+      </table>
+
+    </section>
+  </body>
+</html>
