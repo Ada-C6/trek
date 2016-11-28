@@ -3,3 +3,12 @@
 .trip_detail {
   background-color: #66ccff;
 }
+
+.reserve_form_div {
+  background-color: #ffffff;
+  align-content: center;
+}
+
+.reserve_form {
+  width: 500px;
+}

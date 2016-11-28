@@ -76,17 +76,54 @@ $(document).ready(function() {
   };
 
   var showReserveForm = function(tripID, tripDetailsEl) {
+    tripDetailsEl.children('.reserve_form_div').remove();
 
-    var reserveFormEl = $('<form>', {
-      'id': 'reserveTripForm',
-      'html': '' +
-        '<input type="text" id="reserveName" name="name" value="" />' +
-        '<input type="text" id="reserveAge" name="age" value="" />' +
-        '<input type="text" id="reserveEmail" name="email" value="" />',
-      'action': 'https://trektravel.herokuapp.com/trips/' + tripID + '/reserve'
+    var reserveDivEl = $('<div>', {
+      id: "reserveTripFormDiv",
+      class: "reserve_form_div",
     });
 
-    tripDetailsEl.append(reserveFormEl);
+    var reserveFormEl = $('<form>', {
+      class: "reserve_form",
+      id: 'reserveTripForm',
+      method: "POST",
+      html: '' +
+        '<label for="reserveName">Name</label>' +
+        '<input type="text" id="reserveName" name="name" value="" />' +
+        '<label for="reserveAge">Age</label>' +
+        '<input type="text" id="reserveAge" name="age" value="" />' +
+        '<label for="reserveEmail">Email</label>' +
+        '<input type="text" id="reserveEmail" name="email" value="" />'
+    });
+
+    reserveDivEl.append(reserveFormEl);
+
+    $('<button>', {
+      text: 'Reserve Your Spot!',
+      class: 'button',
+      click: function() {
+        var name = reserveFormEl.children('#reserveName').val();
+        var age = reserveFormEl.children('#reserveAge').val();
+        var email = reserveFormEl.children('#reserveEmail').val();
+        $.ajax({
+          type: 'POST',
+          url: 'https://trektravel.herokuapp.com/trips/' + tripID + '/reserve',
+          data: {
+            name: name,
+            age: age,
+            email: email,
+          },
+          success: function(data, textStatus) {
+            console.log('success', data)
+            alert('Your spot has been reserved!');
+          },
+          dataType: 'html'
+        });
+        return false;
+      }
+    }).appendTo(reserveDivEl);
+
+    tripDetailsEl.append(reserveDivEl);
   };
 
   var tripsCallback = function (trips) {
