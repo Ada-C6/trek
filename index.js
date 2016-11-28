@@ -15,6 +15,7 @@ $(document).ready(function(){
   //when trips button is pushed, do the successCallback method
   $('#load').on('click', function(){
     $.get(url, successCallback);
+    $("#load").css("display", "none")
   })
 
 //click on a trip to show more information about that trip
@@ -30,7 +31,7 @@ $(document).ready(function(){
     $.get(tripUrl, function(trip){
        tripId= trip.id.toString();
   
-    
+      
       
       //I'm setting largeBlock so I can make  expanding/contracting info thing when user clicks. So this html is dynamically appended 
       //after the link that the user clicks
