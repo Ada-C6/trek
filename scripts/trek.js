@@ -12,7 +12,7 @@ $(document).ready(function(){
 
   var successCallback = function(response) {
     console.log('success!');
-
+    var headers = $('.trip-headers');
     var body = $('.trip-body');
     body.empty();
 
@@ -36,14 +36,15 @@ $(document).ready(function(){
       .always(alwaysCallback);
   });
 
-  var toggleTableview = function() {
+  var toggleTableview = function(onIndicator) {
     $('.trip-details').toggle(!onIndicator);
-    $('button').toggle(!onIndicator);
+    $('#all-trips-button').toggle(!onIndicator);
     $('table').toggle(onIndicator);
   };
 
   var showSuccess = function(trip) {
     var section = $('.trip-details');
+    var id = $('<strong>Trip ID:</strong><div>' + trip.id + '</div>')
     var name = $('<strong>Name:</strong><div>' + trip.name + '</div>');
     var continent = $('<strong>Continent:</strong><div>' + trip.continent + '</div>');
     var weeks = $('<strong>Trip Length:</strong><div>' + trip.weeks + ' weeks</div>');
@@ -51,7 +52,7 @@ $(document).ready(function(){
     var about = $('<strong>About:</strong><div>' + trip.about + '<div>');
 
     section.empty();
-    section.append(name, continent, weeks, cost, about);
+    section.append(name, continent, weeks, cost, about, id);
 
     toggleTableview(false);
   };
