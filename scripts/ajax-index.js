@@ -140,7 +140,7 @@ $(document).ready(function() {
 
 //POST:
 var postCallback = function () {
-  alert("POST worked just fine!");
+  alert("Your Trip is Booked!");
 };
 
 var addReservationCallback = function(event) {
