@@ -1,6 +1,6 @@
-// @TODO: post!
-// @TODO: styling
-// @TODO: properly handle failures?
+// @TODO: styling?
+// @TODO: different handling for failures
+
 // @TODO: remove console.logs!
 
 // Build HTML section functions
@@ -79,8 +79,10 @@ $(document).ready(function() {
   // Post Callback function (Reservation)
   var postSuccessCallback = function(response) {
     console.log("post response: " + response);
+    console.log("Response.name: " + response.name);
     // $('#show-list-button').show();
-    $('#show-trip-section').prepend('<p>Reservation added! </p>');
+    $('#show-trip-section').prepend('<h2>Reservation added! Enjoy your ' + response.weeks + ' week(s) of: </h2>');
+    $('#reserve-trip-section').hide();
   };
 
   // FailCallback (used for all failures)
