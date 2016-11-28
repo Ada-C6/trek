@@ -11,7 +11,7 @@ var createHeaders = function(headerId, responseKeys) {
 
 var toggleTableView = function(onIndicator) {
   $('.trip-details').toggle(!onIndicator);
-  $('button').toggle(!onIndicator);
+  $('#all-trips-button').toggle(!onIndicator);
   $('.continent-trips').toggle(!onIndicator);
   $('table.all-trips').toggle(onIndicator);
 };
@@ -45,21 +45,32 @@ var successCallback = function (response) {
     body.append(row);
   });
 
+  $('#trip-details').css('display','none');
+  $('#add-reservation-form').css('display','none');
   toggleTableView(true);
 };
 
 //FOR TBODY ON INITIAL VIEW OF INDEX PAGE TO CREATE SHOW VIEW
 var showSuccess = function(trip) {
-  var section = $('.trip-details');
-  var name = $('<strong>Name</strong><div>' + trip.name + '</div>');
-  var continent = $('<strong>Location</strong><div id="continent">' + trip.continent + '</div>');
-  var about = $('<strong>Trip Description</strong><div>' + trip.about + '</div>');
-  var category = $('<strong>Trip Category</strong><div>' + trip.category + '</div>');
-  var weeks = $('<strong>Weeks Long</strong><div>' + trip.weeks + '</div>');
-  var cost = $('<strong>Cost</strong><div>' + '$ ' + trip.cost + '</div>');
+  var section = $('#trip-details');
+  // var title = $('<strong>Trip Details:</strong><div class="add-padding-bot"></div>');
+
+  var id = $('<strong>Trip Id</strong><div class="add-padding-bot">' + trip.id + '</div>');
+  var name = $('<strong>Name</strong><div class="add-padding-bot">' + trip.name + '</div>');
+  var continent = $('<strong>Location</strong><div class="add-padding-bot" id="continent">' + trip.continent + '</div>');
+  var about = $('<strong>Trip Description</strong><div class="add-padding-bot">' + trip.about + '</div>');
+  var category = $('<strong>Trip Category</strong><div class="add-padding-bot">' + trip.category + '</div>');
+  var weeks = $('<strong>Weeks Long</strong><div class="add-padding-bot">' + trip.weeks + '</div>');
+  var cost = $('<strong>Cost</strong><div class="add-padding-bot">' + '$ ' + trip.cost + '</div>');
 
   section.empty(); // Reset the HTML in case there is data from before
-  section.append(name, continent, about, category, weeks, cost);
+  // section.append(title);
+  section.append(name, continent, weeks, category, about, cost, id);
+  section.css('display','inline-block');
+  $('#add-reservation-form').css('display','inline-block');
+
+  //assigns the hiddden field in the form to the trip id when the form populates
+  $('.trip-id').val(trip.id);
 
   toggleTableView(false);
 };
@@ -102,12 +113,12 @@ $(document).ready(function() {
   // Which URL do we want to 'get'?
   var url = 'https://trektravel.herokuapp.com/trips';
 
-  $('.button').click(function() {
+  $('#all-trips-button').click(function() {
     $.get(url, successCallback)
       .fail(failCallback);
   });
 
-//>>>>>>>>>>>>>>>>>>>>>>>
+  //>>>>>>>>>>>>>>>>>>>>>>>
   $('tbody').on('click', 'a', function(event) {
     event.preventDefault();
 
@@ -122,4 +133,26 @@ $(document).ready(function() {
         $.get(continentUrl, showContinent);
       });
   });
+
+  $('#add-reservation-form').submit(addReservationCallback);
+
 });
+
+//POST:
+var postCallback = function () {
+  alert("POST worked just fine!");
+};
+
+var addReservationCallback = function(event) {
+  event.preventDefault();
+  var tripId = $('.trip-id').val();
+
+  console.log("Booking Your trip!");
+  var reservationUrl = 'https://trektravel.herokuapp.com/trips/' + tripId + '/reserve';
+  var reservationData = $(this).serialize();
+  console.log("Reservation data is " + reservationData);
+
+  $.post(reservationUrl, reservationData, postCallback);
+
+  toggleTableView(false);
+};

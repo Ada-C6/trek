@@ -14,16 +14,22 @@ body {
   margin-left: 3%;
 }
 
-.trip-details {
+.add-padding {
+  padding: 2%;
+}
+
+#add-reservation-form {
+  display: none;
+  /*changed to display inline later through jquery*/
+}
+
+
+#trip-details {
   background-color: white;
   margin: 2%;
+  /*display: none;*/
 }
 
 table {
-  width: 80%;
   text-align: left;
 }
-
-/*table tr {
-  width: 15%;
-}*/

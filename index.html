@@ -10,17 +10,36 @@
   <body>
     <h1 class='add-margin-lf'>Sky Treks!</h1>
 
-    <button type="button" class="button add-margin-lf" name="button">Check Out Trips!</button>
+    <button type="button" class="button add-margin-lf" id="all-trips-button" name="button">Check Out Trips!</button>
 
-    <section class="trip-details">
-    </section>
+    <div class="row">
+      <table class='small-12 medium-3 columns continent-trips'>
+        <tr class='continent-trips-header'>
+        </tr>
+        <tbody class='continent-trips-body'>
+        </tbody>
+      </table>
 
-    <table class='continent-trips'>
-      <tr class='continent-trips-header'>
-      </tr>
-      <tbody class='continent-trips-body'>
-      </tbody>
-    </table>
+      <div class="row">
+        <section id="trip-details" class="small-12 medium-7 columns">
+        </section>
+
+        <form id="add-reservation-form" class="small-12 medium-7 columns">
+          <label for="name">Name:</label>
+          <input type="text" name="name">
+
+          <label for="age">Age:</label>
+          <input type="text" name="age">
+
+          <label for="email">Email:</label>
+          <input type="text" name="email">
+
+          <input type="hidden" name="trip-id" class="trip-id">
+
+          <button type="submit" class="button">Book Reservation Now</button>
+        </form>
+      </div>
+    </div>
 
     <table class='all-trips add-margin'>
       <tr class='trips-header'>
