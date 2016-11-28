@@ -90,6 +90,7 @@ $(document).ready(function() {
     var reservationDetails = $(this).serialize();
     console.log("Reservation Details: " + reservationDetails);
     $.post(postUrl, reservationDetails, postCallBack);
+    $('#add-registration').hide();
   };
 
   $('#add-registration').submit(addReservationCallBack);
