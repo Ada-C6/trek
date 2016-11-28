@@ -55,7 +55,6 @@ $(document).ready(function() {
     var category = $('<div><strong>Category: </strong>' + trip.category + '</div>');
     var cost = $('<div><strong>Cost: </strong>' + "$" + trip.cost + '</div>');
 
-    $(tripid).value = trip.id;
 
     section.empty(); // Reset the HTML in case there is data from before
     section.append(id, name, continent, description, length, category, cost);
