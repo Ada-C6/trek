@@ -1,0 +1,59 @@
+@import url('foundation.css');
+
+/*font-family: 'Trade Winds', cursive;
+font-family: 'Federo', sans-serif;
+font-family: 'Mallanna', sans-serif;*/
+
+
+
+#main {
+  width:70%;
+  margin: 0 auto;
+}
+
+h3, h4, h5, h6 {
+  font-family: 'Federo', sans-serif;
+  color: #1051f7;
+}
+
+h1, h2 {
+  font-family: 'Trade Winds', cursive;
+}
+
+th {
+  font-family: 'Federo', sans-serif;
+}
+
+td, p {
+  font-family: 'Mallanna', sans-serif;
+  margin-left: 30px;
+}
+
+header {
+  /*background-image: url('../images/beach.jpg');*/
+  margin-bottom: 30px;
+}
+
+header h1 {
+  position: absolute;
+  margin-top: 50px;
+  margin-left: 10px;
+  font-family: 'Trade Winds', cursive;
+  font-size: 8vw;
+  color: #ffffff;
+}
+
+a {
+  font-weight: bold;
+  color: #1051f7;
+}
+
+a:hover {
+  font-weight: bold;
+  font-style: italic;
+  color: #0b3296;
+}
+
+tr td {
+  background-color: white;
+}

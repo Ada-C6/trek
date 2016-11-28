@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>TREKKER!</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Federo|Mallanna|Trade+Winds" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to Trekker!</h1>
+      <img src="images/beach.jpg" alt="beach banner">
+    </header>
+
+    <section id="main">
+      <button type="button" class="button index-button" name="button">All Trips</button>
+
+      <section id="index">
+        <table id="trips-table">
+          <tr>
+            <th>Trip Name</th>
+            <th>Trip Continent</th>
+          </tr>
+          <tbody class="trips-tbody"></tbody>
+        </table>
+      </section>
+
+      <section id="show">
+
+        <div id="show-trip"></div>
+
+        <form id="add-reservation">
+          <h2>Book this trip!</h2>
+          <label for="name">Name: </label>
+          <input type="text" name="name"></input>
+          <br>
+          <label for="email">Email: </label>
+          <input type="text" name="email"></input>
+          <br>
+          <label for="age">Age: </label>
+          <input type="text" name="age"></input>
+          <br>
+
+          <input type="hidden" id="hidden-id-field">
+
+          <button type="submit" class="button form-button" name="submit-button">Trek On!</button>
+        </form>
+
+      </section>
+
+
+    </section>
+
+    <script  src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <script src="scripts/trek.js" type="text/javascript"></script>
+  </body>
+</html>
