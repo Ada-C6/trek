@@ -22,41 +22,54 @@ var successTripDetails = function(trip) {
   var resName = $('<input type="text", name="name"></input>');
   var emailLabel = $('<label for="age">Email Address</label>');
   var resEmail = $('<input type="text" name="email"></input>');
+  var trip_id = $('<input type= "hidden", id= "tripID", name= "tripID", value=' + trip.id + '>');
   var button = $('<button type="submit" class="button"> Make My Reservation for ' + trip.name +'!</button>');
 
-  var trip_id = $('<input>').attr({
-      type: 'hidden',
-      id: trip.id,
-      name: 'trip id'
-    });
-
-    console.log(trip_id);
+  console.log(trip_id);
 
   form.append(nameLabel, resName, emailLabel, resEmail, button, trip_id);
 
   section.empty();//clears older clicks
   section.append(name, continent, category, cost, duration, about, form);
 
-
-  // Adding Post Functionality
-  var postCallback = function(){
-    alert("You've make a reservation!");
-  };
-
-
-  var addReservation = function(event) {
-    event.preventDefault();
-    console.log("sending reservation");
-    var reservation = $(this).serialize();
-    // console.log(this);
-    var reservationurl = 'https://trektravel.herokuapp.com/trips/' + trip.id + '/reserve';
-     //takes form data and transforms it into  query args. this refers to the form
-    $.post(reservationurl, reservation, postCallback());
-  };
-
-    $('form').submit(addReservation);
+  // // Adding Post Functionality
+  // var postCallback = function(){
+  //   alert("You've make a reservation!");
+  // };
+  //
+  //
+  // var addReservation = function(event) {
+  //   event.preventDefault();
+  //   console.log("sending reservation");
+  //   var reservation = $(this).serialize();
+  //   // console.log(this);
+  //   var reservationurl = 'https://trektravel.herokuapp.com/trips/' + trip.id + '/reserve';
+  //    //takes form data and transforms it into  query args. this refers to the form
+  //   $.post(reservationurl, reservation, postCallback());
+  // };
+  //
+$('form').submit(addReservation);
 };
 
+// Adding Post Functionality
+var postCallback = function(){
+  alert("You've make a reservation!");
+};
+
+var addReservation = function(event) {
+  event.preventDefault();
+  console.log("sending reservation");
+
+  var reservation = $(this).serialize();
+  // console.log(this);
+  var tripID = $("#tripID").val();
+  console.log(tripID);
+  var reservationurl = 'https://trektravel.herokuapp.com/trips/' + tripID + '/reserve';
+   //takes form data and transforms it into  query args. this refers to the form
+  $.post(reservationurl, reservation, postCallback());
+};
+
+// $('form').submit(addReservation);
 
 $('tbody').on('click', 'a', function(e) {
     e.preventDefault();
@@ -67,6 +80,8 @@ $('tbody').on('click', 'a', function(e) {
       .fail(failCallback);
   });
 
+
+//getting all trip information
 var successCallback = function(response) {
     console.log('success!');
 
