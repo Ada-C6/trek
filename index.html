@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="_reset_and_normalize.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title> TREK </title>
+  </head>
+
+  <body>
+    <!-- Display trip pop-up -->
+    <div class="trippop pop">
+      <h2 id=trip-name></h2><p id="trip-continent"> Test! </p>
+      <!-- <img src="https://placeimg.com/400/300/nature" alt="Random nature image" height="300" width="400"> -->
+      <!-- <p id="trip-continent"> Test! </p> -->
+      <p id="trip-description"> Test! </p>
+      <p><span>Duration: </span><span id="trip-weeks"> Test! </span><span> weeks </span></p>
+      <p><span>$</span><span id="trip-cost"> Test! </span></p>
+      <p id="trip-category"> Test! </p>
+      <p id="trip-id"> Test! </p>
+
+      <form method="POST" id="new_trip" action="https://trektravel.herokuapp.com/trips"> <!-- action="/messages" -->
+        <p><label for="name">Your name</label><input type="text" size="30" name="name" />
+        <label for="email">Your email</label><input type="text" size="30" name="email" /></p>
+        <p><input type="submit" value="Book Now!" name="commit" id="trip_submit"/> or <a class="close" href="/">Cancel</a></p>
+      </form>
+      <!-- <h5 id="test-message"></h5> -->
+    </div>
+    <!-- end  Display trip pop-up -->
+
+    <button id="load"> Get Trips! </button>
+    <div id="trips"> </div>
+
+
+  </body>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="scripts.js"></script>
+</html>
