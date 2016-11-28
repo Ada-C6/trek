@@ -1,6 +1,10 @@
 span {
   font-weight: bold;
 }
+h1, #trip-load-button {
+  margin-left: 3%;
+}
+
 .button {
   border: 2px solid darkgreen;
   border-radius: 15px;
