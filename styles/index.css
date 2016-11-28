@@ -1,1 +1,27 @@
 @import url('foundation.css');
+
+body {
+  margin: 5%;
+  font-family: 'Quicksand';
+}
+a {
+  color: #33cccc;
+  font-family: 'Quicksand';
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ff5050;
+}
+
+#load-trip-button {
+  border: 2px solid #ff5050;
+  border-radius: 25px;
+  padding: 1%;
+}
+
+h1 {
+  text-align: center;
+  color: #33cccc;
+  font-family: 'Quicksand';
+}
