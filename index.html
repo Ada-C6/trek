@@ -10,7 +10,7 @@
   <body>
     <h1 class='add-margin-lf'>Sky Treks!</h1>
 
-    <button type="button" class="button add-margin-lf" id="all-trips-button" name="button">Check Out Trips!</button>
+    <button type="button" class="button add-margin-lf round-edges" id="all-trips-button" name="button">Check Out Trips!</button>
 
     <div class="row">
       <table class='small-12 medium-3 columns continent-trips'>
@@ -20,25 +20,23 @@
         </tbody>
       </table>
 
-      <div class="row">
-        <section id="trip-details" class="small-12 medium-7 columns">
-        </section>
+      <section id="trip-details" class="small-12 medium-5 columns">
+      </section>
 
-        <form id="add-reservation-form" class="small-12 medium-7 columns">
-          <label for="name">Name:</label>
-          <input type="text" name="name">
+      <form id="add-reservation-form" class="small-12 medium-3 columns">
+        <label for="name">Name:</label>
+        <input type="text" name="name" class="round-edges">
 
-          <label for="age">Age:</label>
-          <input type="text" name="age">
+        <label for="age">Age:</label>
+        <input type="text" name="age" class="round-edges">
 
-          <label for="email">Email:</label>
-          <input type="text" name="email">
+        <label for="email">Email:</label>
+        <input type="text" name="email" class="round-edges">
 
-          <input type="hidden" name="trip-id" class="trip-id">
+        <input type="hidden" name="trip-id" class="trip-id">
 
-          <button type="submit" class="button">Book Reservation Now</button>
-        </form>
-      </div>
+        <button type="submit" class="button round-edges">Book Reservation Now</button>
+      </form>
     </div>
 
     <table class='all-trips add-margin'>

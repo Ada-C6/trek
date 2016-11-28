@@ -18,15 +18,20 @@ body {
   padding: 2%;
 }
 
+.round-edges {
+  border-radius: 15px;
+}
+
 #add-reservation-form {
   display: none;
+  padding: 0%;
   /*changed to display inline later through jquery*/
 }
 
 
 #trip-details {
   background-color: white;
-  margin: 2%;
+  margin: 0 1% 0 3%;
   /*display: none;*/
 }
 
