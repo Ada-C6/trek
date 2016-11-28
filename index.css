@@ -1,19 +1,6 @@
-/*body {
-  background-color: purple;
-}*/
-/*body {
+.trip-body {
   text-align: center;
-}*/
-.trip-details {
-  border: 5px solid #cccccc;
-  padding: 40px;
-  width: 800px;
-  margin-left: 200px;
-  empty-cells: hide;
-  border-radius: 10px;
-
 }
-
-/*table {
-  width: 600px;
-}*/
+.title{
+  text-align: center;
+}
