@@ -4,6 +4,8 @@ $(document).ready(function() {
 
   var url = 'https://trektravel.herokuapp.com/trips';
 
+  $('#add-registration').hide();
+
   var successCallback = function (response) {
     console.log('success!');
     console.log(response);
@@ -55,6 +57,7 @@ $(document).ready(function() {
     var category = $('<div><strong>Category: </strong>' + trip.category + '</div>');
     var cost = $('<div><strong>Cost: </strong>' + "$" + trip.cost + '</div>');
 
+    $("#tripid").val(trip.id);
 
     section.empty(); // Reset the HTML in case there is data from before
     section.append(id, name, continent, description, length, category, cost);
@@ -68,26 +71,9 @@ $(document).ready(function() {
     var showUrl = url + "/" + id;
     console.log(showUrl);
 
-    // To ensure that the form dispears in case they open it and then click to open another trip
-    $('#add-registration').hide();
-    // To show the registration button to reserve a spot which displays the form to reserve the spot
-    $('.reserve-spot').show();
+    $('#add-registration').show();
+
     $.get(showUrl, showSuccess);
-  });
-
-  // POST SET UP!
-
-  // Does the section below need to be in its own function name?
-  // To display the reserve a spot button for a given trip
-  $('.reserve-spot').hide();
-
-  // To hide the form to reserve a spot
-  $('#add-registration').hide(); //Initially form wil be hidden.
-
-  // Unveils the form when the button is clicked.
-  $('.reserve-spot').click(function() {
-    $('#add-registration').show();//Form shows on button click
-    $('.reserve-spot').hide();
   });
 
   // Actually dealing with posting/reservation
@@ -106,6 +92,6 @@ $(document).ready(function() {
     $.post(postUrl, reservationDetails, postCallBack);
   };
 
-  $('#add-registration').click(addReservationCallBack);
+  $('#add-registration').submit(addReservationCallBack);
 
 });
