@@ -56,6 +56,15 @@ $(document).ready(function() {
         text: "cost: " + trip.cost,
       }).appendTo(detailsEl);
 
+      $('<button>', {
+        text: "Reserve a spot",
+        class: "button",
+        click: function() {
+          showReserveForm(tripID, detailsEl);
+          return false;
+        }
+      }).appendTo(detailsEl);
+
       detailsEl.fadeIn(500);
     }).always(function(){
       // not used yet
@@ -64,6 +73,20 @@ $(document).ready(function() {
         text: "failed to load trip details :(, try again...",
       }).appendTo(detailsEl);
     });
+  };
+
+  var showReserveForm = function(tripID, tripDetailsEl) {
+
+    var reserveFormEl = $('<form>', {
+      'id': 'reserveTripForm',
+      'html': '' +
+        '<input type="text" id="reserveName" name="name" value="" />' +
+        '<input type="text" id="reserveAge" name="age" value="" />' +
+        '<input type="text" id="reserveEmail" name="email" value="" />',
+      'action': 'https://trektravel.herokuapp.com/trips/' + tripID + '/reserve'
+    });
+
+    tripDetailsEl.append(reserveFormEl);
   };
 
   var tripsCallback = function (trips) {
