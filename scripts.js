@@ -32,7 +32,7 @@ $(document).ready(function(){
     var tripUrl = $(this).attr('href');
     // console.log("I work I do!");
 
-    $.get(url, successCallBack);
+    // $.get(url, successCallBack); // do I need this one?
     // console.log("I work I do!");
 
     // you can also pass a url doesn't exist and see that it doesnt work
@@ -81,21 +81,25 @@ $(document).ready(function(){
 
 
     var theTripsId = $('#theTripsId').attr('value');
-    var url = "https://trektravel.herokuapp.com/trips/" + theTripsId + "/" + "reserve" + "?" + "name=" + this.name + "&age="+ this.age + "&email=" + this.email;
+
+    var url = "https://trektravel.herokuapp.com/trips/" + theTripsId + "/" + "reserve";
 
     // var url = $(this).attr("action");
     // retrieve the action from the form.
     //set the theTripsId to be the value from attribute in the form.
     // var theTripsId = $('#theTripsId').attr('value');
 
-    var formData = $(this).serialize();
-    // console.log("theTripsId:" + theTripsId);
+    var formData = $('form').serialize();
+    console.log("testing:", $("#testing").value);
+
+
+    console.log("form ->" + formData);
 
     $.post(url, formData, function(response){
       $('#message').html('<p>Your spot has been reserved! </p>');
+        console.log("form =>", formData);
 
       $('#message').show();
-        console.log("response " + response);
 
     }).fail();{
       $('#message').html('<p>Reservation Failed</p>');
