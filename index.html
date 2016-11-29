@@ -37,24 +37,25 @@
 
   <h3>RESERVE A TRIP FRIEND</h3>
 
-    <form class="row" action="http:https://trektravel.herokuapp.com/trips" method="POST">
+    <form class="row form1" action="http:https://trektravel.herokuapp.com/trips" method="POST">
+
       <section class="small-2 medium-3 large-4 columns">
         <label for="name">Name:</label>
-        <input type="text" id="testing"></input>
+        <input type="text" name="name"></input>
       </section>
 
-      <section class="small-2 medium-3 large-4 columns" id="age">
+      <section class="small-2 medium-3 large-4 columns" >
         <label for="age">age:</label>
-        <input type="text"></input>
+        <input type="text" name="age"></input>
       </section>
 
-      <section class="small-2 medium-3 large-4 columns" id="email">
+      <section class="small-2 medium-3 large-4 columns" >
         <label for="email">email:</label>
-        <input type="text"></input>
+        <input type="text" name="email"></input>
       </section>
 
 
-      <button class="button" id="createTrip" type="submit">Reserve Trip</button>
+      <button class="button" name="createTrip" type="submit">Reserve Trip</button>
 
     </form>
   </div>

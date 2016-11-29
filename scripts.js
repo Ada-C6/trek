@@ -89,7 +89,7 @@ $(document).ready(function(){
     //set the theTripsId to be the value from attribute in the form.
     // var theTripsId = $('#theTripsId').attr('value');
 
-    var formData = $('form').serialize();
+    var formData = $('.form1').serialize();
     console.log("testing:", $("#testing").value);
 
 
