@@ -2,3 +2,28 @@
   background-color: #b81499;
   display: none;
 }
+
+#trips {
+  border-color: brown;
+  border-style: solid;
+  border-radius: 20px;
+  /*displays things in columns */
+  moz-column-count: 3;
+  -moz-column-gap: 10px;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 20px;
+    column-count: 3;
+    column-gap: 20px;*/
+}
+
+.tripbox {
+  background-color: yellow;
+  border-color: pink;
+}
+
+.tripbox a {
+  border-color: blue;
+  border-radius: 20px;
+  box-sizing: border-box;
+
+}
