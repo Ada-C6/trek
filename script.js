@@ -12,8 +12,22 @@ $(document).ready(function(){
     $.get(url, successCallback);
   });
 
-  
+  $('#trips').on('click', 'a', function(e) {
+    e.preventDefault();
+    $('#tripdesc').show();
+    var tripUrl = $(this).attr('href');
+
+    $.get(tripUrl, function(trip){
+      $('#name').text(trip.name);
+      $('#continent').text(trip.continent);
+      $('#about').text(trip.about);
+      $('#category').text(trip.category);
+      $('#weeks').text(trip.weeks);
+      $('#cost').text(trip.cost);
+    }).fail(function(){
+      alert("failed");
+    });
+
+  });
 
 });
-
-//name, continent, about, category, weeks, cost
