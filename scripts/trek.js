@@ -1,7 +1,7 @@
 // @TODO: styling?
 // @TODO: different handling for failures
 
-// @TODO: remove console.logs!
+// @TODO: remove console.logs! nah, nm.
 
 // Build HTML section functions
 var tripListRow = function(trip) {
@@ -21,16 +21,13 @@ var tripListRow = function(trip) {
 var buildShowSection = function(trip) {
   console.log('Ready to build a show section');
   console.log('Trip: ' + trip);
-  // var destination = trip.destination ;
   var name = $('<h2>' + trip.name+ '</h2>');
   var continent = $('<h5> Continent: ' + trip.continent + '</h5>');
-  var category = $('<h5> Category: ' + trip.category + '</h5>'); //@TODO: capitalize? (http://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript)
+  var category = $('<h5> Category: ' + trip.category + '</h5>');
   var weeks = $('<h5> Weeks: ' + trip.weeks + '</h5>');
   var about = $('<p> About: ' + trip.about + '</p>');
   var id = $('<h5> Trip Number: ' + trip.id + '</h5>');
   var cost = $('<h5> Cost: $' + trip.cost + '</h5>');
-
-  // var formIdField = $('<input type="hidden" name="id" value="' + trip.id + '"/>');
 
   $('#trip-list-section').hide();
   $('#show-trip-section').prepend(name, continent, weeks, category, about, cost, id);
@@ -38,12 +35,6 @@ var buildShowSection = function(trip) {
   $('#reserve-trip-form').trigger("reset");
   $('#trip-id-field').attr("value", trip.id);
 };
-
-// @TODO - remove if unused
-// var buildReservationForm = function(trip) {
-// };
-
-
 
 $(document).ready(function() {
   var listUrl = "https://trektravel.herokuapp.com/trips";
