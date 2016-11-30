@@ -58,8 +58,9 @@ $('form').submit(function(e) {
 
 
   var callback = function() {
-    console.log('success!');
-    };
+    alert('You have been registered for this trip!');
+  };
+
   var formData = $(this).serialize();
   $.post(url, formData, callback);
 });
