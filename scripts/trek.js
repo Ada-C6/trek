@@ -1,7 +1,6 @@
 $(document).ready(function() {
   var url =  "https://trektravel.herokuapp.com/trips";
 
-
   var successCallback = function (response) {
     console.log('success!');
 
@@ -41,6 +40,11 @@ $(document).ready(function() {
     section.empty(); // Reset the HTML in case there is data from before
     section.append(id, name, destination, continent, about, category, weeks, cost);
 
+    var form = $('#reservation-form');
+    var id = $('<input type="hidden", name="trip-id", class="trip-id", value=' + trip.id + '>');
+    form.append(id);
+
+
     toggleTableView(false);
   };
 
@@ -49,8 +53,7 @@ $(document).ready(function() {
     console.log(xhr);
   };
 
-
-  // TOGGLE the trip table with the trip "show"
+  // TOGGLE the trips table with the trip "show"
   var toggleTableView = function(onIndicator) {
     $('.trip-details').toggle(!onIndicator);
     $('button').toggle(!onIndicator);
@@ -71,23 +74,24 @@ $(document).ready(function() {
       .fail(showFailure)
   });
 
-
   // POST
-  var postURL = "https://trektravel.herokuapp.com/trips/1/reserve";
   var postCallback = function(){
     alert("POST worked just fine!");
 
     toggleTableView(false);
-  }
+  };
 
   var reserveSeat = function(event) {
     event.preventDefault();
 
-    console.log("Reserving a seat!");
+    var reservationID = $("input[type=hidden]").val(); //$('.trip-id').val();
+    var postURL = "https://trektravel.herokuapp.com/trips/" + reservationID + "/reserve";
+
+    console.log("Sending reservation data");
     var reservationData = $(this).serialize();
     console.log("Reservation data is " + reservationData);
     $.post(postURL, reservationData, postCallback);
-  }
+  };
 
   $('#reservation-form').submit(reserveSeat); // on submitting the form, we want the reserveSeat function to happen (AFTER submitting the form which is why there are no parentheses)
 
