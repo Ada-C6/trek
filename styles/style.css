@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline');
+
+/*****************/
+/*  Overall      */
+/*****************/
+
+body {
+  background-color: #b2cecf;
+}
+
+/*****************/
+/*  Header       */
+/*****************/
+
+header {
+  margin: 2%;
+}
+
+nav h3 {
+  text-align: center;
+  font-family: 'Bungee Inline';
+  font-size: 4em;
+  color: #cc5490;
+}
+
+.style-button {
+  background-color: #cc5490;
+  /*border-width: 200px;
+  border-color: #D3D3D3;*/
+  width: 85%;
+  /*height: 90%;*/
+  font-size: 2.5em;
+  font-family: 'Bungee Inline';
+  display: block; margin: 0 auto;
+
+}
+
+.style-button:hover {
+  background-color:  #50d07d;
+}
+
+.button-container {
+  padding-top: 10%;
+  text-align: center;
+  /*margin-left: 18%;
+  margin-top: 10%;*/
+
+}
+
+
+/*****************/
+/*  Main Body    */
+/*****************/
+#main-body {
+  margin: 7%;
+}
+
+#summary {
+  background-color: #D3D3D3;
+  display: none;
+}
+
+#trips li {
+  width: 29%;
+  text-align: center;
+  background-color: #D3D3D3;
+  display: inline-block;
+  margin: 2%;
+  padding: .5%;
+}
+
+#trips li a {
+  color: #cc5490;
+}
+
+#trips li a:hover {
+  color: #50d07d;
+}
+
+.button {
+  background-color: #cc5490;
+  color: #D3D3D3;
+}
+
+.button:hover {
+  background-color: #50d07d;
+  color: white;
+}
