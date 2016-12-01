@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline');
 
 /*****************/
 /*  Overall      */
@@ -17,15 +18,34 @@ header {
 
 nav h3 {
   text-align: center;
+  font-family: 'Bungee Inline';
+  font-size: 4em;
+  color: #cc5490;
 }
 
-/*nav button {
+.style-button {
   background-color: #cc5490;
+  /*border-width: 200px;
+  border-color: #D3D3D3;*/
+  width: 85%;
+  /*height: 90%;*/
+  font-size: 2.5em;
+  font-family: 'Bungee Inline';
+  display: block; margin: 0 auto;
+
+}
+
+.style-button:hover {
+  background-color:  #50d07d;
+}
+
+.button-container {
+  padding-top: 10%;
   text-align: center;
-  padding: 5%;
-  border: 5px solid white;
-  font-size: 2em;
-}*/
+  /*margin-left: 18%;
+  margin-top: 10%;*/
+
+}
 
 
 /*****************/
