@@ -51,7 +51,11 @@ $('#trips').on('click', "a", function(e){
 //     event.stopPropagation();
 // });
 
-$("#reserve").on('click', function(){
+
+$("#reserve").click(function(){
+
+  $("#reserve-form").show();
+});
 
 
  $('form').submit(function(e) {
@@ -70,7 +74,6 @@ $("#reserve").on('click', function(){
   .fail(function(){
     $('#message').html('<p>Adding Trip Failed</p>');
   });
-});
 });
 
 

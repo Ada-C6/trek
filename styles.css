@@ -39,3 +39,7 @@ li{
   margin: 0 0.5rem;
   padding: 5px;
 }
+
+#reserve-form{
+  display: none;
+}

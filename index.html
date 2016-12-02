@@ -24,8 +24,22 @@
       <p id="category"> </p>
       <p id="about"> </p>
       <button class="button" id="reserve"> Reserve This Trip </button>
+
+      <div id="message"></div>
+    <div id="reserve-form">
+      <form action="https://trektravel.herokuapp.com/trips" method="post">
+        <section>
+          <label>Name</label>
+          <input type="text" id="name" name="name"></input>
+        </section>
+
+        <section class="button">
+          <button type="submit">Reserve</button>
+        </section>
+      </form>
     </div>
   </div>
+</div>
 
 
   <ul class="row small-up-2 medium-up-3 large-up-4" id="trips"></ul>
@@ -33,18 +47,6 @@
   <div id="back-top">
     <div class="button"> BACK TO TOP </div>
   </div>
-  
-  <div id="message"></div>
-  <form action="https://trektravel.herokuapp.com/trips" method="post">
-    <section>
-      <label>Name</label>
-      <input type="text" id="name" name="name"></input>
-    </section>
-
-    <section class="button">
-      <button type="submit">Reserve</button>
-    </section>
-  </form>
 
   <!-- ########## script for "back to top" button ############### -->
 
