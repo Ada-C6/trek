@@ -44,6 +44,7 @@ $(document).ready(function(){
     $('#modal').show();
     $('body').css('background-image', 'url("http://travel.nationalgeographic.com/u/TvyamNb-BivtNwcoxtkc5xGBuGkIMh_nj4UJHQKuoXB25eFqvC5sMPA8Smg-kciXS6bf2CttAwnmjFAJIDTiGP6jLFqn-w/")');
     var tripUrl = $(this).attr('href');
+    var reserveUrl = $(this).attr('href') + '/reserve';
 
     $.get(tripUrl, function(trip){
       $('#name').text(trip.name);
@@ -56,7 +57,19 @@ $(document).ready(function(){
       alert("failed");
     });
 
+    var callback = function(){
+      console.log("Success!");
+    };
+
+    $('form').submit(function(e){
+      e.preventDefault();
+      var data = $(this).serialize();
+      $.post(reserveUrl, data, callback);
+      $('input').val('');
+    });
+
   });
+
 
   var modal = document.getElementById('modal');
   window.onclick = function(event) {
