@@ -20,6 +20,10 @@ $(document).ready(function(){
 
   $('body').css('background-image', 'url("http://travel.nationalgeographic.com/u/TvyamNb-BivtNwcoxtkc5xGBuGkIMh_nj4UJHQKuoXB25eFqvC5sMPA8Smg-kciXS6bf2CttAwnmjFAJIDTiGP6jLFqn-w/")');
 
+  $('header').hide(); //keep header hidden before button is pressed
+
+
+///----------method to call list of trips from API--------///
   var url = 'https://trektravel.herokuapp.com/trips';
 
   var successCallback = function(response) {
@@ -28,17 +32,17 @@ $(document).ready(function(){
     }
   };
 
-  $('header').hide();
-
-////----------button function
+////----------button function to show list of trips-----------////
   $('#load').click( function() {
     $('#trips').empty();
-    $('#load').hide();
-    $('header').show();
+    $('#load').hide(); //hide trip load button
+    $('header').show(); //show header
     $.get(url, successCallback);
-    clearInterval(refresh);
+    clearInterval(refresh); //backgrounds stop transitioning when button is pressed
   });
 
+
+/////------------button function to show modal of trip description-----------////
   $('#trips').on('click', 'a', function(e) {
     e.preventDefault();
     $('#modal').show();
@@ -58,9 +62,10 @@ $(document).ready(function(){
     });
 
     var callback = function(){
-      console.log("Success!");
+      console.log("Success!"); ///just a function to know submission below worked
     };
 
+///////-----------make reservation-------------//////////
     $('form').submit(function(e){
       e.preventDefault();
       var data = $(this).serialize();
@@ -70,7 +75,7 @@ $(document).ready(function(){
 
   });
 
-
+/////----------method to clear modal when clicked outside the div --------/////////
   var modal = document.getElementById('modal');
   window.onclick = function(event) {
     if (event.target == modal) {
