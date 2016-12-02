@@ -45,7 +45,7 @@ $(document).ready(function() {
       var formData = $(this).serialize();
       console.log(formData);
       var callback = function() {
-        alert("Spot Reserved for " );
+        alert("Spot Reserved!");
       }
       $('form').each(function(){
         this.reset();

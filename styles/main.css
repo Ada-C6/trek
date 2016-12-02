@@ -8,9 +8,9 @@ aside {
 }
 
 .fixed-description {
-  position: fixed;
-  width: 55%;
-  right: 5%;
+  position: relative;
+  /*width: 55%;
+  right: 5%;*/
 }
 
 #trips-list h3 {
