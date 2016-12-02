@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>NM Trek</title>
+    <link rel="stylesheet" href="styles/main.css" media="screen" title="no title">
+    <link rel="stylesheet" href="styles/foundation.min.css" media="screen" title="no title">
+  </head>
+  <body>
+  <header>
+      <h1>Trek</h1>
+      <button id="all-trips-button" class="success button"> See All Trips </button>
+  </header>
+
+
+  <div class="row">
+    <div id="trips-list" class="columns small-12 medium-4"> </div>
+
+    <aside id="trip-info" class="columns small-12 medium-8">
+      <div class="fixed-description">
+      <h2 id="message"></h2>
+      <h3 id="trip-name"></h3>
+      <p id="trip-continent"></p>
+      <p id="trip-category"></p>
+      <p id="trip-about"></p>
+      <p id="trip-weeks"> </p>
+      <p id="trip-cost"> </p>
+      <p id="trip-spots"> </p>
+
+      <form action='https://trektravel.herokuapp.com/trips/' method:'POST'>
+        <section>
+          <label for="spot-name">Enter Your Name</label>
+          <input type="text" name="spot-name">
+        </section>
+        <section>
+          <label for="spot-age">Age</label>
+          <input type="text" name="spot-age">
+        </section>
+        <section>
+          <label for="spot-email">Email</label>
+          <input type="text" name="spot-email">
+        </section>
+        <button type="submit" name="Reserve Spot" class="button">Submit</button>
+      </form>
+
+      </div>
+    </aside>
+  </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/trek.js"></script>
+  </body>
+</html>

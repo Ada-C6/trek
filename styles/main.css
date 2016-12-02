@@ -1,0 +1,23 @@
+#trip-info {
+  display: none;
+  background-color: whitesmoke;
+}
+
+aside {
+  display: inline-block;
+}
+
+.fixed-description {
+  position: relative;
+  /*width: 55%;
+  right: 5%;*/
+}
+
+#trips-list h3 {
+  padding: 4% 0;
+  border-bottom: 1px solid gray;
+}
+
+/*form {
+  display: none;
+}*/
