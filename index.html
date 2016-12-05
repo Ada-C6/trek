@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Trek</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="trek.js"></script>
+    <link href="style.css" type="text/css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab|Pacifico" rel="stylesheet">
+  </head>
+  <body>
+    <div id="snowflakeContainer">
+      <!-- <p class="snowflake">*</p> -->
+      <p class="snowflake">❄️</p>
+    </div>
+    <h1>Holiday Trips</h1>
+    <section class="welcome-image"><img src="reindeer_face.png" /></section>
+    <section class="new-trip">
+      <form action="https://trektravel.herokuapp.com/trips" method="POST" id="create-trip">
+        <input type="text" name="name" placeholder="Name" />
+        <input type="text" name="continent" placeholder="Continent" />
+        <input type="text" name="about" placeholder="About" />
+        <input type="text" name="category" placeholder="Category" />
+        <input type="number" name="weeks" placeholder="# of Weeks" />
+        <input type="number" name="cost" placeholder="Cost" />
+        <button type="submit">Submit Trip!</button>
+      </form>
+    </section>
+    <section class="confirmation"></section>
+    <button class="index-button show-trips">Show All Trips</button>
+    <button class="index-button add-trip">Add A Trip</button>
+    <section class="standout-trip">
+      <button id="close-trip">🎄</button>
+      <div id="warning"></div>
+      <div id="number"></div>
+      <div id="name"></div>
+      <div id="cost"></div>
+      <div id="continent"></div>
+      <div id="category"></div>
+      <div id="weeks"></div>
+      <div id="about"></div>
+      <form action="https://trektravel.herokuapp.com/trips" method="POST" id="join-trip">
+        <input type="text" name="name" placeholder="Name" />
+        <input type="text" name="email" placeholder="Email" />
+        <button type="submit">Reserve A Spot!</button>
+      </form>
+    </section>
+    <section class="list-trips"></section>
+    <script type="text/javascript" src="snow.js"></script>
+  </body>
+</html>
