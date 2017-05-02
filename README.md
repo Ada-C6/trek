@@ -1,6 +1,8 @@
-# TREK
+# Trek
+This was a single page application to pratice JavaScript, AJAX, and consuming an API.
 
-TREK is a web application that displays deals on travel packages. 
+## Trek
+Trek is a web application that displays deals on travel packages. 
 
 You will build a single page application that will query data from an api, using AJAX, to display a list or trips and view more information on a specific trip. While viewing a specific trip, you can claim your spot by sending data back to the API. 
 
@@ -8,12 +10,12 @@ All of this should be done without ever having to reload the page. Meaning, it w
 
 Reminder: You shall use HTML best-practices. You should organize your HTML by grouping content using semantic HTML tags.
 
-## The API
+### The API
 
 View the [Travel API's documentation](https://github.com/ada-c6/trip_api). 
 
 
-## Minimum Requirements 
+### Minimum Requirements 
   - **Wave 1** Click button or link to show all trips
   - **Wave 2** Can click on a trip, from the list of trips, to see more information about that trip
     - Should be able to see id, name, destination, continent, about, category, weeks and cost 
@@ -21,7 +23,7 @@ View the [Travel API's documentation](https://github.com/ada-c6/trip_api).
     - Use a form to submit your name to reserve a spot on the trip you are viewing
 
 
-## Optional Enhancements
+### Optional Enhancements
   - **For more practice with showing a list of Many Trips**, Show trips by search queries (like by continent, budget, etc.). Will need to explore API to see what functionality exists. 
   - **To practice a more advanced POST**, Setup the functionalit to create a new trip. 
   - **For more JQuery Practice**, Use Jquery to resort list of trips by specific attributes, like budget or time remaining. 

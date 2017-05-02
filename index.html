@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Travel Booker</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+  </head>
+  <body>
+
+    <header>
+      <h1>Get Ready for Your Amazing Vacation!</h1>
+    </header>
+
+    <!-- Blank div to accept response from API -->
+    <button id="show_vac">Click HERE to see all the vacations available</button>
+
+    <!-- Div to hold data about all vacations -->
+    <div id="vacations"></div>
+
+    <!-- Div to hold single vacation pop-up -->
+    <div id="single_vac">
+      <h3 id="name"></h3>
+      <p id="destination"></p>
+      <p id="continent"></p>
+      <p id="about"></p>
+      <p id="category"></p>
+      <p id="weeks"></p>
+      <p id="cost"></p>
+      <p id="id"></p>
+
+      <form action='https://trektravel.herokuapp.com/trips/' method="POST" id="reserve_form">
+        <h5>Make a Reservation!</h5>
+        <section>
+          <label>Name</label>
+          <input id="formname" type="text" name="name" value="" />
+        </section>
+        <section>
+          <label>Age</label>
+          <input id="formage" type="text" name="age" value=""/>
+        </section>
+        <section>
+          <label>Email</label>
+          <input id="formemail" type="text" name="email" value=""/>
+        </section>
+        <section>
+          <input id="hidden-id" type="hidden" name="id" />
+        </section>
+        <section class="button">
+          <button id="reserve" type="submit">Reserve Now!</button>
+        </section>
+      </form>
+    </div>
+
+    <div id="res_success">
+      <h2>YOU MADE A RESERVATION!</h2>
+    </div>
+
+
+    <!-- Import JQuery script from CDN -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+    </script>
+
+    <!-- Import scripts file -->
+    <script type="text/javascript" src="scripts.js"></script>
+  </body>
+
+
+</html>
